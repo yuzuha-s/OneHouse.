@@ -29,13 +29,14 @@
 また建売での購入やマンション購入者は対象としていません。  
 あくまで住宅を住宅メーカーと建てることを検討している方に向けた内容となります。
 
-<img src="image.png" alt="alt text" width="500">
+<img src="images/image.png" alt="" width="500">
 
 
 ### アプリでできること（機能イメージ）
 
-![alt text](image-2.png)
-- ホーム画面  
+<img src="images/image-1.png" alt="" width="500">
+
+- ホーム画面    
  **1.「土地購入までの流れ」を初心者向けにフェーズごとにわかりやすく提示**
 
   ※あくまで一般的にこれが必要になりますよレベルフェーズが常に表示される  
@@ -50,15 +51,15 @@
 - 自分だけのライフプラン表  
   頭金・ローン・諸費用の目安をシミュレーション付きで学べる  
   自分だけのライフプランイメージ表の作成
-  ![alt text](image-4.png)
+ <img src="images/image-4.png" alt="" width="500">
 
 - メーカー訪問記録  
   住宅展示場や工務店訪問の見積もり・写真・メモの記録
-  ![alt text](image-3.png)
+  <img src="images/image-3.png" alt="" width="500">
   
 - 土地と家のイメージボード (土地訪問時の間取りシミレーション)  
   訪問した土地の形・広さを入力して、建ぺい率と容積率・駐車場や庭を入れると家の形を提案してくれる
-![alt text](image-5.png)
+<img src="images/image-5.png" alt="" width="500">
 
 
 
