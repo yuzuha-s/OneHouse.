@@ -1,14 +1,15 @@
-# アプリ
+# OneHouse.
 
-docs
-- オリプロテーマ  
-
-  要件定義
-- 要求分析・機能要件・非機能要件・イレギュラーも考慮・運用も想定
-
-  設計
-- 業務フロー
-- 画面遷移図
-- ワイヤーフレーム
-- テーブル定義書
-- システム構成図
+## ディレクトリ構成
+```
+── docs
+   ├── images
+   ├── architecture.md       システム構成図
+   ├── business_flow.md      業務フロー
+   ├── database_schema.md    テーブル定義書
+   ├── focus.md              オリプロテーマ
+   ├── requirements.md        要件定義
+   ├── screen_transition.md   画面遷移図
+   └── wireframes.md          ワイヤーフレーム
+── README.md
+```
