@@ -11,7 +11,27 @@ docs/
 |   |[業務フロー](docs/business_flow.md)　|business_flow.md |
 |   |[テーブル定義書](docs/database_schema.md)　|database_schema.md |
 |   |[画面遷移図](docs/screen_transition.md)　|screen_transition.md |
-|   |[ワイヤーフレーム](docs/wireframes.md)　　|wireframe.md |
-|   | 環境構築　　||
-
+|   |[ワイヤーフレーム](docs/wireframe.md)　　|wireframe.md |
 ---
+
+## 環境構築
+- プログラミング言語
+  - PHP 8.3.4
+  - SQL
+- フレームワーク
+  - Laravel12
+  - Livewire
+- データベース
+  - MySQL
+- インフラ
+  - Docker
+  - AWS
+  - Apache
+- バージョン管理
+  - Git/GitHub
+- CI/CD
+  - PHP Code Sniffer
+  - PHP Stan
+  - ES Lint 
+  - Prettier 
+  - GitHub Actions
