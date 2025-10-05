@@ -9,7 +9,7 @@ docs/
 | ☑ |[要件定義](docs/requirements.md)　　　|requirements.md |
 | ☑ |[業務フロー](docs/business_flow.md)　|business_flow.md |
 | ☑ |[システム構成図](docs/architecture.md)　|architecture.md |
-| |[テーブル定義書](docs/database_schema.md)　|database_schema.md |
+|☑ |[テーブル定義書](docs/database_schema.md)　|database_schema.md |
 | |[画面遷移図](docs/screen_transition.md)　|screen_transition.md |
 | |[ワイヤーフレーム](docs/wireframe.md)　　|wireframe.md |
 
