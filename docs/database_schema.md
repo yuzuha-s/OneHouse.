@@ -4,7 +4,7 @@
 
 ### users
 
-ユーザー名　メールアドレス　パスワード　フェーズ
+ユーザー名　メールアドレス　パスワード
 
 | カラム名   | データ型     | キー | NOT NULL | デォルト値 |
 | ---------- | ------------ | ---- | -------- | ---------- |
@@ -70,9 +70,9 @@
 | marker_id   | BIGINT   | FK   |
 | feature_tag | BIGINT   | FK   |
 
-PRIMARY KEY (maker_id, feature_id),
-FOREIGN KEY (maker_id) REFERENCES makers(id),
-FOREIGN KEY (feature_id) REFERENCES features(id)
+
+FOREIGN KEY (maker_id) REFERENCES makers(id),  
+FOREIGN KEY (feature_id) REFERENCES features(id)  
 
 ### features
 
@@ -144,7 +144,7 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | id       | bigint   | PK   |
 | name     | varchar  |
 
-Note: "1=calendars,2=makers,3=landlogs,4=memologs"
+name :  1=calendars, 2=makers, 3=landlogs, 4=memologs
 
 ### bookmarks
 
@@ -157,7 +157,7 @@ Note: "1=calendars,2=makers,3=landlogs,4=memologs"
 | bookmark_type_id | bigint   |
 | reference_id     | bigint   |
 
-Note: "bookmark_type_id に応じた対象テーブルの ID"
+reference_id  : bookmark_type_idに応じた対象テーブルのID
 
 calendar_id
 markers_id

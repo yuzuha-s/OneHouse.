@@ -26,6 +26,7 @@ docs/
 - フロントエンド
   - HTML/CSS
   - Bootstrap
+  - JavaScript
 - インフラ
   - Docker
   - AWS
@@ -38,5 +39,29 @@ docs/
   - ES Lint
   - Prettier
   - GitHub Actions
-- ライブラリ
-  - chart.js
+
+
+## UI　ライブラリなど
+全体画面
+
+- Tabler
+- dminLTE  
+  https://adminlte.io/themes/v3/
+
+カレンダー
+
+- FullCalendar
+- Tui Calendar
+
+チャート
+
+- ApexCharts
+
+
+検索＆チャット(OpenAI APIで)
+
+https://chatui.io/
+
+認証
+
+- Laravel Breeze
