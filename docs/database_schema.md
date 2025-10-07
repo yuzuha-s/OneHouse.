@@ -120,14 +120,24 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | id       | BIGINT   | PK   |          |
 | floor    | INT      |
 
-### memologs
+### checklists
 
-メモ
+チェックリスト
 
 | カラム名   | データ型     | キー | NOT NULL |
 | ---------- | ------------ | ---- | -------- |
 | id         | BIGINT       | PK   |          |
 | profile_id | BIGINT       | FK   |
-| memo       | VARCHAR(255) |
+| phase_id   | BIGINT       | FK   |
+| title      | VARCHAR(255) |
+| body       | VARCHAR(255) |      | NOT NULL |
 | created_at | TIMESTAMP    |      |
 | updated_at | TIMESTAMP    |      |
+
+### phase
+
+フェーズ
+| カラム名 | データ型 | キー | NOT NULL |
+| -------- | -------- | ---- | -------- |
+| id | BIGINT | PK | |
+| phase | INT | |
