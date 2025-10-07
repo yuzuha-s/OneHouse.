@@ -15,15 +15,6 @@
 | created_at | TIMESTAMP    |      |
 | updated_at | TIMESTAMP    |      |
 
-### phase 　
-
-フェーズ番号　作成日　更新日
-
-| カラム名 | データ型 | キー | NOT NULL |
-| -------- | -------- | ---- | -------- |
-| id       | BIGINT   | PK   |
-| number   | BIGINT   |
-
 ### profile
 
 ユーザー ID 　フェーズ
@@ -137,29 +128,3 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | created_at | TIMESTAMP    |      |
 | updated_at | TIMESTAMP    |      |
 
-### bookmark_type
-
-| カラム名 | データ型 | キー | NOT NULL |
-| -------- | -------- | ---- | -------- |
-| id       | bigint   | PK   |
-| name     | varchar  |
-
-name : 1=calendars, 2=makers, 3=landlogs, 4=memologs
-
-### bookmarks
-
-カレンダー　メーカー　土地　メモ
-
-| カラム名         | データ型 | キー | NOT NULL |
-| ---------------- | -------- | ---- | -------- |
-| id               | BIGINT   | PK   |          |
-| profile_id       | BIGINT   | FK   |
-| bookmark_type_id | bigint   |
-| reference_id     | bigint   |
-
-reference_id : bookmark_type_id に応じた対象テーブルの ID
-
-calendar_id
-markers_id
-landlogs_id
-memologs_id
