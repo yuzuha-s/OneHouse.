@@ -1,4 +1,3 @@
-
 ```
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
@@ -16,14 +15,6 @@ Table users {
 Table profile {
   id bigint [pk]
   user_id bigint [ref: > users.id]
-  phase_id bigint [ref: > phase.id]
-  created_at timestamp
-  updated_at timestamp
-}
-
-Table phase {
-  id bigint [pk]
-  number bigint
   created_at timestamp
   updated_at timestamp
 }
@@ -62,14 +53,19 @@ Table makers_features {
   Note: "多対多の中間テーブル"
 }
 
-Table lifeplanlogs {
+Table loan_simulations {
   id bigint [pk]
   profile_id bigint [ref: > profile.id]
-  age bigint
+  loan bigint
+  rate decimal(5,2)
+  loan_term int
+  age int
   income bigint
   expense bigint
-  balance bigint
+  created_at timestamp
+  updated_at timestamp
 }
+
 
 Table landlogs {
   id bigint [pk]
@@ -79,6 +75,8 @@ Table landlogs {
   far decimal(10,2)
   bcr decimal(10,2)
   floor_id bigint [ref: > floors.id]
+  buildable_area decimal(10,2)
+ range bigint
 }
 
 Table floors {
@@ -94,18 +92,6 @@ Table memologs {
   updated_at timestamp
 }
 
-Table bookmark_type {
-  id bigint [pk]
-  name varchar
-  Note: "1=calendars,2=makers,3=landlogs,4=memologs"
-}
 
-Table bookmarks {
-  id bigint [pk]
-  profile_id bigint [ref: > profile.id]
-  bookmark_type_id bigint [ref: > bookmark_type.id]
-  reference_id bigint
-  Note: "bookmark_type_idに応じた対象テーブルのID"
-}
 
 ```

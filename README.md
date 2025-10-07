@@ -7,10 +7,10 @@ docs/
 |:----:|----|----|---|
 | ☑ |[アプリテーマ](docs/focus.md) |focus.md |※のちのち要件定義に一本化する |
 | ☑ |[要件定義](docs/requirements.md)　　　|requirements.md |
-| △ |[業務フロー](docs/business_flow.md)　|business_flow.md |
-|  |[システム構成図](docs/architecture.md)　|architecture.md |
-|△ |[テーブル定義書](docs/database_schema.md)　|database_schema.md |
-|△|[画面遷移図・ワイヤーフレーム](docs/screen_transition.md)　|screen_transition.md |
+| ☑ |[業務フロー](docs/business_flow.md)　|business_flow.md |
+| |[システム構成図](docs/architecture.md)　|architecture.md |
+|☑ |[テーブル定義書](docs/database_schema.md)　|database_schema.md |
+||[画面遷移図・ワイヤーフレーム](docs/screen_transition.md)　|screen_transition.md |
 
 ---
 
@@ -39,8 +39,8 @@ docs/
   - Prettier
   - GitHub Actions
 
+## UI 　ライブラリなど
 
-## UI　ライブラリなど
 全体画面
 
 - Tabler または

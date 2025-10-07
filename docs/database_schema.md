@@ -23,7 +23,6 @@
 | ---------- | --------- | ---- | -------- |
 | id         | bigint    | PK   |
 | user_id    | bigint    | FK   |
-| phase_id   | bigint    | FK   |
 | created_at | timestamp |
 | updated_at | timestamp |
 
@@ -81,33 +80,38 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | id       | BIGINT       | PK   |          |
 | name     | VARCHAR(100) |
 
-### lifeplanlogs
+### loan_simulations
 
-年齢　収入　支出　※貯蓄残高も
+借入金額 年利 返済期間 年齢　年収　毎月の支出
 
-| カラム名   | データ型 | キー     | NOT NULL |
-| ---------- | -------- | -------- | -------- |
-| id         | BIGINT   | PK       |          |
-| profile_id | BIGINT   | FK       |
-| age        | BIGINT   |
-| income     | BIGINT   |
-| expense    | BIGINT   |
-| balance    | BIGINT   | NOT NULL |
+| カラム名   | データ型     | キー | NOT NULL |
+| ---------- | ------------ | ---- | -------- |
+| id         | BIGINT       | PK   |          |
+| profile_id | BIGINT       | FK   |
+| loan       | BIGINT       |      |
+| rate       | DECIMAL(5,2) |      |
+| loan_term  | INT          |      |
+| age        | INT          |
+| income     | BIGINT       |
+| expense    | BIGINT       |
+| created_at | timestamp    |
+| updated_at | timestamp    |
 
 ### landlogs
 
 住所　容積率 建ぺい率 土地面積 階層～ 3 階まで 坪単価
 
-| カラム名   | データ型      | キー | NOT NULL |
-| ---------- | ------------- | ---- | -------- |
-| id         | BIGINT        | PK   |          |
-| profile_id | BIGINT        | FK   |
-| address    | VARCHAR(255)  |
-| landarea   | DECIMAL(10,2) |
-| far        | DECIMAL(10,2) |
-| bcr        | DECIMAL(10,2) |
-| floor_id   | INT           | FK   |          |
-| range      | BIGINT        |      |
+| カラム名       | データ型      | キー | NOT NULL |
+| -------------- | ------------- | ---- | -------- |
+| id             | BIGINT        | PK   |          |
+| profile_id     | BIGINT        | FK   |
+| address        | VARCHAR(255)  |
+| landarea       | DECIMAL(10,2) |
+| far            | DECIMAL(10,2) |
+| bcr            | DECIMAL(10,2) |
+| floor_id       | INT           | FK   |          |
+| buildable_area | DECIMAL(10,2) |
+| range          | BIGINT        |      |
 
 ### floors
 
@@ -127,4 +131,3 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | memo       | VARCHAR(255) |
 | created_at | TIMESTAMP    |      |
 | updated_at | TIMESTAMP    |      |
-
