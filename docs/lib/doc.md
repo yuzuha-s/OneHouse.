@@ -65,3 +65,10 @@ export default defineConfig({
 });
 
 ```
+
+## FullCalendar
+```
+npm install @fullcalendar/vue3 @fullcalendar/core @fullcalendar/daygrid 
+@fullcalendar/list @fullcalendar/time
+```
+

@@ -70,9 +70,8 @@
 | marker_id   | BIGINT   | FK   |
 | feature_tag | BIGINT   | FK   |
 
-
 FOREIGN KEY (maker_id) REFERENCES makers(id),  
-FOREIGN KEY (feature_id) REFERENCES features(id)  
+FOREIGN KEY (feature_id) REFERENCES features(id)
 
 ### features
 
@@ -106,7 +105,7 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 
 ### landlogs
 
-住所　容積率 建ぺい率 土地面積 階層～ 3 階まで
+住所　容積率 建ぺい率 土地面積 階層～ 3 階まで 坪単価
 
 | カラム名   | データ型      | キー | NOT NULL |
 | ---------- | ------------- | ---- | -------- |
@@ -117,6 +116,7 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | far        | DECIMAL(10,2) |
 | bcr        | DECIMAL(10,2) |
 | floor_id   | INT           | FK   |          |
+| range      | BIGINT        |      |
 
 ### floors
 
@@ -144,7 +144,7 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | id       | bigint   | PK   |
 | name     | varchar  |
 
-name :  1=calendars, 2=makers, 3=landlogs, 4=memologs
+name : 1=calendars, 2=makers, 3=landlogs, 4=memologs
 
 ### bookmarks
 
@@ -157,7 +157,7 @@ name :  1=calendars, 2=makers, 3=landlogs, 4=memologs
 | bookmark_type_id | bigint   |
 | reference_id     | bigint   |
 
-reference_id  : bookmark_type_idに応じた対象テーブルのID
+reference_id : bookmark_type_id に応じた対象テーブルの ID
 
 calendar_id
 markers_id
