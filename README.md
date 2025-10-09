@@ -10,7 +10,7 @@ docs/
 | ☑ |[業務フロー](docs/business_flow.md)　|business_flow.md |
 | |[システム構成図](docs/architecture.md)　|architecture.md |
 |☑ |[テーブル定義書](docs/database_schema.md)　|database_schema.md |
-||[画面遷移図・ワイヤーフレーム](docs/screen_transition.md)　|screen_transition.md |
+|☑|[画面遷移図・ワイヤーフレーム](docs/screen_transition.md)　|screen_transition.md |
 
 ---
 
@@ -27,17 +27,14 @@ docs/
   - Bootstrap
   - JavaScript
 - インフラ
-  - Docker
   - AWS
-  - Apache
+  - Apache ? →インフラで学ぶだろう　ローカル開発では不要
 - バージョン管理
   - Git/GitHub
 - CI/CD
   - PHP Code Sniffer
-  - PHP Stan
   - ES Lint
   - Prettier
-  - GitHub Actions
 
 ## UI 　ライブラリなど
 

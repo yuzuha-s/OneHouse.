@@ -74,7 +74,8 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | tag         | VARCHAR(100) |
 
 ### categories
-
+ブランド力 工法・構造 耐熱性・省エネ性   
+耐震性 保証・アフターサービス デザイン・間取り自由祖
 | カラム名 | データ型     | キー | NOT NULL |
 | -------- | ------------ | ---- | -------- |
 | id       | BIGINT       | PK   |          |
