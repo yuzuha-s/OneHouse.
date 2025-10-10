@@ -72,3 +72,14 @@ npm install @fullcalendar/vue3 @fullcalendar/core @fullcalendar/daygrid
 @fullcalendar/list @fullcalendar/time
 ```
 
+## 建築面積
+```
+土地面積（㎡）× 建ぺい率（％）× 容積率 ＝ 建築面積の上限（㎡）
+98㎡　×　0.6 　×2　=　117.6㎡
+
+約3.3㎡/坪
+117 / 3 = 35.45坪 
+
+坪単価
+35.45 × 87万円　＝　3,084万円
+```
