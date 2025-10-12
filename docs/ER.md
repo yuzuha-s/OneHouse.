@@ -1,8 +1,3 @@
-```
-// Use DBML to define your database structure
-// Docs: https://dbml.dbdiagram.io/docs
-
-
 Table users {
   id bigint [pk]
   name varchar
@@ -50,7 +45,6 @@ Table categories {
 Table makers_features {
   marker_id bigint [ref: > makers.id]
   feature_id bigint [ref: > features.id]
-  Note: "多対多の中間テーブル"
 }
 
 Table loan_simulations {
@@ -76,7 +70,7 @@ Table landlogs {
   bcr decimal(10,2)
   floor_id bigint [ref: > floors.id]
   buildable_area decimal(10,2)
- range bigint
+  range bigint
 }
 
 Table floors {
@@ -84,14 +78,17 @@ Table floors {
   floor int
 }
 
-Table memologs {
+Table checklists {
   id bigint [pk]
   profile_id bigint [ref: > profile.id]
-  memo varchar
+  phase_id bigint [ref: > phase.id] 
+  checked  boolean 
   created_at timestamp
   updated_at timestamp
 }
 
-
-
-```
+Table phase {
+  id bigint [pk] 
+  phase varchar
+  list varchar
+}

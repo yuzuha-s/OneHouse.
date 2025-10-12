@@ -1,5 +1,6 @@
 ## テーブル定義書 / ER 図
 
+[データ](/docs/date.sql)はこちら
 ![alt text](/docs/images/ER.png)
 
 ### users
@@ -74,12 +75,13 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 | tag         | VARCHAR(100) |
 
 ### categories
-ブランド力 工法・構造 耐熱性・省エネ性   
+
+ブランド力 工法・構造 耐熱性・省エネ性  
 耐震性 保証・アフターサービス デザイン・間取り自由祖
-| カラム名 | データ型     | キー | NOT NULL |
+| カラム名 | データ型 | キー | NOT NULL |
 | -------- | ------------ | ---- | -------- |
-| id       | BIGINT       | PK   |          |
-| name     | VARCHAR(100) |
+| id | BIGINT | PK | |
+| name | VARCHAR(100) |
 
 ### loan_simulations
 
@@ -125,20 +127,21 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 
 チェックリスト
 
-| カラム名   | データ型     | キー | NOT NULL |
-| ---------- | ------------ | ---- | -------- |
-| id         | BIGINT       | PK   |          |
-| profile_id | BIGINT       | FK   |
-| phase_id   | BIGINT       | FK   |
-| title      | VARCHAR(255) |
-| body       | VARCHAR(255) |      | NOT NULL |
-| created_at | TIMESTAMP    |      |
-| updated_at | TIMESTAMP    |      |
+| カラム名   | データ型  | キー | NOT NULL | デォルト値    |
+| ---------- | --------- | ---- | -------- | ------------- |
+| id         | BIGINT    | PK   |          |
+| profile_id | BIGINT    | FK   |
+| phase_id   | BIGINT    | FK   |          |
+| checked    | BOOLEAN   |      |          | DEFAULT FALSE |
+| created_at | TIMESTAMP |      |
+| updated_at | TIMESTAMP |      |
 
-### phase
+### phaselists
 
-フェーズ
-| カラム名 | データ型 | キー | NOT NULL |
-| -------- | -------- | ---- | -------- |
-| id | BIGINT | PK | |
-| phase | INT | |
+フェーズ リスト
+
+| カラム名 | データ型     | キー | NOT NULL |
+| -------- | ------------ | ---- | -------- |
+| id       | BIGINT       | PK   |          |
+| phase    | INT          |      | NOT NULL |
+| list     | VARCHAR(255) |

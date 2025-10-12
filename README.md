@@ -25,7 +25,7 @@ docs/
 - フロントエンド
   - HTML/CSS
   - Bootstrap
-  - JavaScript
+  - JavaScript,Vue.js
 - インフラ
   - AWS
   - Apache ? →インフラで学ぶだろう　ローカル開発では不要
@@ -59,3 +59,5 @@ docs/
 チェックリスト
 
 [チェックリスト登録項目](docs/lib/checklist.md)
+
+シングルページにする
