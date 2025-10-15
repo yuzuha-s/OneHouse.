@@ -83,3 +83,32 @@ npm install @fullcalendar/vue3 @fullcalendar/core @fullcalendar/daygrid
 坪単価
 35.45 × 87万円　＝　3,084万円
 ```
+
+
+## 静的ツール
+### 
+
+
+### ✔PHPUnittests/ディレクトリ内のテストを実行
+- コードを実行して解析
+- テスト通りに動くか(ユーザー作成・コントローラーの処理結果)
+```
+vendor/bin/phpunit
+```
+
+```
+php artisan test
+```
+
+
+### ✔PHPstanでapp配下のコードを解析
+- コードは実行せずに解析
+- 型や構文の安全性
+```
+vendor/bin/phpstan analyse app
+```
+
+### ✔ESLintでJSの静的解析
+```
+npx eslint resources/js
+```
