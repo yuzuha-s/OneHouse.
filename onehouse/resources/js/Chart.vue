@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>売上グラフ</h2>
     <apexchart type="bar" :options="chartOptions" :series="series" width="500" />
   </div>
 </template>

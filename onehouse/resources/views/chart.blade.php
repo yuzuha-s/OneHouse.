@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -8,5 +8,5 @@
     <div id="chart-app"></div>
     @vite('resources/js/app.js')
   </body>
-</html>
+</html> --}}
 
