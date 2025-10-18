@@ -25,11 +25,9 @@ Route::get('/phase3', function () {
     return view('phase3');
 });
 
-
-Route::get('/chart', function () {
-    return view('chart');
+Route::get('/phase4', function () {
+    return view('phase4');
 });
-
 
 Route::get('/phase5', function () {
     return view('phase5');
