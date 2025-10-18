@@ -13,10 +13,12 @@
 -- フェーズ phase
 
 insert into users (name, email, password) values
-(yuzuha, example@com.jp, pass123);
+(Test User, test@example.com, password),
+(yuzuha, yuzuha@com.jp, pass123);
 
 insert into profile (user_id) values
-(1);
+(1),
+(2);
 
 insert into calendars (profile_id,  date, title, location) values
 (1, 20251012, 新大久保の展示場に行く, 東京都新宿区),

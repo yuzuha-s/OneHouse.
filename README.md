@@ -24,8 +24,7 @@ docs/
   - MySQL
 - フロントエンド
   - HTML/CSS
-  - Bootstrap
-  - JavaScript,Vue.js
+  - JavaScript、Vue.js
 - インフラ
   - AWS
   - Apache ? →インフラで学ぶだろう　ローカル開発では不要
@@ -37,16 +36,6 @@ docs/
   - Prettier
 
 ## UI 　ライブラリなど
-
-全体画面
-
-- Tabler または
-- dminLTE  
-  https://adminlte.io/themes/v3/
-
-カレンダー
-
-- FullCalendar
 
 チャート
 
@@ -60,4 +49,3 @@ docs/
 
 [チェックリスト登録項目](docs/lib/checklist.md)
 
-シングルページにする
