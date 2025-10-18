@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileControllers;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,9 +8,10 @@ Route::get('/', function () {
 });
 
 // phase1~5------------------------------------------
-Route::get('/phase1', function () {
-    return view('phase1');
-});
+// Route::get('/phase1', function () {
+//     return view('phase1');
+// });
+Route::get('/phase1',[ProfileControllers::class, 'index']);
 
 Route::get('/phase2', function () {
     return view('phase2');

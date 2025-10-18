@@ -107,3 +107,8 @@
     </div>
 @endsection
 
+@foreach ($profiles as $profile)
+    <tr>
+        <td>{{ $profile->user_id }}</td>
+    </tr>
+@endforeach
