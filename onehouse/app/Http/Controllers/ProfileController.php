@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProfileCintrollser extends Controller
+class ProfileController extends Controller
 {
 
     public function index()
     {
-        $profiles = Profile::all();
-        return view('profile.index', compact('profiles'));
+        $users = User::with('profile')->get();
+        return view('phase1', compact('users'));
+
     }
 
     /**
