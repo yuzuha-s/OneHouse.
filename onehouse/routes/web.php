@@ -8,10 +8,10 @@ Route::get('/', function () {
 });
 
 // phase1~5------------------------------------------
-// Route::get('/phase1', function () {
-//     return view('phase1');
-// });
-Route::get('/phase1',[ProfileController::class, 'index']);
+Route::get('/phase1', function () {
+    return view('phase1');
+});
+Route::get('/default',[ProfileController::class, 'index']);
 
 Route::get('/phase2', function () {
     return view('phase2');
@@ -36,6 +36,3 @@ Route::get('/phase5', function () {
 });
 
 // navigate-----------------------------------------
-Route::get('/calendar', function () {
-    return view('calendar');
-});

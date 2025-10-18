@@ -12,7 +12,7 @@ class ProfileController extends Controller
     public function index()
     {
         $users = User::with('profile')->get();
-        return view('phase1', compact('users'));
+        return view('default', compact('users'));
 
     }
 
