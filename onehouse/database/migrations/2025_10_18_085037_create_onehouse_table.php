@@ -28,18 +28,21 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamps();
         });
 
         Schema::create('features', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->string('tag');
+            $table->timestamps();
         });
 
-        Schema::create('makers_feature', function (Blueprint $table) {
+        Schema::create('maker_features', function (Blueprint $table) {
             $table->foreignId('maker_id')->constrained()->cascadeOnDelete();
             $table->foreignId('feature_id')->constrained()->cascadeOnDelete();
             $table->primary(['maker_id', 'feature_id']);
+            $table->timestamps();
         });
 
         Schema::create('loan_simulations', function (Blueprint $table) {
@@ -56,6 +59,7 @@ return new class extends Migration
         Schema::create('floors', function (Blueprint $table) {
             $table->id();
             $table->integer('floor');
+            $table->timestamps();
         });
         Schema::create('landlogs', function (Blueprint $table) {
             $table->id();
@@ -66,13 +70,15 @@ return new class extends Migration
             $table->unsignedSmallInteger('bcr');
             $table->foreignId('floor_id')->constrained()->cascadeOnDelete();
             $table->integer('builable_area');
-            $table->bigInteger('range');
+            $table->bigInteger('pricePerTsubo');
+            $table->timestamps();
         });
 
         Schema::create('phases', function (Blueprint $table) {
             $table->id();
             $table->integer('phase')->nullable();
             $table->string('list');
+            $table->timestamps();
         });
         Schema::create('checklists', function (Blueprint $table) {
             $table->id();

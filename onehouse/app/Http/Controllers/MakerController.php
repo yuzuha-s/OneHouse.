@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
-use App\Models\User;
+use App\Models\Maker;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class MakerController extends Controller
 {
-
     public function index()
     {
-        $profiles = Profile::with('user')->get();
-        return view('default', compact('profiles'));
-
+        // $makers = Maker::with('profile')->get();
+        $makers = Maker::with('features.category')->get();
+        return view('default', compact('makers'));
     }
 
     /**

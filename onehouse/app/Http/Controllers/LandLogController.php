@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
-use App\Models\User;
+use App\Models\LandLog;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class LandLogController extends Controller
 {
 
     public function index()
     {
-        $profiles = Profile::with('user')->get();
-        return view('default', compact('profiles'));
-
+        $landLogs = LandLog::with('profile')->get();
+        return view('default', compact('landLogs'));
     }
 
     /**
