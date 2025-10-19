@@ -74,7 +74,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($makers as $maker)
+                    {{-- @foreach ($makers as $maker)
                         @foreach ($maker->features as $feature)
                             <tr>
                                 <td>{{ $maker->id }}</td>
@@ -83,7 +83,7 @@
                                 <td>{{ $feature->tag }}</td>
                             </tr>
                         @endforeach
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>
@@ -104,9 +104,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
+                    @foreach ($loanSimulations as $loanSimulation)
+                        <tr>
+                            <td> {{ $loanSimulation->id }} </td>
+                            <td> {{ $loanSimulation->profile->id }} </td>
+                            <td> {{ $loanSimulation->loan }} </td>
+                            <td> {{ $loanSimulation->loan_term }} </td>
+                            <td> {{ $loanSimulation->age }} </td>
+                            <td> {{ $loanSimulation->rate }} </td>
+                            <td> {{ $loanSimulation->income }} </td>
+                            <td> {{ $loanSimulation->expense }} </td>
+
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 

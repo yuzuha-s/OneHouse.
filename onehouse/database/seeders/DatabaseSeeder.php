@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\LoanSimulation;
 use App\Models\MakerFeature;
 use App\Models\Profile;
 use App\Models\User;
@@ -23,7 +24,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             FeatureSeeder::class,
             MakerFeatureSeeder::class,
-
+            LoanSimulationSeeder::class,
         ]);
     }
 }

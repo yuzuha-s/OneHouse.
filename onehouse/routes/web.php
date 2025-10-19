@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoanSimulationController;
 use App\Http\Controllers\MakerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -14,7 +15,8 @@ Route::get('/', function () {
 // データベース確認画面--------------------------------------
 // Route::get('/default',[UserController::class, 'index']);
 // Route::get('/default',[ProfileController::class, 'index']);
-Route::get('/default',[MakerController::class, 'index']);
+// Route::get('/default',[MakerController::class, 'index']);
+Route::get('/default',[LoanSimulationController::class, 'index']);
 
 // phase1~5------------------------------------------
 Route::get('/phase1', function () {
