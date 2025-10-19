@@ -2,13 +2,13 @@
 -- ユーザー情報      users
 -- プロフィール情報   profile
 -- 住宅メーカー      makers
-
 -- ※中間テーブル makers_features 
 -- 住宅メーカータグfeatures
 -- 住宅メーカータグカテゴリー categories
 -- 住宅ローン loan_simulations
--- 土地 landlogs
 -- 階層 floors
+
+-- 土地 landlogs
 -- チェックリスト checklists
 -- フェーズ phase
 
@@ -83,8 +83,9 @@ insert into floors (floor) values
 (2),
 (3);
 
-insert into landlogs (profile_id, address, landarea,  far, bcr, floor_id, buildable_area, range ) values
-(1, 東京都板橋区3丁目1-55, 80.0, 200, 80, 2, 128.0, 87);
+insert into landlogs (profile_id, address, landarea,  far, bcr, floor_id, buildable_area, pricePerTsubo ) values
+(1, 東京都板橋区3丁目1-55, 80.0, 200, 80, 2, 0, 87);
+(1, 東京都板橋区5丁目2-66, 90.0, 150, 60, 3, 0, 77);
 
 insert into phase (phase, list) values
 (1, 家族希望条件を整理した),
