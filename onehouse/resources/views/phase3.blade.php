@@ -33,45 +33,8 @@
 
             </div>
 
-
-            <div class="loan-form wrapper">
-                <div class="loan-left">
-                    <form action="">
-                        <div class="form-contant">
-                            <label for="">借入額(万円)</label><input type="text">
-                        </div>
-                        <div class="form-contant">
-                            <label for="">年利(固定金利)</label><input type="text">
-                        </div>
-                        <div class="form-contant">
-                            <label for="">返済期間(年)</label><input type="text">
-                        </div>
-                        <div class="form-contant">
-                            <label for="">年齢(歳)</label><input type="text">
-                        </div>
-                        <div class="form-contant">
-                            <label for="">毎月の支出(万円)</label><input type="text">
-                        </div>
-                        <div class="form-contant">
-                            <label for="">現在の収入(万円/年間)</label><input type="text">
-                        </div>
-                        <div class="register"><button>登録する</button></div>
-                    </form>
-                </div>
-
-                <div class="loan-right">
-                    <div id="chart-app"></div>
-                    @vite('resources/js/app.js')
-                </div>
-            </div>
-
-            <div class="wrapper">
-                <div class="loan-card">
-                    <input type="text"><label for="">歳で完済が完了します。</label><br>
-                    <label for="">月々の返済額は</label><input type="text"><label for="">万円です。</label>
-                </div>
-            </div>
-
+            <div id="chart-app"></div>
+            @vite('resources/js/app.js')
 
             <div class="list">
                 <div class="list-header wrapper">
