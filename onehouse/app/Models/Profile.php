@@ -20,8 +20,8 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Maker()
+    public function maker()
     {
-        return $this->hasOne(Maker::class);
+        return $this->hasMany(Maker::class);
     }
 }

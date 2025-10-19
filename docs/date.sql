@@ -66,7 +66,14 @@ insert into makers_features (marker_id, feature_id) values
 (1, 10),
 (1, 14),
 (1, 17),
-(1, 20);
+(1, 20),
+(2, 3),
+(2, 6),
+(2, 10),
+(2, 15),
+(2, 18),
+(2, 22);
+
 
 insert into loan_simulations (profile_id, loan, rate, loan_term, age, income, expense) values
 (1, 6000, 1.5, 35, 32, 800, 25);

@@ -36,10 +36,35 @@ class MakerFeatureSeeder extends Seeder
                 'maker_id' => 1,
                 'feature_id' => 20,
             ],
+            [
+                'maker_id' => 2,
+                'feature_id' => 3,
+            ],
+            [
+                'maker_id' => 2,
+                'feature_id' => 6,
+            ],
+            [
+                'maker_id' => 2,
+                'feature_id' => 10,
+            ],
+            [
+                'maker_id' => 2,
+                'feature_id' => 15,
+            ],
+            [
+                'maker_id' => 2,
+                'feature_id' => 18,
+            ],
+            [
+                'maker_id' => 2,
+                'feature_id' => 22,
+            ],
+
         ];
 
         foreach($makerfeatures as $mf) {
-            MakerFeature::create($mf);
+            MakerFeature::firstOrCreate($mf);
         }
     }
 }

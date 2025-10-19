@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Makerfeature extends Model
+class MakerFeature extends Model
 {
-    use HasFactory;
+    // use HasFactory;
     protected $table = 'maker_features';
     protected $fillable = [
-        'marker_id',
-        'feature_tag',
+        'maker_id',
+        'feature_id',
     ];
 
     public function maker()
@@ -22,5 +22,4 @@ class Makerfeature extends Model
     {
         return $this->belongsTo(Feature::class);
     }
-
 }
