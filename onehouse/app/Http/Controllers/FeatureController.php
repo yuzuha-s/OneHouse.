@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
-use App\Models\User;
+use App\Models\Feature;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class FeatureController extends Controller
 {
-
     public function index()
     {
-        $profiles = Profile::with('user')->get();
-        return view('default', compact('profiles'));
-
+        $features = Feature::all();
+        return view('default', compact('features'));
     }
 
     /**

@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
+                    {{-- @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->profile->id ?? '' }}</td>
                             <td>{{ $user->id }}</td>
@@ -29,7 +29,7 @@
                             <td>{{ $user->email }}</td>
 
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
 
@@ -46,9 +46,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
+                    {{-- @foreach ($makers as $maker)
+                        @if ($maker->profile->id == 1)
+                            <tr>
+                                <td> {{ $maker->id }} </td>
+                                <td>{{ $maker->profile->id }}</td>
+                                <td> {{ $maker->name }} </td>
+                                <td> {{ $maker->sales }} </td>
+                                <td> {{ $maker->option }} </td>
+                                <td> {{ $maker->star }} </td>
+
+                            </tr>
+                        @endif
+                    @endforeach --}}
                 </tbody>
             </table>
 
@@ -64,9 +74,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
+                    @foreach ($makers as $maker)
+                        @foreach ($maker->features as $feature)
+                            <tr>
+                                <td>{{ $maker->id }}</td>
+                                <td>{{ $maker->name }}</td>
+                                <td>{{ $feature->category->name ?? '未分類' }}</td>
+                                <td>{{ $feature->tag }}</td>
+                            </tr>
+                        @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>

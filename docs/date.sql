@@ -1,8 +1,8 @@
 -- テーブル名        tablename
 -- ユーザー情報      users
--- プロフィール情報   rofile
--- カレンダー        calendars
+-- プロフィール情報   profile
 -- 住宅メーカー      makers
+
 -- ※中間テーブル makers_features 
 -- 住宅メーカータグfeatures
 -- 住宅メーカータグカテゴリー categories
@@ -20,12 +20,9 @@ insert into profile (user_id) values
 (1),
 (2);
 
-insert into calendars (profile_id,  date, title, location) values
-(1, 20251012, 新大久保の展示場に行く, 東京都新宿区),
-(1, 20250912, 池袋の展示場に行く, 東京都板橋区向原1丁目5-6);
-
 insert into markers (profile_id, name, sales, option star) values
-(1, ミサワホーム, 田中, 紹介で３０万円割引特典あり, 2);
+(1, ミサワホーム, 田中, 紹介で３０万円割引特典あり, 2),
+(1, スター工務店, 立花, なし, 1);
 
 insert into categories (name) values
 1(ブランド力),
@@ -34,6 +31,8 @@ insert into categories (name) values
 4(耐震性),
 5(保証・アフターサービス),
 6(デザイン間取りの自由度);
+
+
 
 insert into features (category_id, tag) values
 (1, 信頼性),

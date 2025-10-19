@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class CategoryController extends Controller
 {
-
     public function index()
     {
-        $profiles = Profile::with('user')->get();
-        return view('default', compact('profiles'));
-
+        $categories = Category::all();
+        return view('default', compact('categories'));
     }
 
     /**
