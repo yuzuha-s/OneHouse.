@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Phase extends Model
 {
     use HasFactory;
-    protected $table = 'categories';
+    protected $table = 'phases';
     protected $fillable = [
-        'name',
+        'phase',
+        'list',
     ];
-
-    public function features()
+    public function checkList()
     {
-        return $this->hasMany(Feature::class);
+        return $this->hasMany(Checklist::class);
     }
-}
 
+}

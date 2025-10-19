@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CheckListController;
+use App\Http\Controllers\LandLogController;
 use App\Http\Controllers\LoanSimulationController;
 use App\Http\Controllers\MakerController;
 use App\Http\Controllers\ProfileController;
@@ -16,7 +18,9 @@ Route::get('/', function () {
 // Route::get('/default',[UserController::class, 'index']);
 // Route::get('/default',[ProfileController::class, 'index']);
 // Route::get('/default',[MakerController::class, 'index']);
-Route::get('/default',[LoanSimulationController::class, 'index']);
+// Route::get('/default',[LoanSimulationController::class, 'index']);
+// Route::get('/default',[LandLogController::class, 'index']);
+Route::get('/default',[CheckListController::class, 'index']);
 
 // phase1~5------------------------------------------
 Route::get('/phase1', function () {

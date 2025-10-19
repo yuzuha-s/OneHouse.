@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Psy\VersionUpdater\Checker;
 
 class Profile extends Model
 {
@@ -28,5 +29,15 @@ class Profile extends Model
     public function loanSimulations()
     {
         return $this->hasMany(LoanSimulation::class);
+    }
+
+    public function landLog()
+    {
+        return $this->hasMany(LandLog::class);
+    }
+
+    public function checkList()
+    {
+        return $this->hasMany(Checklist::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\LandLog;
 use App\Models\LoanSimulation;
 use App\Models\MakerFeature;
 use App\Models\Profile;
@@ -25,6 +26,10 @@ class DatabaseSeeder extends Seeder
             FeatureSeeder::class,
             MakerFeatureSeeder::class,
             LoanSimulationSeeder::class,
+            FloorSeeder::class,
+            LandLogSeeder::class,
+            PhaseSeeder::class,
+            ChecklistSeeder::class,
         ]);
     }
 }

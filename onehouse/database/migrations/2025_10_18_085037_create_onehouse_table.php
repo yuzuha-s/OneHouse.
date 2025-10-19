@@ -70,7 +70,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('bcr');
             $table->foreignId('floor_id')->constrained()->cascadeOnDelete();
             $table->integer('builable_area');
-            $table->bigInteger('range');
+            $table->bigInteger('pricePerTsubo');
             $table->timestamps();
         });
 

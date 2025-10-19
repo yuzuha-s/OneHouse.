@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Floor extends Model
 {
     use HasFactory;
-    protected $table = 'categories';
+
+    protected $table = 'floors';
+
     protected $fillable = [
-        'name',
+        'floor',
     ];
 
-    public function features()
+    public function landLog()
     {
-        return $this->hasMany(Feature::class);
+        return $this->hasOne(LandLog::class);
     }
 }
-

@@ -104,7 +104,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($loanSimulations as $loanSimulation)
+                    {{-- @foreach ($loanSimulations as $loanSimulation)
                         <tr>
                             <td> {{ $loanSimulation->id }} </td>
                             <td> {{ $loanSimulation->profile->id }} </td>
@@ -116,7 +116,7 @@
                             <td> {{ $loanSimulation->expense }} </td>
 
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
 
@@ -136,10 +136,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </tbody>
+                    {{-- @foreach ($landLogs as $landLog)
+                        <tr>
+                            <td>{{ $landLog->id }}</td>
+                            <td>{{ $landLog->profile->id }}</td>
+                            <td>{{ $landLog->address }}</td>
+                            <td>{{ $landLog->landarea }}</td>
+                            <td>{{ $landLog->far }}</td>
+                            <td>{{ $landLog->bcr }}</td>
+                            <td>{{ $landLog->floor->id }}</td>
+                            <td>{{ $landLog->builable_area }}</td>
+                            <td>{{ $landLog->pricePerTsubo }}</td>
+                        </tr>
+                    @endforeach
+                </tbody> --}}
             </table>
 
             <h1>checklists</h1>
@@ -154,9 +164,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($checkLists as $checklist)
                     <tr>
-                        <td></td>
+                        <td> {{ $checklist->id }} </td>
+                        <td> {{ $checklist->profile->id }} </td>
+                        <td> {{ $checklist->phase->phase }} </td>
+                        <td> {{ $checklist->checked ? '✔' : '✖'}} </td>
+                        <td> {{ $checklist->phase->list }} </td>
+
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
