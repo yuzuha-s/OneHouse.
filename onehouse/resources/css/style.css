@@ -20,6 +20,7 @@ ul {
   margin: 0;
 }
 
+
 a {
   text-decoration: none;
 }
@@ -45,11 +46,16 @@ h3 {
   color: #586BFF;
   letter-spacing: 2px;
   align-items: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
+
 .validate p {
   margin: 0;
   font-size: 12px;
+}
+
+.error {
+  color: #ff0000;
 }
 
 /* main ------------------------ */
@@ -442,9 +448,8 @@ input:checked+.slider:before {
 }
 
 .form-contant input,
-.form-contant textarea,
-.form-valiable {
-  width: 70%;
+.form-contant textarea {
+  width: 50%;
   padding: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -474,19 +479,57 @@ input:checked+.slider:before {
 .loan-form,
 .land-form {
   display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
+
   color: #8C8C8C;
 }
 
 .loan-card,
 .land-card {
-  width: 70%;
-  margin: auto;
   background-color: rgba(231, 233, 254, 0.3);
   border-radius: 20px;
-  padding: 30px 49px;
+  padding: 30px 50px;
+}
 
+.loan-left {
+  width: 60%;
+}
+
+.loan-right {
+  width: 40%;
+
+}
+
+.left-fix {
+  display: flex;
+  margin: auto;
+  text-align: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-contant input {
+  width: 40%;
+}
+
+.form-valiable {
+  width: 30%;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.form-row{
+  display: flex;
+  align-items: center;
+}
+
+.form-valiable {
+  font-weight: bold;
+}
+.form-row input {
+  margin: 0;
 }
 
 /* phase5-------------------- */
