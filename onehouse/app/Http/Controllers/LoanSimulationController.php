@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoanSimulationRequest;
 use App\Models\LoanSimulation;
 use Illuminate\Http\Request;
 
@@ -26,12 +27,12 @@ class LoanSimulationController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'loan' => 'required|numeric|min:0',
+            'loan' => 'required|numeric|min:1',
             'loan_term' => 'required|numeric|between:10,40',
-            'age' => 'required|numeric|min:0',
-            'rate' => 'required|numeric|min:0',
-            'income' => 'required|numeric|min:0',
-            'expense' => 'required|numeric|min:0',
+            'age' => 'required|numeric|min:1',
+            'rate' => 'required|numeric|min:0.1',
+            'income' => 'required|numeric|min:1',
+            'expense' => 'required|numeric|min:1',
         ]);
 
         $validated['profile_id'] = $profile->id ?? 1;
@@ -59,20 +60,9 @@ class LoanSimulationController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(LoanSimulationRequest $request, $id)
     {
-        $validated = $request->validate([
-            'loan' => 'required|numeric|min:0',
-            'loan_term' => 'required|numeric|between:10,40',
-            'age' => 'required|numeric|min:0',
-            'rate' => 'required|numeric|min:0',
-            'income' => 'required|numeric|min:0',
-            'expense' => 'required|numeric|min:0',
-        ]);
-
+        $validated =  $request->validated();
         $profile_id =1;
 
         $loanSimulations = LoanSimulation::updateOrCreate(
@@ -81,7 +71,6 @@ class LoanSimulationController extends Controller
         );
 
         return response()->json([
-            'message' => 'シミュレーションが完了しました！',
             'data' => $loanSimulations
         ]);
     }
