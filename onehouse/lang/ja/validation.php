@@ -139,6 +139,15 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'income' => [
+            'required' => '収入は必須です',
+            'numeric' => '収入は数字で入力してください',
+        ],
+        'loan' => [
+            'required' => '借入金額は必須です',
+            'numeric' => '借入金額は数字で入力してください',
+            'between' => '借入金額は10〜40万円の範囲で入力してください',
+        ],
     ],
 
     /*
@@ -151,6 +160,12 @@ return [
     |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+    'loan'      => '借入金額',
+    'loan_term' => '返済期間',
+    'rate'      => '年利',
+    'age'       => '現在の年齢',
+    'income'    => '年間の収入',
+    'expense'   => '月々の支出',
+],
 ];
