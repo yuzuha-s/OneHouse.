@@ -11,23 +11,25 @@ class MakerController extends Controller
     {
         // $makers = Maker::with('profile')->get();
         $makers = Maker::with('features.category')->get();
-        return view('default', compact('makers'));
+        return view('phase2', compact('makers'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // 新規作成する
+    public function create(Request $request)
     {
-        //
+        return view('phase2_edit');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // 保存する
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $validated['profile_id'] = $profile->id ?? 1;
+
+        Maker::create($validated);
+        return redirect()->route('phase2')->with('success', '登録が完了しました');
     }
 
     /**

@@ -30,9 +30,15 @@ Route::get('/phase1', function () {
 Route::get('/phase2', function () {
     return view('phase2');
 });
-Route::get('/phase2-edit', function () {
-    return view('phase2_edit');
-});
+Route::get('/phase2',[MakerController::class, 'index']);
+
+// 新規メーカ追加画面
+Route::get('/phase2-edit',[MakerController::class, 'create'])->name('create');
+
+// 新規メーカーを保存する
+Route::post('/phase2-edit',[MakerController::class, 'store'])->name('store');;
+
+
 Route::get('/phase2-update', function () {
     return view('phase2_update');
 });

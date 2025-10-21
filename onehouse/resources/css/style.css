@@ -311,7 +311,7 @@ input:checked+.slider:before {
 
 .marker-list {
   display: flex;
-  margin: auto;
+  margin: 30px auto;
   gap: 100px;
 }
 
@@ -332,6 +332,7 @@ input:checked+.slider:before {
 .card-right {
   width: 20%;
   background-color: #576bf5;
+  opacity: 0.5;
   border-radius: 10px;
 }
 
@@ -370,14 +371,31 @@ input:checked+.slider:before {
   font-weight: bold;
 }
 
-.visible-contain {
+.visible {
   display: flex;
-  gap: 50px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.visible-groupe {
-  padding: 5px;
+.visible-contain {
+  flex: 1 1 calc(50% - 16px);
+  box-sizing: border-box;
 }
+
+.add button {
+  background-color: rgba(87, 107, 245, 0.74);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  padding: 15px 25px;
+  border: none;
+  color: #fff;
+  margin-left: 500px;
+}
+
+.add button:hover {
+  background-color: #586BFF;
+}
+
 
 /* edit--------------------- */
 .register button {
@@ -429,7 +447,15 @@ input:checked+.slider:before {
   gap: 8px;
 }
 
-.form-contant button {
+.brand-btn input{
+ position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+}
+
+.brand-btn {
   padding: 9px 29px;
   border: none;
   border-radius: 20px;
@@ -440,6 +466,13 @@ input:checked+.slider:before {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 8px;
+}
+
+
+
+.brand-btn .checked {
+  background-color: #61C6DF;
+  color: #fff;
 }
 
 .button-group {
@@ -469,13 +502,6 @@ input:checked+.slider:before {
 .form-contant textarea {
   height: 200px;
 }
-
-.form-contant button:hover,
-.form-contant button:active {
-  background-color: #61C6DF;
-  color: #fff;
-}
-
 
 /* phase3------------------- */
 .loan-form,
@@ -521,13 +547,16 @@ input:checked+.slider:before {
   border: none;
   margin-bottom: 20px;
 }
+
 .loan-form {
   padding: 30px 0;
 }
-.form-row{
+
+.form-row {
   display: flex;
   align-items: center;
 }
+
 .form-row input {
   font-size: 20px;
 }
@@ -535,18 +564,22 @@ input:checked+.slider:before {
 .form-valiable {
   font-weight: bold;
 }
+
 .form-row input {
   margin: 0;
 }
+
 span {
   margin: 0 10px;
 }
-.chart-wrapper{
+
+.chart-wrapper {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   text-align: center;
 }
+
 .calculate button {
   background-color: rgba(87, 107, 245, 0.74);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
@@ -564,6 +597,7 @@ span {
   background-color: #586BFF;
   box-shadow: none;
 }
+
 /* phase5-------------------- */
 /* .main-nav .phase1,
 .main-nav .phase2,
