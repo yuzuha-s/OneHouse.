@@ -161,11 +161,7 @@ return [
     */
 
     'attributes' => [
-    'loan'      => '借入金額',
-    'loan_term' => '返済期間',
-    'rate'      => '年利',
-    'age'       => '現在の年齢',
-    'income'    => '年間の収入',
-    'expense'   => '月々の支出',
-],
+    'name' => 'メーカー名',
+    'star' => '星',
+    ],
 ];

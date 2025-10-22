@@ -8,7 +8,7 @@
 
 @section('aside')
 
-    <form action="{{ route('store') }}" method="POST">
+    <form action="{{ route('store') }}" method="POST" id="maker-form">
         @csrf
         <div class="marker-edit wrapper">
             <div class="list">
@@ -22,32 +22,22 @@
                         <h3>marker</h3>
                     </div>
                     <div class="list-nav">
+                        @error('star')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
                         <div class="star-rating">
-                            <span data-value="1"> <svg xmlns="http://www.w3.org/2000/svg" height="50px"
-                                    viewBox="0 -960 960 960" width="50px" fill='#FFE173'>
-                                    <path
-                                        d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z" />
-                                </svg></span>
-                            <span data-value="2"><svg xmlns="http://www.w3.org/2000/svg" height="50px"
-                                    viewBox="0 -960 960 960" width="50px" fill='#FFE173'>
-                                    <path
-                                        d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z" />
-                                </svg></span>
-                            <span data-value="3"><svg xmlns="http://www.w3.org/2000/svg" height="50px"
-                                    viewBox="0 -960 960 960" width="50px" fill='#FFE173'>
-                                    <path
-                                        d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z" />
-                                </svg></span>
-                            <span data-value="4"><svg xmlns="http://www.w3.org/2000/svg" height="50px"
-                                    viewBox="0 -960 960 960" width="50px" fill='#FFE173'>
-                                    <path
-                                        d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z" />
-                                </svg></span>
-                            <span data-value="5"><svg xmlns="http://www.w3.org/2000/svg" height="50px"
-                                    viewBox="0 -960 960 960" width="50px" fill='#FFE173'>
-                                    <path
-                                        d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z" />
-                                </svg></span>
+                            @for ($i = 0; $i < 5; $i++)
+                                <label for="" class="star-check">
+                                    <input type="checkbox" name="star[]" value="{{ $i }}" {{ in_array($i, old('star', [])) ? 'checked' : ''}}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960"
+                                        width="50px" fill="#1f1f1f">
+                                        <path
+                                            d="m294.48-718.13 111.78-145q14.26-18.26 33.46-27.18 19.21-8.91 40.16-8.91 20.95 0 40.27 8.91 19.33 8.92 33.59 27.18l111.78 145 169.65 57q30.53 9.69 47.5 34.87 16.98 25.17 16.98 54.56 0 14.02-4.02 28.05-4.03 14.02-13.24 26.87L773.52-361.33l4 163.42q1 40.48-27.8 68.24-28.81 27.76-68.15 27.76-1.44 0-22.57-2.44l-179-49.43-179 49.43q-5.57 2-11.57 2.5t-11.56.5q-38.56 0-67.47-27.95-28.92-27.96-27.36-68.61l4-163.87-109-155q-9.2-12.82-13.23-26.79-4.03-13.98-4.03-27.96 0-29.12 16.76-54.3 16.76-25.17 47.29-35.3l169.65-57Zm64.61 90.48-185.52 62.3 120.6 171.09-4.56 182.52L480-263.91l190.96 52.61-4.57-182.96 120.04-169.09-186.08-64.3-119.78-158.22-121.48 158.22ZM480-498.87Z" />
+                                    </svg>
+                                </label>
+                            @endfor
+
+
                         </div>
 
                         <div class="register">
@@ -59,9 +49,10 @@
 
 
                 <div class="marker-form wrapper">
-                    <div class="form-left">
-                        <div class="form-contant"><label>メーカー名</label><input type="text" name="name"
-                                value="{{ old('name') }}"></div>
+                    <div class="maker-left">
+                        <div class="form-contant">
+                            <label>メーカー名</label><input type="text" name="name" value="{{ old('name') }}">
+                        </div>
                         @error('name')
                             <div class="error">{{ $message }}</div>
                         @enderror
@@ -69,89 +60,119 @@
                             <label>担当者名</label>
                             <input type="text" name="sales" value="{{ old('salse') }}">
                         </div>
+
                         <div class="form-contant">
-                            <label>ブランド力</label>
-                            <div class="button-group">
+                            <label>オプション</label>
+                            <textarea name="option">{{ old('option') }}</textarea>
+                        </div>
 
-                                <label for="brand1" class="brand-btn">
-                                    信頼性
-                                    <input type="radio" name="brand" value="信頼性" class="hidden"
-                                        {{ old('brand', $maker->brand ?? '') == '信頼性' ? 'checked' : '' }} />
-                                </label>
-
-                                <label for="brand2" class="brand-btn">
-                                    実績
-                                    <input type="radio" name="brand" value="実績" class="hidden"
-                                        {{ old('brand', $maker->brand ?? '') == '実績' ? 'checked' : '' }} />
-                                </label>
-
-                                <label for="brand3" class="brand-btn">
-                                    品質
-                                    <input type="radio" name="brand" value="品質" class="hidden"
-                                        {{ old('brand', $maker->brand ?? '') == '品質' ? 'checked' : '' }} />
-                                </label>
+                        <div class="form-contant">
+                            <label>ブランド</label>
+                            <div class="form-button">
+                                @foreach ($features as $feature)
+                                    @if ($feature->category->id === 1)
+                                        <div class="">
+                                            <label>
+                                                <input type="checkbox" name="features[]" value="{{ $feature->id }}">
+                                                {{ $feature->tag }}
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
+                        </div>
 
-                        </div>
-                        <div class="form-contant">
-                            <label for="">標準仕様・オプション・特典など</label>
-                            <textarea name="" id="" class="option"></textarea>
-                        </div>
+
                     </div>
-                    <div class="form-right">
-                        <div class="form-contant"><label for="">工法・構造</label>
-                            <div class="button-group"> <button class="method">木造</button>
-                                <button class="method">鉄骨</button>
-                                <button class="method">RC造</button>
-                                <button class="method">ハイブリッド工法</button>
-                            </div>
 
-                        </div>
-
-
-                        <div class="form-contant"><label for="">耐熱性能・省エネ性</label>
-                            <div class="button-group"> <button class="heat-energy">等級6以上</button>
-                                <button class="heat-energy">等級5以上</button>
-                                <button class="heat-energy">等級4以上</button>
-                                <button class="heat-energy">等級3以下</button>
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-contant"> <label for="">耐震性</label>
-                            <div class="button-group"> <button class="earthquake">等級3</button>
-                                <button class="earthquake">等級2</button>
-                                <button class="earthquake">等級1</button>
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-contant"><label for="">保証・アフターサービス</label>
-                            <div class="button-group"> <button class="after-servise">保証あり</button>
-                                <button class="after-servise">アフターサービスあり</button>
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-contant"> <label for="">デザイン間取りの自由度</label>
-                            <div class="button-group">
-                                <button class="design">規格型</button>
-                                <button class="design">セミオーダー</button>
-                                <button class="design">フルオーダー</button>
-                                <button class="design">外観デザイン</button>
-                                <button class="design">内装デザイン</button>
-                                <button class="design">ステップフロア可</button>
+                    <div class="maker-right">
+                        <div class="form-contant">
+                            <label>工法・構造</label>
+                            <div class="form-button">
+                                @foreach ($features as $feature)
+                                    @if ($feature->category->id === 2)
+                                        <div class="">
+                                            <label>
+                                                <input type="checkbox" name="features[]" value="{{ $feature->id }}">
+                                                {{ $feature->tag }}
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
 
+                        <div class="form-contant">
+                            <label>耐熱性能・省エネ性</label>
+                            <div class="form-button">
+                                @foreach ($features as $feature)
+                                    @if ($feature->category->id === 3)
+                                        <div class="">
+                                            <label>
+                                                <input type="checkbox" name="features[]" value="{{ $feature->id }}">
+                                                {{ $feature->tag }}
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="form-contant">
+                            <label>耐震性</label>
+                            <div class="form-button">
+                                @foreach ($features as $feature)
+                                    @if ($feature->category->id === 4)
+                                        <div class="">
+                                            <label>
+                                                <input type="checkbox" name="features[]" value="{{ $feature->id }}">
+                                                {{ $feature->tag }}
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="form-contant">
+                            <label>保証・アフターサービス</label>
+                            <div class="form-button">
+                                @foreach ($features as $feature)
+                                    @if ($feature->category->id === 5)
+                                        <div class="">
+                                            <label>
+                                                <input type="checkbox" name="features[]" value="{{ $feature->id }}">
+                                                {{ $feature->tag }}
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="form-contant">
+                            <label>デザイン間取りの自由度</label>
+                            <div class="form-button">
+                                @foreach ($features as $feature)
+                                    @if ($feature->category->id === 6)
+                                        <div class="">
+                                            <label>
+                                                <input type="checkbox" name="features[]" value="{{ $feature->id }}">
+                                                {{ $feature->tag }}
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
+
     </form>
 
-
+    @vite('resources/js/checked.js')
 @endsection
