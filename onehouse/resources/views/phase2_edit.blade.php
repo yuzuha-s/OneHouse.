@@ -27,7 +27,7 @@
                         @enderror
                         <div class="star-rating">
                             @for ($i = 1; $i <= 5; $i++)
-                                <label for="" class="star-check">
+                                <label class="star-check">
                                     <input type="checkbox" name="star[]" value="{{ $i }}"
                                         @if (in_array($i, old('star', []))) checked @endif>
                                     <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960"
@@ -72,7 +72,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 1)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', []))) checked @endif>
                                                 {{ $feature->tag }}
@@ -89,11 +89,12 @@
                     <div class="maker-right">
                         <div class="form-contant">
                             <label>工法・構造</label>
+
                             <div class="form-button">
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 2)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', []))) checked @endif>
                                                 {{ $feature->tag }}
@@ -110,7 +111,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 3)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', []))) checked @endif>
                                                 {{ $feature->tag }}
@@ -127,7 +128,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 4)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', []))) checked @endif>
                                                 {{ $feature->tag }}
@@ -144,7 +145,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 5)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', []))) checked @endif>
                                                 {{ $feature->tag }}
@@ -161,7 +162,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 6)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', []))) checked @endif>
                                                 {{ $feature->tag }}

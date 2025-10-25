@@ -50,6 +50,7 @@
                         <p>{{ $maker->name }}</p>
                         <p>担当:{{ $maker->sales }}</p>
                     </div>
+                    <div class="update">更新日：{{ $maker->updated_at->format('m月d日 H:i') }}</div>
                     <div class="marker-liststar">
                         @for ($i = 1; $i <= 5; $i++)
                             <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
@@ -93,7 +94,8 @@
                                 <form action="{{ route('destroy', ['id' => $maker->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('本当に削除しますか？')"  style="background:none;border:none;padding:0;cursor:pointer;">
+                                    <button type="submit" onclick="return confirm('本当に削除しますか？')"
+                                        style="background:none;border:none;padding:0;cursor:pointer;">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
                                             width="40px" fill="#fff">
                                             <path

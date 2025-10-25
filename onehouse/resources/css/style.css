@@ -468,7 +468,7 @@ input:checked+.slider:before {
 
 }
 
-.tag-btn {
+/* .tag-btn {
   padding: 9px 29px;
   border: none;
   border-radius: 20px;
@@ -479,7 +479,7 @@ input:checked+.slider:before {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 8px;
-}
+} */
 
 .tag-btn:hover,
 .tag-btn:checked {
@@ -517,6 +517,37 @@ input:checked+.slider:before {
 
 .form-contant textarea {
   height: 200px;
+}
+
+.form-button input,
+.star-check input {
+  display: none;
+}
+
+.form-button label {
+  padding: 9px 29px;
+  border: none;
+  border-radius: 20px;
+  background-color: #D9F5FD;
+  color: #61C6DF;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.checkbox-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  background-color: #61C6DF;
+  color: #fff;
+  cursor: pointer;
+}
+
+.checkbox-btn.active {
+  background-color: #61C6DF;
+  color: #fff;
+
 }
 
 /* phase3------------------- */

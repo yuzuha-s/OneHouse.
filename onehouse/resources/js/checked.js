@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const stars = document.querySelectorAll('input[name="star[]"]');
+    const checkBtn = document.querySelectorAll(".checkbox-btn input");
 
     // ページ読み込み時（バリデーションで戻ったときも反映）
     stars.forEach((checkbox, index) => {
@@ -18,6 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
             stars.forEach((star, i) => {
                 star.checked = i <= index;
             });
+        });
+    });
+
+    // チェックボタンをクリックしたとき
+    checkBtn.forEach((checkbox) => {
+        const label = checkbox.closest(".checkbox-btn");
+
+        if (checkbox.checked) label.classList.add("active");
+        checkbox.addEventListener("change", function () {
+            // チェック状態を反映
+            label.classList.toggle("active", checkbox.checked);
         });
     });
 

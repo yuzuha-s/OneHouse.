@@ -8,7 +8,7 @@
 
 @section('aside')
 
-    <form action="{{ route('update',['id' => $maker->id]) }}" method="POST" id="maker-form">
+    <form action="{{ route('update', ['id' => $maker->id]) }}" method="POST" id="maker-form">
         @csrf
         <div class="marker-edit wrapper">
             <div class="list">
@@ -29,7 +29,7 @@
                             @for ($i = 1; $i <= 5; $i++)
                                 <label for="" class="star-check">
                                     <input type="checkbox" name="star[]" value="{{ $i }}"
-                                        @if (in_array($i, old('star', (array)($maker->star ?? [])))) checked @endif>
+                                        @if (in_array($i, old('star', (array) ($maker->star ?? [])))) checked @endif>
                                     <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960"
                                         width="50px" fill="#FFFFFF" stroke="#8C8C8C" stroke-width="50">
                                         <path
@@ -39,6 +39,7 @@
                                 </label>
                             @endfor
                         </div>
+                       
 
                         <div class="register">
                             <button type="submit">変更する</button>
@@ -50,8 +51,10 @@
 
                 <div class="marker-form wrapper">
                     <div class="maker-left">
+                         <div class="update">最終更新日：{{ $maker->updated_at->format('m月d日 H:i') }}</div>
                         <div class="form-contant">
-                            <label>メーカー名</label><input type="text" name="name" value="{{ old('name', $maker->name) }}">
+                            <label>メーカー名</label><input type="text" name="name"
+                                value="{{ old('name', $maker->name) }}">
                         </div>
                         @error('name')
                             <div class="error">{{ $message }}</div>
@@ -72,7 +75,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 1)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', $maker->features->pluck('id')->toArray()))) checked @endif>
                                                 {{ $feature->tag }}
@@ -93,7 +96,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 2)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', $maker->features->pluck('id')->toArray()))) checked @endif>
                                                 {{ $feature->tag }}
@@ -110,7 +113,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 3)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', $maker->features->pluck('id')->toArray()))) checked @endif>
                                                 {{ $feature->tag }}
@@ -127,7 +130,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 4)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', $maker->features->pluck('id')->toArray()))) checked @endif>
                                                 {{ $feature->tag }}
@@ -144,7 +147,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 5)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', $maker->features->pluck('id')->toArray()))) checked @endif>
                                                 {{ $feature->tag }}
@@ -161,7 +164,7 @@
                                 @foreach ($features as $feature)
                                     @if ($feature->category->id === 6)
                                         <div class="">
-                                            <label>
+                                            <label class="checkbox-btn">
                                                 <input type="checkbox" name="features[]" value="{{ $feature->id }}"
                                                     @if (in_array($feature->id, old('features', $maker->features->pluck('id')->toArray()))) checked @endif>
                                                 {{ $feature->tag }}
