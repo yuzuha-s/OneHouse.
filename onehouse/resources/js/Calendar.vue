@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { ref } from 'vue';
 import FullCalendar from '@fullcalendar/vue3';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -13,4 +13,4 @@ const calendarOptions = ref({
 
 <template>
   <FullCalendar :options="calendarOptions" />
-</template>
+</template> -->

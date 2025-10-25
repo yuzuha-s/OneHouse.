@@ -66,7 +66,7 @@
 | カラム名    | データ型 | キー | NOT NULL |
 | ----------- | -------- | ---- | -------- |
 | marker_id   | BIGINT   | FK   |
-| feature_tag | BIGINT   | FK   |
+| feature_id | BIGINT   | FK   |
 
 FOREIGN KEY (maker_id) REFERENCES makers(id),  
 FOREIGN KEY (feature_id) REFERENCES features(id)

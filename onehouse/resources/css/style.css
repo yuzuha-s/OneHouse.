@@ -311,7 +311,7 @@ input:checked+.slider:before {
 
 .marker-list {
   display: flex;
-  margin: auto;
+  margin: 30px auto;
   gap: 100px;
 }
 
@@ -332,6 +332,7 @@ input:checked+.slider:before {
 .card-right {
   width: 20%;
   background-color: #576bf5;
+  opacity: 0.5;
   border-radius: 10px;
 }
 
@@ -370,14 +371,34 @@ input:checked+.slider:before {
   font-weight: bold;
 }
 
-.visible-contain {
+.visible {
   display: flex;
-  gap: 50px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.visible-groupe {
-  padding: 5px;
+.visible-contain {
+  flex: 1 1 calc(50% - 16px);
+  box-sizing: border-box;
 }
+
+.add button {
+  background-color: rgba(87, 107, 245, 0.74);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  padding: 15px 25px;
+  border: none;
+  color: #fff;
+  margin-left: 500px;
+}
+
+.add button:hover {
+  background-color: #586BFF;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
 
 /* edit--------------------- */
 .register button {
@@ -393,6 +414,9 @@ input:checked+.slider:before {
 
 .register button:hover {
   background-color: #586BFF;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .star-rating {
@@ -409,27 +433,42 @@ input:checked+.slider:before {
 
 .marker-form {
   display: flex;
-  justify-content: space-between;
+  gap: 50px;
   margin: 0 auto;
   color: #8C8C8C;
 }
 
-.form-left,
-.form-right {
+.maker-left,
+.maker-right {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  margin: 20px;
   padding: 20px 20px 50px 20px;
+  margin: 0 auto;
 }
 
 .form-contant {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: 30px;
 }
 
-.form-contant button {
+.form-button {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.tag-btn input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+}
+
+/* .tag-btn {
   padding: 9px 29px;
   border: none;
   border-radius: 20px;
@@ -440,7 +479,16 @@ input:checked+.slider:before {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 8px;
+} */
+
+.tag-btn:hover,
+.tag-btn:checked {
+  transform: translateY(-2px) scale(1.05);
+  background-color: #61C6DF;
+  color: #fff;
+  cursor: pointer;
 }
+
 
 .button-group {
   display: flex;
@@ -456,7 +504,8 @@ input:checked+.slider:before {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   border: none;
-  margin: auto;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .form-contant input:focus,
@@ -470,12 +519,36 @@ input:checked+.slider:before {
   height: 200px;
 }
 
-.form-contant button:hover,
-.form-contant button:active {
-  background-color: #61C6DF;
-  color: #fff;
+.form-button input,
+.star-check input {
+  display: none;
 }
 
+.form-button label {
+  padding: 9px 29px;
+  border: none;
+  border-radius: 20px;
+  background-color: #D9F5FD;
+  color: #61C6DF;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.checkbox-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  background-color: #61C6DF;
+  color: #fff;
+  cursor: pointer;
+}
+
+.checkbox-btn.active {
+  background-color: #61C6DF;
+  color: #fff;
+
+}
 
 /* phase3------------------- */
 .loan-form,
@@ -521,13 +594,16 @@ input:checked+.slider:before {
   border: none;
   margin-bottom: 20px;
 }
+
 .loan-form {
   padding: 30px 0;
 }
-.form-row{
+
+.form-row {
   display: flex;
   align-items: center;
 }
+
 .form-row input {
   font-size: 20px;
 }
@@ -535,18 +611,22 @@ input:checked+.slider:before {
 .form-valiable {
   font-weight: bold;
 }
+
 .form-row input {
   margin: 0;
 }
+
 span {
   margin: 0 10px;
 }
-.chart-wrapper{
+
+.chart-wrapper {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   text-align: center;
 }
+
 .calculate button {
   background-color: rgba(87, 107, 245, 0.74);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
@@ -563,7 +643,9 @@ span {
 .calculate button:hover {
   background-color: #586BFF;
   box-shadow: none;
+  cursor: pointer;
 }
+
 /* phase5-------------------- */
 /* .main-nav .phase1,
 .main-nav .phase2,

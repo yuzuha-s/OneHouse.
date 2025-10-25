@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
                 'name' => "工法・構造",
             ],
             [
-                'name' => "耐熱性脳・省エネ性",
+                'name' => "耐熱性能・省エネ性",
             ],
             [
                 'name' => "耐震性",

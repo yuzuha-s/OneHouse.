@@ -74,16 +74,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($makers as $maker)
+                    @foreach ($makers as $maker)
                         @foreach ($maker->features as $feature)
                             <tr>
+
                                 <td>{{ $maker->id }}</td>
                                 <td>{{ $maker->name }}</td>
-                                <td>{{ $feature->category->name ?? '未分類' }}</td>
+                                <td>{{ $feature->category->name }}</td>
                                 <td>{{ $feature->tag }}</td>
                             </tr>
                         @endforeach
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -164,7 +165,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($checkLists as $checklist)
+                    {{-- @foreach ($checkLists as $checklist)
                     <tr>
                         <td> {{ $checklist->id }} </td>
                         <td> {{ $checklist->profile->id }} </td>
@@ -173,7 +174,7 @@
                         <td> {{ $checklist->phase->list }} </td>
 
                     </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>

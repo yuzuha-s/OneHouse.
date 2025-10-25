@@ -10,23 +10,24 @@ class FeatureController extends Controller
     public function index()
     {
         $features = Feature::all();
-        return view('default', compact('features'));
+        return view('phase2_edit', compact('features'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    // 保存する
     public function store(Request $request)
     {
-        //
+        $validated =  $request->validate([
+            'category_id' => 'required|integer|exists:categories,id',
+            'tag' => 'required|string|max:100',
+        ]);
+
+        Feature::create($validated);
+
+        return redirect()->route('phase2')->with('success', '登録が完了しました');
     }
 
     /**
