@@ -28,4 +28,10 @@ class Maker extends Model
         return $this->belongsToMany(Feature::class, 'maker_features', 'maker_id', 'feature_id')
             ->withTimestamps();
     }
+    // イベントフック
+    public static function booted() {
+        static::deleted(function ($maker) {
+            $maker->features()->detach();
+        });
+    }
 }

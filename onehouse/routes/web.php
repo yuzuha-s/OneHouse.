@@ -7,6 +7,7 @@ use App\Http\Controllers\LoanSimulationController;
 use App\Http\Controllers\MakerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Maker;
 use App\Models\MakerFeature;
 use Illuminate\Support\Facades\Route;
 
@@ -42,11 +43,13 @@ Route::get('/phase2-edit',[MakerController::class, 'create'])->name('create');
 // 新規メーカーを保存する
 Route::post('/phase2-edit',[MakerController::class, 'store'])->name('store');
 
+// 登録メーカー情報編集画面を表示する
+Route::get('/phase2-update/{id}', [MakerController::class, 'edit'])->name('edit');
 
+// 登録メーカー情報を変更する
+Route::post('/phase2-update/{id}',[MakerController::class, 'update'])->name('update');
 
-Route::get('/phase2-update', function () {
-    return view('phase2_update');
-});
+Route::delete('/phase2/{id}',[MakerController::class, 'destroy'])->name('destroy');
 
 Route::get('/phase3', function () {
     return view('phase3');
