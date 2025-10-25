@@ -36,45 +36,115 @@
 
             <div class="land-form wrapper">
                 <div class="land-left">
-                    <form action="">
-                        <div class="form-contant">
-                            <label for="">住所</label>
-                            <textarea name="" id=""></textarea>
+                    <form action="" method="">
+
+                        <div class="land-land-left-fix">
+                            <div class="form-contant">
+                                <label for="">住所</label>
+                                <textarea name="" id=""></textarea>
+                            </div>
                         </div>
-                        <div class="form-contant">
-                            <label for="">土地面積(㎡)</label><input type="text">
+
+                        <div class="land-left-fix">
+                            <div class="form-contant">
+                                <label for="">土地面積(㎡)</label>
+                                <div class="land-form-row"><input type="text"><span>㎡</span>
+                                </div>
+                            </div>
+
+                            <div class="form-contant">
+                                <label for="">階数(1～3階)</label>
+                                <div class="land-form-row"><input type="text"><span>階</span></div>
+                            </div>
                         </div>
-                        <div class="form-contant">
-                            <label for="">階数(1～3階)</label><input type="text">
+
+                        <div class="land-left-fix">
+                            <div class="form-contant">
+                                <label for="">容積率(%)</label>
+                                <div class="land-form-row"><input type="text"><span>%</span></div>
+                            </div>
+                            <div class="form-contant">
+                                <label for="">建ぺい率(%)</label>
+                                <div class="land-form-row"> <input type="text"><span>%</span></div>
+                            </div>
                         </div>
-                        <div class="form-contant">
-                            <label for="">容積率(%)</label><input type="text">
+
+                        <div class="land-left-fix">
+                            <div class="form-contant">
+                                <label for="">坪単価(万円)</label>
+                                <div class="land-form-row"> <input type="text"><span>万円/坪</span></div>
+                            </div>
+
+                            <div class="form-contact">
+                                <div class="land-form-row">
+                                    <div class="calculate"><button type="submit">計算する</button><span></span></div>
+                                </div>
+                            </div>
+
+
                         </div>
-                        <div class="form-contant">
-                            <label for="">建ぺい率(%)</label><input type="text">
-                        </div>
-                        <div class="form-contant">
-                            <label for="">坪単価(万円)</label><input type="text">
-                        </div>
-                        <div class="register"><button>計算</button></div>
                     </form>
                 </div>
 
                 <div class="land-right">
                     <div class="land-card">
-                        <label for="">建築可能面積</label>
-                        <input type="text"><label for="">㎡</label><br>
-                        <input type="text"><label for="">坪</label><br>
-                        <input type="range" id="volume" name="volume" min="0" max="100" value="50">
-                        <span id="value">50</span><br>
-                        <label for="">建築費用</label><input type="text"><label for="">万円</label>
+                        <div class="card-inner wrapper">
+                            <label>建築可能面積</label>
+                            <div class="land-right-valiable">
+                                <div class="form-row">
+                                    <div class="form-valiable">33</div>
+                                    <span>㎡</span>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-valiable">33</div>
+                                    <span>坪</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="wrapper">
+                            <input type="range" id="volume" name="volume" min="0"
+                                max="100" value="50">
+                            <span id="value">50</span>
+                        </div>
+
+
+                        <div class="card-inner wrapper">
+                            <label>建築費用</label>
+                            <div class="land-right-valiable">
+                                <div class="form-row">
+                                    <div class="form-valiable">78</div>
+                                    <span>万円</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="register"><button type="submit">登録する</button></div>
                     </div>
 
                 </div>
             </div>
 
-            <div class="list">
+
+            <div class="land-list">
                 <div class="list-header wrapper">
+                    <div class="list-nav">
+                        <div>
+                            <button><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
+                                    width="40px" fill="#1f1f1f">
+                                    <path
+                                        d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z" />
+                                </svg></button>
+                            <button><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
+                                    width="40px" fill="#1f1f1f">
+                                    <path
+                                        d="M282.98-140q-25.71 0-44.14-18.43t-18.43-44.14v-532.05H180v-50.25h174.05v-30.51h251.9v30.51H780v50.25h-40.41v532.05q0 25.79-18.39 44.18T677.02-140H282.98Zm406.35-594.62H270.67v532.05q0 5.39 3.59 8.85t8.72 3.46h394.04q4.62 0 8.47-3.84 3.84-3.85 3.84-8.47v-532.05ZM379.54-273.23h50.25v-379.08h-50.25v379.08Zm150.67 0h50.25v-379.08h-50.25v379.08ZM270.67-734.62v544.36V-734.62Z" />
+                                </svg></button>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -82,26 +152,35 @@
                     <table>
                         <thead>
                             <tr>
+                                <th><label class="checkbox-btn">
+                                        <input type="checkbox" name="" value="">
+                                    </label></th>
                                 <th>9/18(土)</th>
                                 <th>板橋区〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇</th>
                                 <th>60㎡</th>
                                 <th>18坪</th>
                                 <th>5400万円</th>
-                                <th><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
-                                        width="40px" fill="#1f1f1f">
-                                        <path
-                                            d="M282.98-140q-25.71 0-44.14-18.43t-18.43-44.14v-532.05H180v-50.25h174.05v-30.51h251.9v30.51H780v50.25h-40.41v532.05q0 25.79-18.39 44.18T677.02-140H282.98Zm406.35-594.62H270.67v532.05q0 5.39 3.59 8.85t8.72 3.46h394.04q4.62 0 8.47-3.84 3.84-3.85 3.84-8.47v-532.05ZM379.54-273.23h50.25v-379.08h-50.25v379.08Zm150.67 0h50.25v-379.08h-50.25v379.08ZM270.67-734.62v544.36V-734.62Z" />
-                                    </svg></th>
+
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>打ち合わせ</td>
+
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
             </div>
-        @endsection
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+@endsection

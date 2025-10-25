@@ -554,7 +554,6 @@ input:checked+.slider:before {
 .loan-form,
 .land-form {
   display: flex;
-
   color: #8C8C8C;
 }
 
@@ -627,6 +626,12 @@ span {
   text-align: center;
 }
 
+.calculate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .calculate button {
   background-color: rgba(87, 107, 245, 0.74);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
@@ -637,6 +642,7 @@ span {
   font-size: 18px;
   letter-spacing: 3px;
   font-weight: bold;
+
 }
 
 
@@ -645,6 +651,86 @@ span {
   box-shadow: none;
   cursor: pointer;
 }
+
+
+/* phase4------------------- */
+.land-form {
+  width: 90%;
+}
+
+.land-left {
+  width: 45%;
+
+}
+
+.land-right {
+  width: 55%;
+}
+
+.land-left textarea {
+  width: 60%;
+  height: 50px;
+}
+
+.land-left-fix {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.land-form-row {
+  display: flex;
+  align-items: center;
+}
+
+.land-right-valiable .form-row {
+  justify-content: end;
+}
+
+.land-list th,
+.land-list td {
+  text-align: center;
+  padding: 10px;
+}
+
+.land-list th:nth-child(1) {
+  width: 10%;
+}
+
+.land-list th:nth-child(2) {
+  width: 10%;
+}
+
+.land-list th:nth-child(3) {
+  width: 50%;
+}
+
+.land-list th:nth-child(4) {
+  width: 10%;
+}
+
+.land-list th:nth-child(4) {
+  width: 10%;
+}
+
+.land-list th:nth-child(4) {
+  width: 10%;
+}
+
+#volume {
+  width: 80%;
+}
+.card-inner {
+  display: flex;
+  justify-content: space-around;
+}
+.card-inner label {
+  text-align: start;
+}
+
+
 
 /* phase5-------------------- */
 /* .main-nav .phase1,
