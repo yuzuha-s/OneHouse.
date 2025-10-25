@@ -394,6 +394,9 @@ input:checked+.slider:before {
 
 .add button:hover {
   background-color: #586BFF;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 
@@ -411,6 +414,9 @@ input:checked+.slider:before {
 
 .register button:hover {
   background-color: #586BFF;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .star-rating {
@@ -451,7 +457,7 @@ input:checked+.slider:before {
   display: flex;
   justify-content: center;
   gap: 30px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .tag-btn input {
@@ -480,6 +486,7 @@ input:checked+.slider:before {
   transform: translateY(-2px) scale(1.05);
   background-color: #61C6DF;
   color: #fff;
+  cursor: pointer;
 }
 
 
@@ -605,6 +612,7 @@ span {
 .calculate button:hover {
   background-color: #586BFF;
   box-shadow: none;
+  cursor: pointer;
 }
 
 /* phase5-------------------- */

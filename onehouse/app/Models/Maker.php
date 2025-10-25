@@ -25,6 +25,7 @@ class Maker extends Model
 
     public function features()
     {
-        return $this->belongsToMany(Feature::class, 'maker_features', 'maker_id', 'feature_id');
+        return $this->belongsToMany(Feature::class, 'maker_features', 'maker_id', 'feature_id')
+            ->withTimestamps();
     }
 }

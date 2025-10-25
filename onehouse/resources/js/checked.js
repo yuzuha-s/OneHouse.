@@ -1,26 +1,42 @@
-const form = document.getElementById("maker-form");
-const stars = document.querySelectorAll('input[name="star[]"]');
+document.addEventListener("DOMContentLoaded", () => {
+    const stars = document.querySelectorAll('input[name="star[]"]');
 
-// form.addEventListener("submit", function (e) {
-//     e.preventDefault();
-// });
-
-// グレー枠の星をクリックしたら黄色の星を表示する
-stars.forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-        const svg = this.nextElementSibling;
-        if (this.checked) {
-            svg.outerHTML = `
-         <svg xmlns="http://www.w3.org/2000/svg"
-                                    height="50px" viewBox="0 -960 960 960" width="50px" fill='#FFE173'>
-                                    <path
-                                        d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z" />
-                                </svg>
-        `;
-        } else {
-            svg.outerHTML = `
-           <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#1f1f1f"><path d="m294.48-718.13 111.78-145q14.26-18.26 33.46-27.18 19.21-8.91 40.16-8.91 20.95 0 40.27 8.91 19.33 8.92 33.59 27.18l111.78 145 169.65 57q30.53 9.69 47.5 34.87 16.98 25.17 16.98 54.56 0 14.02-4.02 28.05-4.03 14.02-13.24 26.87L773.52-361.33l4 163.42q1 40.48-27.8 68.24-28.81 27.76-68.15 27.76-1.44 0-22.57-2.44l-179-49.43-179 49.43q-5.57 2-11.57 2.5t-11.56.5q-38.56 0-67.47-27.95-28.92-27.96-27.36-68.61l4-163.87-109-155q-9.2-12.82-13.23-26.79-4.03-13.98-4.03-27.96 0-29.12 16.76-54.3 16.76-25.17 47.29-35.3l169.65-57Zm64.61 90.48-185.52 62.3 120.6 171.09-4.56 182.52L480-263.91l190.96 52.61-4.57-182.96 120.04-169.09-186.08-64.3-119.78-158.22-121.48 158.22ZM480-498.87Z"/></svg>
-        `;
+    // ページ読み込み時（バリデーションで戻ったときも反映）
+    stars.forEach((checkbox, index) => {
+        if (checkbox.checked) {
+            colorStarsUp(index);
         }
     });
+
+    // 星をクリックしたとき
+    stars.forEach((checkbox, index) => {
+        checkbox.addEventListener("change", () => {
+            // クリックした星まで黄色にする
+            colorStarsUp(index);
+
+            // 他のチェックボックスの状態を更新しておく
+            stars.forEach((star, i) => {
+                star.checked = i <= index;
+            });
+        });
+    });
+
+    function colorStarsUp(index) {
+        stars.forEach((star, i) => {
+            const svg = star.nextElementSibling;
+            if (i <= index) {
+                svg.outerHTML = `
+               <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#FFE173" stroke="#E6C200" stroke-width="50">
+                                <path d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z"></path>
+                            </svg>
+                `;
+            } else {
+                svg.outerHTML = `
+               <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#FFFFFF" stroke="#8C8C8C" stroke-width="50">
+                                <path d="m305-704 112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Z"></path>
+                            </svg>
+                `;
+            }
+        });
+    }
 });

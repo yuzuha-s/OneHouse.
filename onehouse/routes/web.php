@@ -31,8 +31,10 @@ Route::get('/phase1', function () {
 Route::get('/phase2', function () {
     return view('phase2');
 });
+
 // 住宅メーカー一覧表示
 Route::get('/phase2',[MakerController::class, 'index']);
+Route::get('/phase2',[MakerController::class, 'index'])->name('phase2');
 
 // 新規メーカー追加画面
 Route::get('/phase2-edit',[MakerController::class, 'create'])->name('create');

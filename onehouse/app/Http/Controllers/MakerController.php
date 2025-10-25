@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Feature;
 use App\Models\Maker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MakerController extends Controller
 {
@@ -24,34 +25,36 @@ class MakerController extends Controller
     // 保存する
     public function store(Request $request)
     {
-        dd($request->all());
-        // $validated = $request->validate([
+        // Log::info('Maker store called', $request->all());
+        // dd($request->all());
+        $validated = $request->validate([
 
-        //     'name' => 'required|string|max:255',
-        //     'star' => 'required|array',
-        //     'star.*' => 'integer|min:1|max:5',
-        //     'features' =>'array',
-        //     'features.*' => 'integer|exists:features,id',
-        // ]);
-        // // starの最大値のみを取得
-        // $maxStar = max($validated['star']);
+            'name' => 'required|string|max:255',
+            'sales' => 'nullable|string|max:255',
+            'option' => 'nullable|string',
+            'star' => 'required|array',
+            'star.*' => 'integer|min:1|max:5',
+            'features' => 'array',
+            'features.*' => 'integer|exists:features,id',
+        ]);
+        // starの最大値のみを取得
+        $maxStar = max($validated['star']);
 
-        // // $validated['profile_id'] = $profile->id ?? 1;
+        // $validated['profile_id'] = $profile->id ?? 1;
 
-        // $maker = Maker::create([
-        //     'profile_id' => 1,
-        //     'name' => $validated['name'],
-        //     'sales' => $validated['sales'] ?? null,
-        //     'option' => $validated['option'] ?? null,
-        //     'star' => $maxStar,
+        $maker = Maker::create([
+            'profile_id' => 1,
+            'name' => $validated['name'],
+            'sales' => $validated['sales'] ?? null,
+            'option' => $validated['option'] ?? null,
+            'star' => $maxStar,
+        ]);
 
+        if (!empty($validated['features'])) {
+            $maker->features()->sync($request->features ?? []);
+        }
 
-        // ]);
-
-        // if(!empty($validated['features'])) {
-        //     $maker->feature()->attach($validated['features']);
-        // }
-        // return redirect()->route('phase2')->with('success', '登録が完了しました');
+        return redirect()->route('phase2')->with('success', '登録が完了しました');
     }
 
     /**
