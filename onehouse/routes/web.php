@@ -59,6 +59,12 @@ Route::get('/phase4', function () {
     return view('phase4');
 });
 
+//土地登録情報一覧を表示する
+Route::get('/phase4',[LandLogController::class, 'index']);
+
+// 新しい土地を登録する
+Route::post('/phase4', [LandLogController::class, 'create'])->name('phase4.create');
+
 Route::get('/phase5', function () {
     return view('phase5');
 });

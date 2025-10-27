@@ -21,13 +21,7 @@
                 </div>
 
                 <div class="list-nav">
-                    <div class="validate">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
-                            fill="#576bf5">
-                            <path
-                                d="M422-297.33 704.67-580l-49.34-48.67L422-395.33l-118-118-48.67 48.66L422-297.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z" />
-                        </svg>
-                        <p>建てられる範囲とコストが出ました！</p>
+                    <div class="list-nav-validate">
                     </div>
                 </div>
 
@@ -36,48 +30,64 @@
 
             <div class="land-form wrapper">
                 <div class="land-left">
-                    <form action="" method="">
+                    <form action="{{ route('phase4.create') }}" method="POST">
 
                         <div class="land-land-left-fix">
+                            @if ($errors->any())
+                                <div class="error-list">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                             <div class="form-contant">
                                 <label for="">住所</label>
-                                <textarea name="" id=""></textarea>
+                                <textarea name="address" placeholder="郵便番号 住所">{{ old('address') }}</textarea>
                             </div>
                         </div>
 
                         <div class="land-left-fix">
                             <div class="form-contant">
                                 <label for="">土地面積(㎡)</label>
-                                <div class="land-form-row"><input type="text"><span>㎡</span>
+                                <div class="land-form-row"><input type="number" class="landinput" placeholder="90.0"
+                                        name="landarea" value="{{ old('landarea') }}"><span>㎡</span>
                                 </div>
                             </div>
 
                             <div class="form-contant">
                                 <label for="">階数(1～3階)</label>
-                                <div class="land-form-row"><input type="text"><span>階</span></div>
+                                <div class="land-form-row"><input type="number" class="landinput" placeholder="2"
+                                        name="floor" value="{{ old('floor') }}"><span>階</span></div>
                             </div>
                         </div>
 
                         <div class="land-left-fix">
                             <div class="form-contant">
                                 <label for="">容積率(%)</label>
-                                <div class="land-form-row"><input type="text"><span>%</span></div>
+                                <div class="land-form-row"><input type="number" class="landinput" placeholder="200"
+                                        name="far" value="{{ old('far') }}"><span>%</span></div>
                             </div>
                             <div class="form-contant">
                                 <label for="">建ぺい率(%)</label>
-                                <div class="land-form-row"> <input type="text"><span>%</span></div>
+                                <div class="land-form-row"> <input type="number" class="landinput" placeholder="80"
+                                        name="bcr" value="{{ old('bcr') }}"><span>%</span></div>
                             </div>
                         </div>
 
                         <div class="land-left-fix">
                             <div class="form-contant">
                                 <label for="">坪単価(万円)</label>
-                                <div class="land-form-row"> <input type="text"><span>万円/坪</span></div>
+                                <div class="land-form-row"> <input type="number" class="landinput" placeholder="80"
+                                        name="pricePerTsubo" value="{{ old('pricePerTsubo') }}"><span>万円/坪</span></div>
                             </div>
 
                             <div class="form-contact">
                                 <div class="land-form-row">
-                                    <div class="calculate"><button type="submit">計算する</button><span></span></div>
+                                    <div class="calculate"><button type="button"
+                                            id="calculate-btn">計算する</button><span></span></div>
                                 </div>
                             </div>
 
@@ -92,22 +102,22 @@
                             <label>建築可能面積</label>
                             <div class="land-right-valiable">
                                 <div class="form-row">
-                                    <div class="form-valiable">33</div>
+                                    <div class="form-valiable builable_area">{{ $builable_area ?? 0 }}</div>
                                     <span>㎡</span>
                                 </div>
 
-                                <div class="form-row">
-                                    <div class="form-valiable">33</div>
-                                    <span>坪</span>
-                                </div>
+
                             </div>
                         </div>
 
 
                         <div class="wrapper">
-                            <input type="range" id="volume" name="volume" min="0"
-                                max="100" value="50">
-                            <span id="value">50</span>
+                            <input type="range" id="range" name="builable_area_Tubo" min="0">
+
+                            <span class="form-valiable builable_area_Tubo" id="value">{{ $builable_area_Tubo ?? 0 }}
+                            </span>
+                            <span>坪</span>
+
                         </div>
 
 
@@ -115,7 +125,7 @@
                             <label>建築費用</label>
                             <div class="land-right-valiable">
                                 <div class="form-row">
-                                    <div class="form-valiable">78</div>
+                                    <div class="form-valiable building_cost">{{ $building_cost ?? 0 }}</div>
                                     <span>万円</span>
                                 </div>
                             </div>
@@ -152,22 +162,32 @@
                     <table>
                         <thead>
                             <tr>
-                                <th><label class="checkbox-btn">
-                                        <input type="checkbox" name="" value="">
-                                    </label></th>
-                                <th>9/18(土)</th>
-                                <th>板橋区〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇</th>
-                                <th>60㎡</th>
-                                <th>18坪</th>
-                                <th>5400万円</th>
-
-
+                                <th></th>
+                                <th>訪問日</th>
+                                <th>住所</th>
+                                <th>土地面積(㎡)</th>
+                                <th>建物最大面積(㎡)</th>
+                                <th>坪単価(万円)</th>
+                                <th>容積率(％)</th>
+                                <th>建ぺい率(％)</th>
                             </tr>
+
                         </thead>
                         <tbody>
-                            <tr>
-
-                            </tr>
+                            @foreach ($landLogs as $landLog)
+                                <tr>
+                                    <td><label class="checkbox-btn">
+                                            <input type="checkbox" name="selected[]" value="{{ $landLog->id }}">
+                                        </label></td>
+                                    <td> {{ $landLog->updated_at->format('m/d(D)') }} </td>
+                                    <td>{{ $landLog->address }}</td>
+                                    <td>{{ $landLog->landarea }}㎡</td>
+                                    <td>{{ $landLog->builable_area }}㎡</td>
+                                    <td>{{ $landLog->pricePerTsubo }}万円</td>
+                                    <td>{{ $landLog->far }}%</td>
+                                    <td>{{ $landLog->bcr }}%</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -175,12 +195,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
+    @vite('resources/js/landSimulation.js')
 @endsection

@@ -14,14 +14,6 @@ Table profile {
   updated_at timestamp
 }
 
-Table calendars {
-  id bigint [pk]
-  profile_id bigint [ref: > profile.id]
-  date date
-  title varchar
-  location varchar
-}
-
 Table makers {
   id bigint [pk]
   profile_id bigint [ref: > profile.id]
@@ -68,14 +60,9 @@ Table landlogs {
   landarea decimal(10,2)
   far decimal(10,2)
   bcr decimal(10,2)
-  floor_id bigint [ref: > floors.id]
+  floor int
   buildable_area decimal(10,2)
   range bigint
-}
-
-Table floors {
-  id bigint [pk]
-  floor int
 }
 
 Table checklists {

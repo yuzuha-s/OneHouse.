@@ -6,8 +6,6 @@
 -- 住宅メーカータグfeatures
 -- 住宅メーカータグカテゴリー categories
 -- 住宅ローン loan_simulations
--- 階層 floors
-
 -- 土地 landlogs
 -- チェックリスト checklists
 -- フェーズ phase
@@ -78,12 +76,7 @@ insert into makers_features (marker_id, feature_id) values
 insert into loan_simulations (profile_id, loan, rate, loan_term, age, income, expense) values
 (1, 6000, 1.5, 35, 32, 800, 25);
 
-insert into floors (floor) values
-(1),
-(2),
-(3);
-
-insert into landlogs (profile_id, address, landarea,  far, bcr, floor_id, buildable_area, pricePerTsubo ) values
+insert into landlogs (profile_id, address, landarea,  far, bcr, floor, buildable_area, pricePerTsubo ) values
 (1, 東京都板橋区3丁目1-55, 80.0, 200, 80, 2, 0, 87);
 (1, 東京都板橋区5丁目2-66, 90.0, 150, 60, 3, 0, 77);
 

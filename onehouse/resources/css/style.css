@@ -642,7 +642,13 @@ span {
   font-size: 18px;
   letter-spacing: 3px;
   font-weight: bold;
-
+}
+.landinput {
+  text-align: right;
+}
+.landinput::placeholder{
+  color: #8C8C8C;
+  opacity: 0.6;
 }
 
 
@@ -704,18 +710,24 @@ span {
 }
 
 .land-list th:nth-child(3) {
-  width: 50%;
+  width: 30%;
 }
 
 .land-list th:nth-child(4) {
   width: 10%;
 }
 
-.land-list th:nth-child(4) {
+.land-list th:nth-child(5) {
   width: 10%;
 }
 
-.land-list th:nth-child(4) {
+.land-list th:nth-child(6) {
+  width: 10%;
+}
+.land-list th:nth-child(7) {
+  width: 10%;
+}
+.land-list th:nth-child(8) {
   width: 10%;
 }
 

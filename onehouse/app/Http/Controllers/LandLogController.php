@@ -11,23 +11,31 @@ class LandLogController extends Controller
     public function index()
     {
         $landLogs = LandLog::with('profile')->get();
-        return view('default', compact('landLogs'));
+        return view('phase4', compact('landLogs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // phase4のinput値を受け取る
+    public function create(Request $request)
     {
-        //
+
+        // $landLogs = LandLog::all();
+        // return view('phase4', compact('landLogs'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // 保存する
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'address' => 'required|string|max:255',
+            'landarea' => 'required|decimal:2',
+            'far' => 'required|integer|min:0',
+            'bcr' => 'required|integer|min:0',
+            'floor' => 'required|integer|min:1|max:3',
+            'builable_area' => 'required|integer|min:0',
+            'pricePerTsubo' => 'required|integer|min:0',
+        ]);
+
+        return redirect()->route('phase4')->with('success', '登録が完了しました');
     }
 
     /**
