@@ -55,15 +55,13 @@ Route::get('/phase3', function () {
     return view('phase3');
 });
 
-Route::get('/phase4', function () {
-    return view('phase4');
-});
+
 
 //土地登録情報一覧を表示する
-Route::get('/phase4',[LandLogController::class, 'index']);
+Route::get('/phase4',[LandLogController::class, 'index'])->name('phase4');
 
 // 新しい土地を登録する
-Route::post('/phase4', [LandLogController::class, 'create'])->name('phase4.create');
+Route::post('/phase4', [LandLogController::class, 'store'])->name('phase4.store');
 
 Route::get('/phase5', function () {
     return view('phase5');

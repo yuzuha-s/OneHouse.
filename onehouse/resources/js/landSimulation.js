@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const builableAreaValue = document.querySelector(".builable_area");
     const buildingCostValue = document.querySelector(".building_cost");
     const builableTuboValue = document.querySelector(".builable_area_Tubo");
+    const maxFloorAreaValue = document.querySelector(".maxfloor_area");
 
     let currentPricePerTsubo = 0;
 
@@ -15,15 +16,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const tubo = parseFloat(e.target.value) || 0;
         tuboValue.textContent = tubo;
         builableAreaValue.textContent = (tubo * 3.3).toFixed(1);
-        buildingCostValue.textContent = Math.floor(tubo * currentPricePerTsubo).toLocaleString();
+        buildingCostValue.textContent = Math.floor(
+            tubo * currentPricePerTsubo
+        ).toLocaleString();
         builableTuboValue.textContent = tubo;
     });
 
     function calculate() {
-        const landArea = parseFloat(document.querySelector('input[name="landarea"]').value) || 0;
-        const far = parseFloat(document.querySelector('input[name="far"]').value) || 0;
-        const bcr = parseFloat(document.querySelector('input[name="bcr"]').value) || 0;
-        const pricePerTsubo = parseFloat(document.querySelector('input[name="pricePerTsubo"]').value) || 0;
+        const landArea =
+            parseFloat(
+                document.querySelector('input[name="landarea"]').value
+            ) || 0;
+        const far =
+            parseInt(document.querySelector('input[name="far"]').value) || 0;
+        const bcr =
+            parseInt(document.querySelector('input[name="bcr"]').value) || 0;
+        const pricePerTsubo =
+            parseInt(
+                document.querySelector('input[name="pricePerTsubo"]').value
+            ) || 0;
+        // const floor = document.querySelector('input[name="floor"]').value || 0;
 
         currentPricePerTsubo = pricePerTsubo;
 
@@ -31,12 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (landArea <= 0 || far <= 0 || bcr <= 0 || pricePerTsubo <= 0) {
             validate.innerHTML = `<div class="error"><p>値を入力してください</p></div>`;
             validate.style.display = "block";
-            setTimeout(() => { validate.style.display = "none"; }, 3000);
+            setTimeout(() => {
+                validate.style.display = "none";
+            }, 3000);
             return;
         }
 
         // 建築可能面積 ㎡
-        const builable_area = landArea * (far / 100) * (bcr / 100);
+        const maxFloorArea = landArea * (bcr / 100);
+        const builable_area = maxFloorArea * (far / 100);
 
         // 建築可能面積 坪
         const builable_area_Tubo = builable_area / 3.3;
@@ -45,9 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const building_cost = builable_area_Tubo * pricePerTsubo;
 
         // 計算結果表示
-        builableAreaValue.textContent = builable_area.toFixed(1);
+        builableAreaValue.textContent = Math.floor(builable_area);
+        maxFloorAreaValue.textContent = Math.floor(maxFloorArea);
         builableTuboValue.textContent = Math.floor(builable_area_Tubo);
-        buildingCostValue.textContent = Math.floor(building_cost).toLocaleString();
+        buildingCostValue.textContent =
+            Math.floor(building_cost);
+
+        document.getElementById("builable_area_hidden").value =
+            Math.floor(builable_area);
 
         // range の設定
         range.max = Math.floor(builable_area_Tubo);
@@ -63,11 +83,13 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>建てられる範囲とコストが出ました！</p></div>
         `;
         validate.style.display = "block";
-        setTimeout(() => { validate.style.display = "none"; }, 3000);
+        setTimeout(() => {
+            validate.style.display = "none";
+        }, 3000);
     }
 
     calculateBtn.addEventListener("click", (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         calculate();
     });
 });

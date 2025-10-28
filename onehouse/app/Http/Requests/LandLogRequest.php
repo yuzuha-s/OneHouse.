@@ -25,4 +25,6 @@ class LandLogRequest extends FormRequest
             'pricePerTsubo'  => ['required, integer, min:0'],
         ];
     }
+
+
 }

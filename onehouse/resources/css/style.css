@@ -551,8 +551,7 @@ input:checked+.slider:before {
 }
 
 /* phase3------------------- */
-.loan-form,
-.land-form {
+.loan-form {
   display: flex;
   color: #8C8C8C;
 }
@@ -643,10 +642,12 @@ span {
   letter-spacing: 3px;
   font-weight: bold;
 }
+
 .landinput {
   text-align: right;
 }
-.landinput::placeholder{
+
+.landinput::placeholder {
   color: #8C8C8C;
   opacity: 0.6;
 }
@@ -661,16 +662,22 @@ span {
 
 /* phase4------------------- */
 .land-form {
-  width: 90%;
+  color: #8C8C8C;
+  display: flex;
+}
+
+.land-form form {
+  display: flex;
 }
 
 .land-left {
   width: 45%;
-
+  margin: auto;
 }
 
 .land-right {
   width: 55%;
+  margin: auto;
 }
 
 .land-left textarea {
@@ -724,9 +731,11 @@ span {
 .land-list th:nth-child(6) {
   width: 10%;
 }
+
 .land-list th:nth-child(7) {
   width: 10%;
 }
+
 .land-list th:nth-child(8) {
   width: 10%;
 }
@@ -734,10 +743,12 @@ span {
 #volume {
   width: 80%;
 }
+
 .card-inner {
   display: flex;
   justify-content: space-around;
 }
+
 .card-inner label {
   text-align: start;
 }
