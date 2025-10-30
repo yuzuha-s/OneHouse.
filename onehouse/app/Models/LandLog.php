@@ -15,7 +15,7 @@ class LandLog extends Model
         'landarea',
         'far',
         'bcr',
-        'floor_id',
+        'floor',
         'builable_area',
         'pricePerTsubo',
 
@@ -26,9 +26,5 @@ class LandLog extends Model
         return $this->belongsTo(Profile::class);
     }
 
-    public function floor()
-    {
-        return $this->belongsTo(Floor::class);
-    }
 }
 

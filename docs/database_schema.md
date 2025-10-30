@@ -63,9 +63,9 @@
 
 ※中間テーブル
 
-| カラム名    | データ型 | キー | NOT NULL |
-| ----------- | -------- | ---- | -------- |
-| marker_id   | BIGINT   | FK   |
+| カラム名   | データ型 | キー | NOT NULL |
+| ---------- | -------- | ---- | -------- |
+| marker_id  | BIGINT   | FK   |
 | feature_id | BIGINT   | FK   |
 
 FOREIGN KEY (maker_id) REFERENCES makers(id),  
@@ -92,24 +92,17 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 
 住所　容積率 建ぺい率 土地面積 階層～ 3 階まで 坪単価
 
-| カラム名       | データ型      | キー | NOT NULL |
-| -------------- | ------------- | ---- | -------- |
-| id             | BIGINT        | PK   |          |
-| profile_id     | BIGINT        | FK   |
-| address        | VARCHAR(255)  |
-| landarea       | DECIMAL(10,2) |
-| far            | TINYINT       |
-| bcr            | TINYINT       |
-| floor_id       | INT           | FK   |          |
-| buildable_area | DECIMAL(10,2) |
-| range          | BIGINT        |      |
-
-### floors
-
-| カラム名 | データ型 | キー | NOT NULL |
-| -------- | -------- | ---- | -------- |
-| id       | BIGINT   | PK   |          |
-| floor    | INT      |
+| カラム名       | データ型     | キー | NOT NULL |
+| -------------- | ------------ | ---- | -------- |
+| id             | BIGINT       | PK   |          |
+| profile_id     | BIGINT       | FK   |
+| address        | VARCHAR(255) |
+| landarea       | INT          |
+| far            | TINYINT      |
+| bcr            | TINYINT      |
+| floor          | INT          |      |          |
+| buildable_area | INT          |
+| range          | BIGINT       |      |
 
 ### phases
 

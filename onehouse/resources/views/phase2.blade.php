@@ -28,10 +28,8 @@
                     </svg>{{ session('success') }}
                 </div>
             @endif
-
-
-
         </div>
+
         <div class="add">
             <a href="{{ route('create') }}"> <button><svg xmlns="http://www.w3.org/2000/svg" height="40px"
                         viewBox="0 -960 960 960" width="40px" fill="#FFFFFF">

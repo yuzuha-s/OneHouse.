@@ -56,19 +56,14 @@ return new class extends Migration
             $table->bigInteger('expense');
             $table->timestamps();
         });
-        Schema::create('floors', function (Blueprint $table) {
-            $table->id();
-            $table->integer('floor');
-            $table->timestamps();
-        });
         Schema::create('landlogs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
             $table->string('address');
-            $table->decimal('landarea', 5, 2);
+            $table->integer('landarea');
             $table->unsignedSmallInteger('far');
             $table->unsignedSmallInteger('bcr');
-            $table->foreignId('floor_id')->constrained()->cascadeOnDelete();
+            $table->integer('floor');
             $table->integer('builable_area');
             $table->bigInteger('pricePerTsubo');
             $table->timestamps();
@@ -92,11 +87,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('checklists');
-        Schema::dropIfExists('phases');
-        Schema::dropIfExists('floors');
-        Schema::dropIfExists('landlogs');
-        Schema::dropIfExists('loan_simulations');
         Schema::dropIfExists('makers_feature');
+        Schema::dropIfExists('landlogs');
+        Schema::dropIfExists('phases');
+        Schema::dropIfExists('loan_simulations');
         Schema::dropIfExists('features');
         Schema::dropIfExists('categories');
         Schema::dropIfExists('makers');
