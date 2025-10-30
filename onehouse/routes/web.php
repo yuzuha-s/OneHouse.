@@ -21,13 +21,15 @@ Route::get('/', function () {
 // Route::get('/default',[ProfileController::class, 'index']);
 // Route::get('/default',[LoanSimulationController::class, 'index']);
 // Route::get('/default',[LandLogController::class, 'index']);
-Route::get('/default',[MakerController::class, 'index']);
+// Route::get('/default',[MakerController::class, 'index']);
 // Route::get('/default',[CheckListController::class, 'index']);
 
 // phase1~5------------------------------------------
 Route::get('/phase1', function () {
     return view('phase1');
 });
+
+Route::get('/phase1',[CheckListController::class, 'index']);
 
 Route::get('/phase2', function () {
     return view('phase2');

@@ -10,23 +10,25 @@ class CheckListController extends Controller
     public function index()
     {
         $checkLists = Checklist::with('profile')->get();
-        return view('default', compact('checkLists'));
+        return view('phase1', compact('checkLists'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    public function create() {}
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //リストを登録する
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'list' => 'required|string|min:0',
+            'phase_id' =>  'required|integer',
+        ]);
+        $checkList = Checklist::create([
+            'profile_id' => 1,
+            'phase_id' => $request->phase_id,
+            'checked' => false,
+            'list' => $validated['list'],
+        ]);
+        return redirect()->route('phase1')->with('success', '登録を変更しました');
     }
 
     /**
