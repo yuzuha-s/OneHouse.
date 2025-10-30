@@ -63,11 +63,11 @@ class LoanSimulationController extends Controller
     public function update(LoanSimulationRequest $request, $id)
     {
         $validated =  $request->validated();
-        $profile_id =1;
+        $profile_id = 1;
 
         $loanSimulations = LoanSimulation::updateOrCreate(
             ['profile_id' => $profile_id],
-            $validated+['profile_id' => $profile_id]
+            $validated + ['profile_id' => $profile_id]
         );
 
         return response()->json([

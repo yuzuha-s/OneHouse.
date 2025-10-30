@@ -19,7 +19,7 @@ class LandLogSeeder extends Seeder
             [
                 'profile_id' => $profile->id,
                 'address' => "東京都板橋区3丁目1-55",
-                'landarea' => 80.0,
+                'landarea' => 80,
                 'far' => 200,
                 'bcr' => 80,
                 'floor' => 2,
@@ -29,7 +29,7 @@ class LandLogSeeder extends Seeder
             [
                 'profile_id' => $profile->id,
                 'address' => "東京都板橋区5丁目2-66",
-                'landarea' => 90.0,
+                'landarea' => 90,
                 'far' => 150,
                 'bcr' => 60,
                 'floor' => 3,

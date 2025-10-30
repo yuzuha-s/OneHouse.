@@ -28,7 +28,7 @@ class MakerRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'star.required' => '星評価は少なくとも1つ選択してください。',
+            'star.required' => '星評価は1以上を選択してください。',
             'star.*.integer' => '星の値が不正です。',
             'features.*.exists' => '選択された特徴が存在しません。',
         ];

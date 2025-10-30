@@ -79,7 +79,7 @@ return [
         'array' => ':attributeには:value以下のアイテムが必要です。',
     ],
     'max' => [
-        'numeric' => ':attributeは:maxより大きくてはいけません。',
+        'numeric' => ':attributeは:max以下です。',
         'file' => ':attributeは:maxキロバイトを超えてはいけません。',
         'string' => ':attributeは:max文字を超えてはいけません。',
         'array' => ':attributeには:max個を超えるアイテムを含めることはできません。',
@@ -167,7 +167,7 @@ return [
         'landarea' => '土地面積',
         'far' => '容積率',
         'bcr' => '建ぺい率',
-        'floor' => '階層',
+        'floor' => '階数',
         'pricePerTsubo' => '坪単価',
         'builable_area' => '建築可能面積'
     ],

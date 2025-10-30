@@ -77,8 +77,8 @@ insert into loan_simulations (profile_id, loan, rate, loan_term, age, income, ex
 (1, 6000, 1.5, 35, 32, 800, 25);
 
 insert into landlogs (profile_id, address, landarea,  far, bcr, floor, buildable_area, pricePerTsubo ) values
-(1, 東京都板橋区3丁目1-55, 80.0, 200, 80, 2, 0, 87);
-(1, 東京都板橋区5丁目2-66, 90.0, 150, 60, 3, 0, 77);
+(1, 東京都板橋区3丁目1-55, 80, 200, 80, 2, 0, 87);
+(1, 東京都板橋区5丁目2-66, 90, 150, 60, 3, 0, 77);
 
 insert into phase (phase, list) values
 (1, 家族希望条件を整理した),

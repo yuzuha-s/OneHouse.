@@ -25,6 +25,20 @@ a {
   text-decoration: none;
 }
 
+button {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 0 #ccc;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.06);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #aaa;
+}
+
 .wrapper {
   width: 96%;
   align-items: center;
@@ -38,7 +52,9 @@ h3 {
   font-weight: bold;
   margin: 0;
 }
-
+.validate-wrapper {
+  display: block; 
+}
 .validate {
   display: flex;
   gap: 20px;
@@ -178,10 +194,23 @@ h3 {
 }
 
 .table-wrapper {
+  width: 95%;
+  display: flex;
+  margin: auto;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.table-contant {
+  width: 95%;
+}
+
+.pagination {
+  width: 5%;
+
+}
+
 
 .list table {
   width: 93%;
@@ -201,6 +230,7 @@ tbody tr {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   margin-bottom: 10px;
+  background-color: rgba(230, 246, 250, 0.7);
 }
 
 
@@ -713,32 +743,30 @@ span {
 }
 
 .land-list th:nth-child(2) {
-  width: 10%;
+  width: 40%;
 }
 
 .land-list th:nth-child(3) {
-  width: 30%;
+  width: 10%;
 }
 
 .land-list th:nth-child(4) {
-  width: 10%;
+  width: 15%;
 }
 
 .land-list th:nth-child(5) {
-  width: 10%;
+  width: 15%;
 }
 
 .land-list th:nth-child(6) {
-  width: 10%;
+  width: 5%;
 }
 
 .land-list th:nth-child(7) {
-  width: 10%;
+  width: 5%;
 }
 
-.land-list th:nth-child(8) {
-  width: 10%;
-}
+
 
 #volume {
   width: 80%;
@@ -751,6 +779,31 @@ span {
 
 .card-inner label {
   text-align: start;
+}
+
+.pagination {
+  margin: auto;
+}
+
+.paginate-wrapper {
+  display: flex;
+}
+
+.no-validate {
+  display: none;
+}
+
+.edit-row,
+.land-delete-btn {
+  background-color: #EEF8FB;
+  border: none;
+  border-radius: 20px;
+}
+
+.edit-row:hover,
+.land-delete-btn:hover {
+  cursor: pointer;
+
 }
 
 

@@ -60,7 +60,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
             $table->string('address');
-            $table->decimal('landarea', 5, 2);
+            $table->integer('landarea');
             $table->unsignedSmallInteger('far');
             $table->unsignedSmallInteger('bcr');
             $table->integer('floor');

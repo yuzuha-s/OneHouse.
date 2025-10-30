@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LandLogRequest;
 use App\Models\LandLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -11,17 +12,18 @@ class LandLogController extends Controller
 
     public function index()
     {
-        $landLogs = LandLog::with('profile')->get();
+        $landLogs = LandLog::with('profile')->paginate(3);
+
+        $landLogs->getCollection()->transform(function ($log) {
+            $log->tsubo = round($log->builable_area / 3.3);
+            $log->updated_formatted = $log->updated_at->format('m/d(D)');
+            return $log;
+        });
         return view('phase4', compact('landLogs'));
     }
 
-    // phase4のinput値を受け取る
-    public function create(Request $request)
-    {
 
-        // $landLogs = LandLog::all();
-        // return view('phase4', compact('landLogs'));
-    }
+    public function create(Request $request) {}
 
     // 保存する
     public function store(Request $request)
@@ -37,17 +39,25 @@ class LandLogController extends Controller
             'floor' => 'required|integer|min:1|max:3',
             'builable_area' => 'required|integer|min:1',
             'pricePerTsubo' => 'required|integer|min:1',
+
         ]);
-        LandLog::create([
-            'profile_id' => 1,
-            'address' => $validated['address'],
-            'landarea' => $validated['landarea'],
-            'far' => $validated['far'],
-            'bcr' => $validated['bcr'],
-            'floor' => $validated['floor'],
-            'builable_area'  => $validated['builable_area'],
-            'pricePerTsubo' =>  $validated['pricePerTsubo'],
-        ]);
+
+        //    更新する
+        if ($request->id) {
+            $landLog = LandLog::findOrFail($request->id);
+            $landLog->update($validated);
+        } else {
+            LandLog::create([
+                'profile_id' => 1,
+                'address' => $validated['address'],
+                'landarea' => $validated['landarea'],
+                'far' => $validated['far'],
+                'bcr' => $validated['bcr'],
+                'floor' => $validated['floor'],
+                'builable_area'  => $validated['builable_area'],
+                'pricePerTsubo' =>  $validated['pricePerTsubo'],
+            ]);
+        }
 
 
         return redirect()->route('phase4')->with('success', '登録が完了しました');
@@ -61,27 +71,31 @@ class LandLogController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function edit(string $id) {}
+
+
+    public function update(LandLogRequest $request, string $id)
     {
-        //
+        // $validated =  $request->validated();
+        // $profile_id = 1;
+
+        // $landLog = LandLog::updateOrCreate(
+        //     ['profile_id' => $profile_id],
+        //     $validated+['profile_id' => $profile_id]
+        // );
+        // return response()->json([
+        //     'data' => $landLog
+        // ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    // 土地情報を削除する
     public function destroy(string $id)
     {
-        //
+        $landLog = LandLog::findOrFail($id);
+        $landAddress = $landLog->address;
+        $landLog->delete();
+
+        return redirect()->route('phase4')->with('success', "{$landAddress}を削除しました");
     }
 }
