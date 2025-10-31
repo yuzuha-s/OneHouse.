@@ -289,6 +289,7 @@ tbody tr {
   right: 0;
   bottom: 0;
   transition: 0.4s;
+  width: 50px;
 }
 
 .slider:before {
@@ -304,11 +305,11 @@ tbody tr {
 }
 
 input:checked+.slider {
-  background-color: #576bf5;
+  background-color: #47CA6B;
 }
 
 input:checked+.slider:before {
-  transform: translateX(26px);
+  transform: translateX(24px);
 }
 
 /* @media (max-width: 1024px) {
@@ -333,10 +334,10 @@ input:checked+.slider:before {
 .main-nav .phase5 {
   background-color: #E7E9FE;
 } */
-.edit-list {
-  land-delete-btn
+tr.checked {
+  background-color: #8C8C8C;
+  opacity: 0.5;
 }
-
 
 
 /* phase2-------------------- */

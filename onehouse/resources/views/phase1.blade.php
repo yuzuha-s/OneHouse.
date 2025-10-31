@@ -61,7 +61,7 @@
                         @if ($checkList->phase->phase === 1)
                             <tr>
                                 <td> <label class="switch">
-                                        <input type="checkbox" name="checked" value="{{ $checkList->checked }}">
+                                        <input type="checkbox" name="checked" value="{{ $checkList->checked }}" @if($checkList->checked) checked @endif>
                                         <span class="slider"></span>
                                     </label></td>
                                 <td>{{ $checkList->phase->list }}</td>

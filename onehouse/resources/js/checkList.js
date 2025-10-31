@@ -1,10 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     const addBtn = document.querySelector(".add_button");
-    const register = document.querySelector(".register-list");
     const form = document.getElementById("form-list");
     const tbody = document.querySelector("tbody");
 
     const validate = document.querySelector(".validate-wrapper");
+
+    // checkedの場合
+    const rows = document.querySelectorAll("tbody tr");
+    rows.forEach((tr) => {
+        const checkbox = tr.querySelector("input[name='checked']");
+        if (checkbox && checkbox.checked) {
+            tr.classList.add("checked");
+            const registerBtn = tr.querySelector(".register-list button");
+            const deleteBtn = tr.querySelector(".delete-list button");
+
+            if (registerBtn) registerBtn.disabled = true;
+            if (deleteBtn) deleteBtn.disabled = true;
+        }
+    });
 
     addBtn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -104,4 +117,29 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    // チェックが入ったら背景色をオフにする
+    tbody.addEventListener("click", (e) => {
+        if (e.target.matches("input[name='checked']")) {
+            const tr = e.target.closest("tr");
+            const registerBtn = tr.querySelector(".register-list button");
+            const deleteBtn = tr.querySelector(".delete-list button");
+
+            if (e.target.checked) {
+                tr.classList.add("checked");
+                if (registerBtn) registerBtn.disabled = true;
+                if (deleteBtn) deleteBtn.disabled = true;
+            } else {
+                tr.classList.remove("checked");
+                if (registerBtn) registerBtn.disabled = false;
+                if (deleteBtn) deleteBtn.disabled = false;
+            }
+        }
+    });
 });
+
+// チェックtrue/falseの状態管理
+// リスト行追加
+// 登録ボタンが押されたら
+// 削除ボタンが押されたら
+// メッセージ(成功・更新・入力値なし・削除完了)
