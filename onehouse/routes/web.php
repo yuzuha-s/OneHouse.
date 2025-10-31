@@ -29,7 +29,7 @@ Route::get('/phase1', function () {
     return view('phase1');
 });
 
-Route::get('/phase1',[CheckListController::class, 'index']);
+Route::get('/phase1',[CheckListController::class, 'indexPhase1']);
 
 Route::get('/phase2', function () {
     return view('phase2');
@@ -71,4 +71,6 @@ Route::delete('phase4/{id}', [LandLogController::class, 'destroy'])->name('phase
 Route::get('/phase5', function () {
     return view('phase5');
 });
+
+Route::get('/phase5',[CheckListController::class, 'indexPhase5']);
 // navigate-----------------------------------------

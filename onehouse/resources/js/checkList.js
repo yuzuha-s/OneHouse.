@@ -136,10 +136,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+    document.getElementById("toggle-phase1").addEventListener("click", () => {
+        const rows = document.querySelectorAll(".phase1-row");
+        rows.forEach((row) => {
+            if (row.style.display === "none") {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
 });
 
-// チェックtrue/falseの状態管理
+// チェックtrue/falseの状態管理 →データベース接続
 // リスト行追加
-// 登録ボタンが押されたら
-// 削除ボタンが押されたら
+// 登録ボタンが押されたら　→データベース接続
+// 削除ボタンが押されたら　→データベース接続
 // メッセージ(成功・更新・入力値なし・削除完了)
+// トグル表示
+
+

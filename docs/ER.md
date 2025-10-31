@@ -20,7 +20,7 @@ Table makers {
   name varchar
   sales varchar
   option varchar
-  star bigint
+  star int
 }
 
 Table features {
@@ -57,11 +57,11 @@ Table landlogs {
   id bigint [pk]
   profile_id bigint [ref: > profile.id]
   address varchar
-  landarea decimal(10,2)
-  far decimal(10,2)
-  bcr decimal(10,2)
+  landarea int
+  far tinyint
+  bcr tinyint
   floor int
-  buildable_area decimal(10,2)
+  buildable_area int
   range bigint
 }
 

@@ -7,11 +7,19 @@ use Illuminate\Http\Request;
 
 class CheckListController extends Controller
 {
-    public function index()
+    public function indexPhase1()
     {
-        $checkLists = Checklist::with('profile')->get();
-        return view('phase1', compact('checkLists'));
+        return view('phase1');
+
+
+        // $checkLists = Checklist::with('profile')->get();
+        // return view('phase1', compact('checkLists'));
     }
+    public function indexPhase5()
+    {
+        return view('phase5');
+    }
+
 
     public function create() {}
 
