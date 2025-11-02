@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             parseInt(
                 document.querySelector('input[name="pricePerTsubo"]').value
             ) || 0;
-        // const floor = document.querySelector('input[name="floor"]').value || 0;
+
 
         currentPricePerTsubo = pricePerTsubo;
 

@@ -32,6 +32,12 @@ button {
 
 button:hover {
   transform: translateY(-2px) scale(1.06);
+  background-color: #61C6DF;
+  color: #FFF;
+}
+
+button svg:hover {
+  fill: #fff;
 }
 
 button:active {
@@ -52,9 +58,11 @@ h3 {
   font-weight: bold;
   margin: 0;
 }
+
 .validate-wrapper {
-  display: block; 
+  display: block;
 }
+
 .validate {
   display: flex;
   gap: 20px;
@@ -75,6 +83,25 @@ h3 {
 .error {
   color: #ff0000;
 }
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.toggle:hover,
+.toggle button svg:hover {
+  color: #fff;
+  border-radius: 10px;
+  padding: 3px 10px;
+  box-shadow: none;
+}
+
 
 /* main ------------------------ */
 .contant {
@@ -145,6 +172,9 @@ h3 {
 
 .list {
   width: 95%;
+  height: 73vh;
+  overflow-y: auto;
+
   text-align: center;
   align-items: center;
   margin: 50px auto;
@@ -155,7 +185,7 @@ h3 {
 
 .list-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 150px;
   border-bottom: 0.5px solid #ddd;
   width: 90%;
@@ -177,9 +207,23 @@ h3 {
   padding: 12px 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border: none;
-  background-color: #fff;
+  background-color: #61C6DF;
+  opacity: 0.7;
+  border-radius: 20px;
   cursor: pointer;
 }
+
+.add_button button:hover::before {
+  animation: shine 0.8s forwards;
+}
+
+
+.add_button button:hover {
+  background-color: #61C6DF;
+  opacity: 1;
+
+}
+
 
 .add_button button a {
   display: flex;
@@ -197,18 +241,18 @@ h3 {
   width: 95%;
   display: flex;
   margin: auto;
+  max-height: 700px;
   border-radius: 20px;
-  overflow: hidden;
+  overflow-y: auto;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .table-contant {
-  width: 95%;
+  width: 100%;
 }
 
-.pagination {
-  width: 5%;
-
+#landtable {
+  max-height: 250px;
 }
 
 
@@ -285,6 +329,7 @@ tbody tr {
   right: 0;
   bottom: 0;
   transition: 0.4s;
+  width: 50px;
 }
 
 .slider:before {
@@ -300,11 +345,11 @@ tbody tr {
 }
 
 input:checked+.slider {
-  background-color: #576bf5;
+  background-color: #47CA6B;
 }
 
 input:checked+.slider:before {
-  transform: translateX(26px);
+  transform: translateX(24px);
 }
 
 /* @media (max-width: 1024px) {
@@ -329,6 +374,10 @@ input:checked+.slider:before {
 .main-nav .phase5 {
   background-color: #E7E9FE;
 } */
+tr.checked {
+  background-color: #8C8C8C;
+  opacity: 0.5;
+}
 
 
 /* phase2-------------------- */
@@ -794,10 +843,19 @@ span {
 }
 
 .edit-row,
-.land-delete-btn {
+.land-delete-btn,
+.edit-list,
+.delete-list {
   background-color: #EEF8FB;
   border: none;
+  border-radius: 15px;
+}
+
+.register-list {
+  background-color: #61C6DF;
+  border: none;
   border-radius: 20px;
+
 }
 
 .edit-row:hover,

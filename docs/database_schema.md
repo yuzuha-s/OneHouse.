@@ -5,8 +5,6 @@
 
 ### users
 
-ユーザー名　メールアドレス　パスワード
-
 | カラム名   | データ型     | キー | NOT NULL | デォルト値 |
 | ---------- | ------------ | ---- | -------- | ---------- |
 | id         | BIGINT       | PK   |          |
@@ -18,8 +16,6 @@
 
 ### profiles
 
-ユーザー ID 　フェーズ
-
 | カラム名   | データ型  | キー | NOT NULL |
 | ---------- | --------- | ---- | -------- |
 | id         | bigint    | PK   |
@@ -28,8 +24,6 @@
 | updated_at | timestamp |
 
 ### makers 　
-
-メーカー名　営業担当者　オプション　 ★5 つ
 
 | カラム名   | データ型     | キー | NOT NULL |
 | ---------- | ------------ | ---- | -------- |
@@ -42,12 +36,10 @@
 
 ### categories
 
-ブランド力 工法・構造 耐熱性・省エネ性  
-耐震性 保証・アフターサービス デザイン・間取り自由祖
-| カラム名 | データ型 | キー | NOT NULL |
+| カラム名 | データ型     | キー | NOT NULL |
 | -------- | ------------ | ---- | -------- |
-| id | BIGINT | PK | |
-| name | VARCHAR(100) |
+| id       | BIGINT       | PK   |          |
+| name     | VARCHAR(100) |
 
 ### features
 
@@ -56,7 +48,7 @@
 | カラム名    | データ型     | キー | NOT NULL |
 | ----------- | ------------ | ---- | -------- |
 | id          | BIGINT       | PK   |          |
-| category_id | VARCHAR(100) | FK   |
+| category_id | BIGINT       | FK   |
 | tag         | VARCHAR(100) |
 
 ### makers_feature 　
@@ -73,8 +65,6 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 
 ### loan_simulations
 
-借入金額 年利 返済期間 年齢　年収　毎月の支出
-
 | カラム名   | データ型     | キー | NOT NULL |
 | ---------- | ------------ | ---- | -------- |
 | id         | BIGINT       | PK   |          |
@@ -90,8 +80,6 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 
 ### landlogs
 
-住所　容積率 建ぺい率 土地面積 階層～ 3 階まで 坪単価
-
 | カラム名       | データ型     | キー | NOT NULL |
 | -------------- | ------------ | ---- | -------- |
 | id             | BIGINT       | PK   |          |
@@ -106,7 +94,6 @@ FOREIGN KEY (feature_id) REFERENCES features(id)
 
 ### phases
 
-フェーズ リスト
 
 | カラム名 | データ型     | キー | NOT NULL |
 | -------- | ------------ | ---- | -------- |

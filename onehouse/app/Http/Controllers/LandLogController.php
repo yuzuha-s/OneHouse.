@@ -12,9 +12,9 @@ class LandLogController extends Controller
 
     public function index()
     {
-        $landLogs = LandLog::with('profile')->paginate(3);
+        $landLogs = LandLog::with('profile')->get();
 
-        $landLogs->getCollection()->transform(function ($log) {
+        $landLogs->transform(function ($log) {
             $log->tsubo = round($log->builable_area / 3.3);
             $log->updated_formatted = $log->updated_at->format('m/d(D)');
             return $log;

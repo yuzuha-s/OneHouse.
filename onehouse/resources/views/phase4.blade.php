@@ -166,7 +166,7 @@
             <div class="land-list">
 
 
-                <div class="table-wrapper">
+                <div class="table-wrapper" id="landtable">
                     <div class="table-contant">
                         <table>
                             <thead>
@@ -223,9 +223,6 @@
 
                             </tbody>
                         </table>
-                    </div>
-                    <div class="pagination">
-                        {{ $landLogs->links('vendor.pagination.default') }}
                     </div>
 
                 </div>

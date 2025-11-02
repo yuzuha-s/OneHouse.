@@ -169,6 +169,8 @@ return [
         'bcr' => '建ぺい率',
         'floor' => '階数',
         'pricePerTsubo' => '坪単価',
-        'builable_area' => '建築可能面積'
+        'builable_area' => '建築可能面積',
+        'list' => 'タスク',
+        
     ],
 ];
