@@ -84,6 +84,25 @@ h3 {
   color: #ff0000;
 }
 
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.toggle:hover,
+.toggle button svg:hover {
+  color: #fff;
+  border-radius: 10px;
+  padding: 3px 10px;
+  box-shadow: none;
+}
+
+
 /* main ------------------------ */
 .contant {
   align-items: center;
@@ -153,6 +172,9 @@ h3 {
 
 .list {
   width: 95%;
+  height: 73vh;
+  overflow-y: auto;
+
   text-align: center;
   align-items: center;
   margin: 50px auto;
@@ -185,12 +207,20 @@ h3 {
   padding: 12px 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border: none;
-  background-color: #fff;
+  background-color: #61C6DF;
+  opacity: 0.7;
+  border-radius: 20px;
   cursor: pointer;
 }
 
+.add_button button:hover::before {
+  animation: shine 0.8s forwards;
+}
+
+
 .add_button button:hover {
   background-color: #61C6DF;
+  opacity: 1;
 
 }
 
@@ -818,7 +848,7 @@ span {
 .delete-list {
   background-color: #EEF8FB;
   border: none;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 .register-list {
