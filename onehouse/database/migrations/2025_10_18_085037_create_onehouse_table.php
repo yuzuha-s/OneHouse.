@@ -71,7 +71,7 @@ return new class extends Migration
 
         Schema::create('phases', function (Blueprint $table) {
             $table->id();
-            $table->integer('phase')->nullable();
+            $table->integer('number');
             $table->string('list');
             $table->timestamps();
         });

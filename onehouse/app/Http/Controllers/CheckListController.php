@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checklist;
+use App\Models\Phase;
 use Illuminate\Http\Request;
 
 class CheckListController extends Controller
@@ -26,17 +27,26 @@ class CheckListController extends Controller
     //リストを登録する
     public function store(Request $request)
     {
+
         $validated = $request->validate([
-            'list' => 'required|string|min:0',
-            'phase_id' =>  'required|integer',
+            'list' => 'required|string|min:1|max:255',
         ]);
-        $checkList = Checklist::create([
+        $phase = Phase::firstOrCreate([
+            'number' => 6,
+            'list' => $validated['list'],
+        ]);
+        $checklist = Checklist::firstOrCreate([
             'profile_id' => 1,
-            'phase_id' => $request->phase_id,
+            'phase_id'   => $phase->id,
             'checked' => false,
             'list' => $validated['list'],
         ]);
-        return redirect()->route('phase1')->with('success', '登録を変更しました');
+
+        return response()->json([
+            'success' => true,
+            'checklist' => $checklist,
+            'number' => $number,
+        ]);
     }
 
     /**

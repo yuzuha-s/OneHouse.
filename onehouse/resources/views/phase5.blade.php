@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                     @foreach ($checkLists as $checkList)
-                        @if ($checkList->phase->phase === 1)
+                        @if ($checkList->phase->number === 1)
                             <tr class="phase1-row">
                                 <td> <label class="switch">
                                         <input type="checkbox" name="checked" value="{{ $checkList->checked }}"
@@ -80,7 +80,7 @@
 
 
                     @foreach ($checkLists as $checkList)
-                        @if ($checkList->phase->phase === 5)
+                        @if ($checkList->phase->number === 5)
                             <tr class="phase5-row">
                                 <td> <label class="switch">
                                         <input type="checkbox" name="checked" value="{{ $checkList->checked }}"

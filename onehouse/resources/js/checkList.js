@@ -1,4 +1,3 @@
-//
 function init() {
     setupInitialState();
     setupEventListeners();
@@ -130,9 +129,35 @@ function setupEventListeners() {
         handleAddRow(e);
     });
 
-    tbody.addEventListener("click", (e) => {
+    // 非同期処理でDBへ登録・更新・削除
+    tbody.addEventListener("click", async (e) => {
         if (e.target.closest(".register-list")) {
+            const tr = e.target.closest("tr");
+            const input = tr.querySelector(".checklist_input");
+            const listInput = input.value;
+
+            const data = {
+                number: 6,
+                checked: false,
+                list: listInput,
+            };
+
             handleRegister(e);
+            try {
+                const response = await fetch("/api/checklist", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                console.log(result);
+            } catch (error) {
+                console.log("送信エラー", error);
+            }
         } else if (e.target.closest(".edit-list")) {
             handleEdit(e);
         } else if (e.target.closest(".delete-list")) {
@@ -234,6 +259,17 @@ function showMessage(type, tr) {
             </svg>
             <p>削除しました</p></div>
         `;
+        validate.style.display = "block";
+        setTimeout(() => {
+            validate.style.display = "none";
+        }, 3000);
+    } else if (type === "checked") {
+        validate.innerHTML = `<div class = "validate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                                        fill="#576bf5">
+                                        <path d="M422-297.33 704.67-580l-49.34-48.67L422-395.33l-118-118-48.67 48.66L422-297.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z"/>
+                                    </svg>
+            <p>タスクが終了しました！</p></div>`;
         validate.style.display = "block";
         setTimeout(() => {
             validate.style.display = "none";

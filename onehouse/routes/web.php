@@ -29,7 +29,9 @@ Route::get('/phase1', function () {
     return view('phase1');
 });
 
-Route::get('/phase1',[CheckListController::class, 'indexPhase1']);
+// Route::get('/phase1',[CheckListController::class, 'indexPhase1']);
+
+
 
 Route::get('/phase2', function () {
     return view('phase2');
