@@ -337,6 +337,7 @@ function setupEventListeners() {
     });
 }
 
+// バリデーション・メッセージ表示
 function showMessage(type, tr) {
     const input = tr.querySelector(".checklist_input");
     const validate = document.querySelector(".validate-wrapper");
@@ -399,6 +400,7 @@ function showMessage(type, tr) {
     }
 }
 
+// 入力値0のバリデーションチェック
 function validateInput(input, tr) {
     const value = input.value.trim();
     if (value === "") {
