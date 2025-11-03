@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                     @foreach ($checkLists as $checkList)
-                        @if ($checkList->phase->phase === 1)
+                        @if ($checkList->phase->number === 1)
                             <tr class="phase1-row">
                                 <td> <label class="switch">
                                         <input type="checkbox" name="checked" value="{{ $checkList->checked }}"
@@ -69,7 +69,7 @@
                                         <span class="slider"></span>
                                     </label></td>
                                 <td>{{ $checkList->phase->list }}</td>
-                                <td>{{ $checkList->phase->phase }}</td>
+                                <td>{{ $checkList->phase->number }}</td>
                                 <td></td>
                                 <td>
                                 </td>
@@ -80,7 +80,7 @@
 
 
                     @foreach ($checkLists as $checkList)
-                        @if ($checkList->phase->phase === 5)
+                        @if ($checkList->phase->number === 5)
                             <tr class="phase5-row">
                                 <td> <label class="switch">
                                         <input type="checkbox" name="checked" value="{{ $checkList->checked }}"
@@ -88,10 +88,26 @@
                                         <span class="slider"></span>
                                     </label></td>
                                 <td>{{ $checkList->phase->list }}</td>
-                                <td>{{ $checkList->phase->phase }}</td>
+                                <td>{{ $checkList->phase->number }}</td>
                                 <td></td>
                                 <td>
                                 </td>
+                            </tr>
+                        @endif
+                    @endforeach
+
+                     @foreach ($checkLists as $checkList)
+                        @if ($checkList->phase->number === 6)
+                            <tr>
+                                <td><label class="switch">
+                                        <input type="checkbox" name="checked" value="{{ $checkList->checked }}"
+                                            @if ($checkList->checked) checked @endif>
+                                        <span class="slider"></span>
+                                    </label></td>
+                                    <td>{{ $checkList->phase->list }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                             </tr>
                         @endif
                     @endforeach

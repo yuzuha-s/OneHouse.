@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CheckListController;
 use App\Http\Controllers\LoanSimulationController;
+use App\Http\Controllers\PhaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,3 +11,8 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::put('/phase3/{profile_id}', [LoanSimulationController::class, 'update']);
+
+// チェックリストの登録・更新・削除
+Route::post('/checklist',[CheckListController::class, 'store']);
+Route::put('/checklist/{id}',[CheckListController::class, 'update']);
+Route::delete('/checklist/{id}',[CheckListController::class, 'destroy']);

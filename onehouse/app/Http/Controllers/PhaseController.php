@@ -2,30 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Phase;
 use Illuminate\Http\Request;
 
 class PhaseController extends Controller
 {
 
-    public function index()
-    {
-        //
-    }
+    public function index() {}
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function create() {}
+
+
     public function store(Request $request)
     {
-        //
+        // $validated = $request->validate([
+        //     'list' => 'required|string|min:1|max:255'
+        // ]);
+
+        // Phase::create([
+        //     'list' => $validated[]
+
+        // ])
     }
 
     /**

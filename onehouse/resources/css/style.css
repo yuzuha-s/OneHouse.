@@ -851,7 +851,8 @@ span {
   border-radius: 15px;
 }
 
-.register-list {
+.register-list,
+.update-list {
   background-color: #61C6DF;
   border: none;
   border-radius: 20px;

@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checklist;
+use App\Models\Phase;
 use Illuminate\Http\Request;
 
 class CheckListController extends Controller
 {
     public function indexPhase1()
+
     {
-        return view('phase1');
-
-
-        // $checkLists = Checklist::with('profile')->get();
-        // return view('phase1', compact('checkLists'));
+        $checkLists = Checklist::with('profile')->get();
+        return view('phase1', compact('checkLists'));
     }
     public function indexPhase5()
     {
@@ -26,48 +25,76 @@ class CheckListController extends Controller
     //リストを登録する
     public function store(Request $request)
     {
+
         $validated = $request->validate([
-            'list' => 'required|string|min:0',
-            'phase_id' =>  'required|integer',
+            'list' => 'required|string|min:1|max:255',
         ]);
-        $checkList = Checklist::create([
-            'profile_id' => 1,
-            'phase_id' => $request->phase_id,
-            'checked' => false,
+        $phase = Phase::firstOrCreate([
+            'number' => 6,
             'list' => $validated['list'],
         ]);
-        return redirect()->route('phase1')->with('success', '登録を変更しました');
+        $checklist = Checklist::firstOrCreate([
+            'profile_id' => 1,
+            'phase_id'   => $phase->id,
+        ], [
+            'checked' => false,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'id' => $checklist->id,
+            'checklist' => $checklist,
+            'number' => $phase->number,
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
-    /**
-     * Update the specified resource in storage.
-     */
+    public function edit(string $id) {}
+
+    // チェックリストを更新する
     public function update(Request $request, string $id)
     {
-        //
+
+        $validated = $request->validate([
+
+            'list' => 'sometimes|string|min:1|max:255',
+            'checked' => 'sometimes|boolean',
+        ]);
+
+        $checklist = Checklist::findOrFail($id);
+        $phase = Phase::findOrFail($checklist->phase_id);
+
+        if (array_key_exists('list', $validated)) {
+            $phase->update([
+                'list' => $validated['list'],
+            ]);
+        }
+        if (array_key_exists('checked', $validated)) {
+            $checklist->update([
+                'checked' => $validated['checked'],
+            ]);
+        }
+
+
+        return response()->json([
+            'success' => true,
+            'checklist' => $checklist->fresh(),
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // チェックリストを削除する
     public function destroy(string $id)
     {
-        //
+        $checklist = Checklist::findOrFail($id);
+        $phase = Phase::findOrFail($checklist->phase_id);
+
+        $checklist->delete();
+        $phase->delete();
+
+        return response()->json([
+            'success' => true,
+        ]);
     }
 }

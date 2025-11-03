@@ -10,12 +10,12 @@ class Phase extends Model
     use HasFactory;
     protected $table = 'phases';
     protected $fillable = [
-        'phase',
+        'number',
         'list',
     ];
     public function checkList()
     {
-        return $this->hasMany(Checklist::class);
+        return $this->hasMany(Checklist::class, 'phase_id');
     }
 
 }

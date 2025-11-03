@@ -28,6 +28,6 @@ class Checklist extends Model
     }
     public function phase()
     {
-        return $this->belongsTo(Phase::class);
+        return $this->belongsTo(Phase::class, 'phase_id');
     }
 }
