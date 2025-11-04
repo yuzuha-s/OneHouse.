@@ -20,10 +20,19 @@ ul {
   margin: 0;
 }
 
+li {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+li:hover {
+  transform: translateY(-2px) scale(1.06);
+}
+
 
 a {
   text-decoration: none;
 }
+
 
 button {
   transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -45,6 +54,89 @@ button:active {
   box-shadow: 0 2px 0 #aaa;
 }
 
+/* add_buttonの挙動 */
+.bn13 {
+  display: inline-block;
+  padding: 0.65em 1.6em;
+  border: 3px solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+  animation: bn13bouncy 5s infinite linear;
+  position: relative;
+}
+
+.bn13:hover {
+  background-color: white;
+  color: #000000;
+}
+
+@keyframes bn13bouncy {
+  0% {
+    top: 0em;
+  }
+
+  40% {
+    top: 0em;
+  }
+
+  43% {
+    top: -0.9em;
+  }
+
+  46% {
+    top: 0em;
+  }
+
+  48% {
+    top: -0.4em;
+  }
+
+  50% {
+    top: 0em;
+  }
+
+  100% {
+    top: 0em;
+  }
+}
+
+/* チェックリスト追加ボタン------------------------------------ */
+.add_button button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  background-color: #61C6DF;
+  opacity: 0.7;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.add_button button:hover::before {
+  animation: shine 0.8s forwards;
+}
+
+
+.add_button button:hover {
+  background-color: #61C6DF;
+  opacity: 1;
+}
+
+.add_button button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .wrapper {
   width: 96%;
   align-items: center;
@@ -61,13 +153,39 @@ h3 {
 
 .validate-wrapper {
   display: block;
+  transform: translateY(-10px);
+  animation: fadeSlideIn 1s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }
 
 .validate {
   display: flex;
   gap: 20px;
   background-color: #E7E9FE;
-  padding: 3px 200px;
+  padding: 3px 70px;
   border-radius: 40px;
   color: #586BFF;
   letter-spacing: 2px;
@@ -84,6 +202,11 @@ h3 {
   color: #ff0000;
 }
 
+.input-error {
+  border: 2px solid #f44336;
+  box-shadow: 0 0 5px rgba(244, 67, 54, 0.6);
+}
+
 .toggle {
   display: inline-flex;
   align-items: center;
@@ -92,6 +215,7 @@ h3 {
   border: none;
   background: transparent;
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .toggle:hover,
@@ -103,7 +227,18 @@ h3 {
 }
 
 
-/* main ------------------------ */
+/* tr {
+  display: block;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+td {
+  display: inline-block;
+  padding: 10px 16px;
+} */
+
+/* main contant ------------------------------------ */
 .contant {
   align-items: center;
   width: 93%;
@@ -118,6 +253,7 @@ h3 {
   display: flex;
 }
 
+/* ナビゲーションバー ------------------------------------ */
 .navigate {
   background-color: #fff;
   padding: 1.5rem 1.5rem;
@@ -136,7 +272,6 @@ h3 {
 .main-nav {
   width: 87%;
   margin: 30px auto;
-
 }
 
 .main-nav ul {
@@ -159,7 +294,6 @@ h3 {
   align-items: center;
 }
 
-
 .main-nav ul::after {
   content: '';
   position: absolute;
@@ -170,14 +304,23 @@ h3 {
   z-index: -1;
 }
 
+.main-nav .phase1:hover,
+.main-nav .phase2:hover,
+.main-nav .phase3:hover,
+.main-nav .phase4:hover,
+.main-nav .phase5:hover {
+  background-color: #FFA83F;
+
+}
+
+/* 各フェーズの目次 ------------------------------------ */
 .list {
   width: 95%;
   height: 73vh;
   overflow-y: auto;
-
   text-align: center;
   align-items: center;
-  margin: 50px auto;
+  margin: 20px auto;
   background-color: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
@@ -200,70 +343,32 @@ h3 {
   gap: 8px;
 }
 
-.add_button button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 15px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  border: none;
-  background-color: #61C6DF;
-  opacity: 0.7;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.add_button button:hover::before {
-  animation: shine 0.8s forwards;
-}
-
-
-.add_button button:hover {
-  background-color: #61C6DF;
-  opacity: 1;
-
-}
-
-
-.add_button button a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
 .list-nav {
   display: flex;
   align-items: center;
 }
 
+/* チェックリストのテーブル-------------------------------------------------- */
 .table-wrapper {
-  width: 95%;
+  width: 100%;
   display: flex;
   margin: auto;
   max-height: 700px;
   border-radius: 20px;
   overflow-y: auto;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .table-contant {
   width: 100%;
 }
 
-#landtable {
-  max-height: 250px;
-}
-
-
 .list table {
   width: 93%;
   border-collapse: separate;
-  border-spacing: 0 12px;
+  border-spacing: 0 6px;
   max-height: 500px;
   margin: 0 auto;
 }
-
 
 tbody {
   border-radius: 10px;
@@ -273,37 +378,67 @@ tbody {
 tbody tr {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   background-color: rgba(230, 246, 250, 0.7);
 }
 
+tbody td:nth-child(1) {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 
-.list th,
-.list td {
+tbody td:nth-child(5) {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.checklist th,
+.checklist td {
   text-align: center;
   padding: 10px;
 }
 
-.list th:nth-child(1) {
+.list th:nth-child(1),
+.list td:nth-child(1) {
+  width: 15%;
+}
+
+.list th:nth-child(2),
+.list td:nth-child(2) {
+  width: 45%;
+  text-align: left;
+}
+
+.list th:nth-child(3),
+.list td:nth-child(3) {
+  width: 20%;
+}
+
+.list th:nth-child(4),
+.list td:nth-child(4) {
   width: 10%;
 }
 
-.list th:nth-child(2) {
-  width: 70%;
-}
-
-.list th:nth-child(3) {
+.list th:nth-child(5),
+.list td:nth-child(5) {
   width: 10%;
 }
 
-.list th:nth-child(4) {
-  width: 10%;
+.list tbody tr {
+  transition: transform 0.1s ease-in-out;
 }
 
 .checklist_input {
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid #CCCCCC;
   padding: 10px 10px;
+  width: 70%;
+}
+
+.checklist_input:focus {
+  outline: none;
+  border: 2px solid #61C6DF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .switch {
@@ -344,27 +479,30 @@ tbody tr {
   transition: 0.4s;
 }
 
+input:disabled {
+  border: none;
+  background: transparent;
+}
+
 input:checked+.slider {
-  background-color: #47CA6B;
+  background-color: #586BFF;
 }
 
 input:checked+.slider:before {
   transform: translateX(24px);
 }
 
-/* @media (max-width: 1024px) {
-  .main-nav ul {
-    gap: 80px;
-  }
+tr.checked {
+  background-color: #8C8C8C;
+  opacity: 0.5;
 }
 
-/* スマホサイズ向け */
-/* @media (max-width: 768px) {
-  .main-nav ul {
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-} */
+/* phase4---------------------------- */
+#landtable {
+  max-height: 250px;
+}
+
+
 
 /* phase1-------------------- */
 
@@ -374,13 +512,7 @@ input:checked+.slider:before {
 .main-nav .phase5 {
   background-color: #E7E9FE;
 } */
-tr.checked {
-  background-color: #8C8C8C;
-  opacity: 0.5;
-}
 
-
-/* phase2-------------------- */
 .main-nav .phase1,
 .main-nav .phase3,
 .main-nav .phase4,
@@ -388,6 +520,8 @@ tr.checked {
   background-color: #E7E9FE;
 }
 
+
+/* phase2------------------------------ */
 .marker-list {
   display: flex;
   margin: 30px auto;
@@ -874,3 +1008,20 @@ span {
 .main-nav .phase4 {
   background-color: #E7E9FE;
 } */
+
+
+
+/* スマホ------------------------------------------- */
+@media (max-width: 1024px) {
+  .main-nav ul {
+    gap: 80px;
+  }
+}
+
+/* スマホサイズ向け */
+@media (max-width: 768px) {
+  .main-nav ul {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+}
