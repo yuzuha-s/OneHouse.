@@ -181,5 +181,5 @@
 
     </form>
 
-    @vite('resources/js/checked.js')
+   @vite('resources/js/makerlist.js')
 @endsection

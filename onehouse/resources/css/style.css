@@ -522,10 +522,25 @@ tr.checked {
 
 
 /* phase2------------------------------ */
+.land2_add button {
+  background-color: #576bf5;
+  opacity: 0.7;
+}
+
+.land2_add button:hover {
+  background-color: #576bf5;
+  opacity: 1;
+}
+
 .marker-list {
   display: flex;
-  margin: 30px auto;
+  margin: 70px auto;
   gap: 100px;
+  width: 90%;
+}
+
+.update {
+  font-size: 12px;
 }
 
 .cards {
@@ -546,32 +561,59 @@ tr.checked {
   width: 20%;
   background-color: #576bf5;
   opacity: 0.5;
-  border-radius: 10px;
+  border-radius: 0px 15px 15px 0px;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .card-right nav {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 410px;
+  margin-top: auto;
+
 }
 
 .card-right nav ul {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   text-align: center;
+  margin-bottom: 70px;
+
 }
 
 .marker-listnav {
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid #ddd;
 }
 
+.marker-listnav-contant {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+
 .marker-liststar {
+  padding-top: 10px;
+}
+.maker-delete,
+.maker-edit {
+  background-color: #576bf5;
+  box-shadow: none;
+  border: none;
+}
+
+
+.maker-delete svg,
+.maker-edit svg{
   padding: 10px;
-  margin: auto;
+}
+.maker-delete:hover,
+.maker-edit:hover {
+  fill: #ffff;
+  background-color: #576bf5;
+ transform: translateY(-5px) scale(1.1);
+
 }
 
 .choice {
@@ -587,12 +629,32 @@ tr.checked {
 .visible {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: clamp(12px, 2vw, 16px);
 }
 
 .visible-contain {
   flex: 1 1 calc(50% - 16px);
   box-sizing: border-box;
+}
+
+.visible-groupe p {
+  margin-bottom: 8px;
+
+}
+
+.textarea-input {
+  background-color: #E0E0E0;
+  border-radius: 13px;
+  padding: 8px 10px;
+  width: 85%;
+  margin: auto;
+
 }
 
 .add button {

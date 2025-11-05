@@ -185,7 +185,7 @@ function setupEventListeners() {
                 }
                 console.log(result);
             } catch (error) {
-                console.log("送信エラー", error);
+                console.log("送信エラー:handleRegister", error);
             }
         } else if (e.target.closest(".edit-list")) {
             handleEdit(e);
@@ -224,7 +224,7 @@ function setupEventListeners() {
                     input.disabled = true;
                 }
             } catch (error) {
-                console.log("送信エラー", error);
+                console.log("送信エラー:handleEdit", error);
             }
         } else if (e.target.closest(".delete-list")) {
             const tr = e.target.closest("tr");
@@ -244,7 +244,7 @@ function setupEventListeners() {
                 const result = await response.json();
                 console.log(result);
             } catch (error) {
-                console.log("送信エラー", error);
+                console.log("送信エラー:handleDelete", error);
             }
         } else if (e.target.matches("input[name='checked']")) {
             const target = e.target;
@@ -284,7 +284,7 @@ function setupEventListeners() {
                     }
                 }
             } catch (error) {
-                console.log("送信エラー", error);
+                console.log("送信エラー:checked", error);
             }
         }
     });
