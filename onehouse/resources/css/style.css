@@ -151,11 +151,7 @@ h3 {
   margin: 0;
 }
 
-.validate-wrapper {
-  display: block;
-  transform: translateY(-10px);
-  animation: fadeSlideIn 1s ease forwards;
-}
+
 
 @keyframes fadeSlideIn {
   0% {
@@ -184,6 +180,7 @@ h3 {
 .validate {
   display: flex;
   gap: 20px;
+  margin-top: 7px;
   background-color: #E7E9FE;
   padding: 3px 70px;
   border-radius: 40px;
@@ -198,9 +195,15 @@ h3 {
   font-size: 12px;
 }
 
-.error {
-  color: #ff0000;
+.validate-wrapper {
+  display: block;
+  transform: translateY(-10px);
+  animation: fadeSlideIn 1s ease forwards;
 }
+
+/* .error {
+  color: #ff0000;
+} */
 
 .input-error {
   border: 2px solid #f44336;
@@ -226,18 +229,6 @@ h3 {
   box-shadow: none;
 }
 
-
-/* tr {
-  display: block;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-td {
-  display: inline-block;
-  padding: 10px 16px;
-} */
-
 /* main contant ------------------------------------ */
 .contant {
   align-items: center;
@@ -256,17 +247,27 @@ td {
 /* ナビゲーションバー ------------------------------------ */
 .navigate {
   background-color: #fff;
-  padding: 1.5rem 1.5rem;
+  display: inline-block;
+  width: auto;
+  height: auto;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  margin: 60px auto;
-  height: 120px;
+  margin: 50px auto auto auto;
 }
 
 .navigate nav ul {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
+  margin: 0;
+  padding: 1.3rem;
+
+}
+
+.navigate li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-nav {
@@ -310,13 +311,12 @@ td {
 .main-nav .phase4:hover,
 .main-nav .phase5:hover {
   background-color: #FFA83F;
-
 }
 
 /* 各フェーズの目次 ------------------------------------ */
 .list {
   width: 95%;
-  height: 73vh;
+  height: 74vh;
   overflow-y: auto;
   text-align: center;
   align-items: center;
@@ -329,7 +329,7 @@ td {
 .list-header {
   display: flex;
   justify-content: space-between;
-  gap: 150px;
+  gap: 100px;
   border-bottom: 0.5px solid #ddd;
   width: 90%;
   margin: auto;
@@ -340,7 +340,6 @@ td {
 .list-header .list-nav {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
 .list-nav {
@@ -497,10 +496,7 @@ tr.checked {
   opacity: 0.5;
 }
 
-/* phase4---------------------------- */
-#landtable {
-  max-height: 250px;
-}
+
 
 
 
@@ -534,7 +530,7 @@ tr.checked {
 
 .marker-list {
   display: flex;
-  margin: 70px auto;
+  margin: 20px auto;
   gap: 100px;
   width: 90%;
 }
@@ -558,9 +554,8 @@ tr.checked {
 }
 
 .card-right {
-  width: 20%;
-  background-color: #576bf5;
-  opacity: 0.5;
+  width: 15%;
+  background: linear-gradient(to bottom, rgba(88, 107, 255, 0.7), rgba(88, 107, 255, 0.6));
   border-radius: 0px 15px 15px 0px;
   display: flex;
   flex-direction: column;
@@ -570,16 +565,16 @@ tr.checked {
 .card-right nav {
   display: flex;
   flex-direction: column;
-  margin-top: auto;
+  /* margin-top: auto; */
 
 }
 
 .card-right nav ul {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 25px;
   text-align: center;
-  margin-bottom: 70px;
+  margin-top: 30px;
 
 }
 
@@ -596,24 +591,32 @@ tr.checked {
 .marker-liststar {
   padding-top: 10px;
 }
+
 .maker-delete,
 .maker-edit {
-  background-color: #576bf5;
+  background-color: #E7E9FE;
+  border: solid 1px #8C8C8C;
+  border-radius: 50px;
   box-shadow: none;
-  border: none;
 }
 
 
 .maker-delete svg,
-.maker-edit svg{
-  padding: 10px;
+.maker-edit svg {
+  padding: 8px;
 }
+
 .maker-delete:hover,
 .maker-edit:hover {
   fill: #ffff;
   background-color: #576bf5;
- transform: translateY(-5px) scale(1.1);
+  transform: translateY(-1px) scale(1.1);
+  border: none;
+}
 
+.maker-delete:active,
+.maker-edit:active {
+  transform: translateY(2px);
 }
 
 .choice {
@@ -626,10 +629,14 @@ tr.checked {
   font-weight: bold;
 }
 
+.choice:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
 .visible {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 5px;
   width: 90%;
   margin: 0 auto;
   white-space: nowrap;
@@ -645,7 +652,6 @@ tr.checked {
 
 .visible-groupe p {
   margin-bottom: 8px;
-
 }
 
 .textarea-input {
@@ -654,7 +660,6 @@ tr.checked {
   padding: 8px 10px;
   width: 85%;
   margin: auto;
-
 }
 
 .add button {
@@ -695,43 +700,73 @@ tr.checked {
 }
 
 .star-rating {
-  font-size: 40px;
-  color: #ccc;
-  cursor: pointer;
-  display: inline-block;
+  margin-right: 30px;
 }
+
+.star-rating svg:hover {
+  transform: translateY(-2px) scale(1.06);
+}
+
+.star-rating svg:active {
+  transform: translateY(2px);
+}
+
 
 .star-rating .active {
   color: gold;
 }
 
+.star-check {
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
 
 .marker-form {
   display: flex;
-  gap: 50px;
+  gap: 15px;
   margin: 0 auto;
   color: #8C8C8C;
 }
 
-.maker-left,
-.maker-right {
-  flex: 1;
-  margin: 20px;
+.maker-left {
+  width: 40%;
   padding: 20px 20px 50px 20px;
   margin: 0 auto;
 }
 
-.form-contant {
+.maker-right {
+  width: 60%;
+  padding: 20px 20px 50px 20px;
+  margin: 0 auto;
+}
+
+.loanform-contant {
   display: flex;
+  width: 90%;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
   margin-top: 30px;
+}
+
+.makerform-contant {
+  display: flex;
+  width: 98%;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .form-button {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -740,8 +775,27 @@ tr.checked {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.checkbox-btn {
+  display: inline-block;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 0 #ccc;
+  padding: 5px 10px;
 
 }
+
+.checkbox-btn:hover {
+  transform: translateY(-2px) scale(1.06);
+  background-color: #61C6DF;
+  color: #FFF;
+}
+
+.checkbox-btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 2px 0 #aaa;
+}
+
 
 /* .tag-btn {
   padding: 9px 29px;
@@ -773,25 +827,35 @@ tr.checked {
   text-align: center;
 }
 
-.form-contant input,
-.form-contant textarea {
+.loanform-contant input,
+.loanform-contant textarea,
+.makerform-contant input,
+.makerform-contant textarea {
   padding: 15px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   border: none;
-  width: 70%;
+  width: 100%;
+  align-items: center;
   margin: 0 auto;
 }
 
-.form-contant input:focus,
-.form-contant textarea:focus {
+.loanform-contant input:focus,
+.loanform-contant textarea:focus,
+.makerform-contant input:focus,
+.makerform-contant textarea:focus {
   outline: none;
   border: 1px solid #E7E9FE;
   box-shadow: 0 0 5px rgba(87, 107, 245, 0.5);
 }
 
-.form-contant textarea {
-  height: 200px;
+.loanform-contant textarea,
+.makerform-contant textarea {
+  height: 120px;
+}
+
+.makerform-contant input {
+  width: 70%;
 }
 
 .form-button input,
@@ -800,16 +864,25 @@ tr.checked {
 }
 
 .form-button label {
-  padding: 9px 29px;
+  padding: 9px 40px;
   border: none;
   border-radius: 20px;
   background-color: #D9F5FD;
   color: #61C6DF;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 8px;
+  border: 1px solid rgba(176, 196, 255, 0.3);
+}
+
+.loanform-contant label {
+  font-size: 18px;
+}
+
+.loanform-contant input {
+  width: 700px
 }
 
 .checkbox-btn:hover {
@@ -822,45 +895,43 @@ tr.checked {
 .checkbox-btn.active {
   background-color: #61C6DF;
   color: #fff;
-
 }
 
 /* phase3------------------- */
+
 .loan-form {
   display: flex;
   color: #8C8C8C;
 }
 
-.loan-card,
-.land-card {
-  background-color: rgba(231, 233, 254, 0.3);
-  border-radius: 20px;
-  padding: 30px 50px;
-}
-
 .loan-left {
-  width: 60%;
+  width: 50%;
 }
 
 .loan-right {
-  width: 40%;
+  width: 50%;
+}
 
+.loan-card {
+  background-color: rgba(231, 233, 254, 0.3);
+  border-radius: 20px;
+  padding: 10px 10px;
+  width: 90%;
 }
 
 .left-fix {
   display: flex;
-  gap: 30px;
   margin: auto;
-  margin-bottom: 30px;
   justify-content: center;
+  width: 90%;
 }
 
-.form-contant input {
+.loanform-contant input {
   width: 40%;
 }
 
 .form-valiable {
-  width: 30%;
+  width: 6ch;
   padding: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -868,25 +939,38 @@ tr.checked {
   margin-bottom: 20px;
 }
 
-.loan-form {
-  padding: 30px 0;
-}
-
 .form-row {
-  display: flex;
   align-items: center;
 }
 
 .form-row input {
-  font-size: 20px;
+  font-size: 24px;
+  border-radius: 50px;
+  width: 7.3ch;
+  margin: 0;
+
 }
 
 .form-valiable {
   font-weight: bold;
+  font-size: 25px;
+  border-radius: 50px;
+  padding: 15px;
+  background-color: #fff;
+  /* margin: auto; */
 }
 
-.form-row input {
-  margin: 0;
+.valiableform-row {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.valiableform-row span {
+  font-size: 30px;
+  line-height: 1.8;
+  color: #000000;
+
 }
 
 span {
@@ -902,21 +986,25 @@ span {
 
 .calculate {
   display: flex;
+  gap: 20px;
   justify-content: center;
-  align-items: center;
+  align-items: end;
+  margin-top: 30px;
 }
+
 
 .calculate button {
   background-color: rgba(87, 107, 245, 0.74);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
   border-radius: 40px;
-  padding: 10px 25px;
+  padding: 20px 85px;
   border: none;
   color: #fff;
   font-size: 18px;
   letter-spacing: 3px;
   font-weight: bold;
 }
+
 
 .landinput {
   text-align: right;
@@ -934,6 +1022,29 @@ span {
   cursor: pointer;
 }
 
+.loan-register button {
+  background-color: rgba(87, 107, 245, 0.54);
+  border-radius: 40px;
+  padding: 20px 80px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.loan-register button:hover {
+  background-color: rgba(87, 107, 245, 0.94);
+}
+
+.chart-wrapper {
+  /* display: flex; */
+  justify-content: center;
+  margin-left: 80px;
+}
+
+
 
 /* phase4------------------- */
 .land-form {
@@ -950,6 +1061,12 @@ span {
   margin: auto;
 }
 
+.land-card {
+  background-color: rgba(231, 233, 254, 0.3);
+  border-radius: 20px;
+  padding: 30px 50px;
+}
+
 .land-right {
   width: 55%;
   margin: auto;
@@ -962,6 +1079,7 @@ span {
 
 .land-left-fix {
   display: flex;
+
   gap: 10px;
   margin: 0 auto;
   justify-content: center;
@@ -1011,6 +1129,10 @@ span {
   width: 5%;
 }
 
+/* phase4のテーブル */
+#landtable {
+  max-height: 250px;
+}
 
 
 #volume {
@@ -1086,4 +1208,15 @@ span {
     gap: 40px;
     flex-wrap: wrap;
   }
+}
+
+.my-carousel-progress {
+  background: #ccc;
+}
+
+.my-carousel-progress-bar {
+  background: greenyellow;
+  height: 2px;
+  transition: width 400ms ease;
+  width: 0;
 }
