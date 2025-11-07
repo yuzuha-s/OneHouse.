@@ -201,9 +201,9 @@ h3 {
   animation: fadeSlideIn 1s ease forwards;
 }
 
-/* .error {
+.error {
   color: #ff0000;
-} */
+}
 
 .input-error {
   border: 2px solid #f44336;
@@ -351,14 +351,16 @@ h3 {
 .table-wrapper {
   width: 100%;
   display: flex;
-  margin: auto;
+  margin:  0 auto;
   max-height: 700px;
   border-radius: 20px;
   overflow-y: auto;
+
 }
 
 .table-contant {
   width: 100%;
+
 }
 
 .list table {
@@ -633,6 +635,7 @@ tr.checked {
   transform: none !important;
   box-shadow: none !important;
 }
+
 .visible {
   display: flex;
   flex-wrap: wrap;
@@ -830,7 +833,9 @@ tr.checked {
 .loanform-contant input,
 .loanform-contant textarea,
 .makerform-contant input,
-.makerform-contant textarea {
+.makerform-contant textarea,
+.landform-contant input,
+.landform-contant textarea {
   padding: 15px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -930,14 +935,7 @@ tr.checked {
   width: 40%;
 }
 
-.form-valiable {
-  width: 6ch;
-  padding: 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 20px;
-}
+
 
 .form-row {
   align-items: center;
@@ -951,14 +949,7 @@ tr.checked {
 
 }
 
-.form-valiable {
-  font-weight: bold;
-  font-size: 25px;
-  border-radius: 50px;
-  padding: 15px;
-  background-color: #fff;
-  /* margin: auto; */
-}
+
 
 .valiableform-row {
   display: flex;
@@ -1006,14 +997,7 @@ span {
 }
 
 
-.landinput {
-  text-align: right;
-}
 
-.landinput::placeholder {
-  color: #8C8C8C;
-  opacity: 0.6;
-}
 
 
 .calculate button:hover {
@@ -1039,7 +1023,6 @@ span {
 }
 
 .chart-wrapper {
-  /* display: flex; */
   justify-content: center;
   margin-left: 80px;
 }
@@ -1047,6 +1030,7 @@ span {
 
 
 /* phase4------------------- */
+
 .land-form {
   color: #8C8C8C;
   display: flex;
@@ -1058,13 +1042,14 @@ span {
 
 .land-left {
   width: 45%;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .land-card {
+  width: 80%;
   background-color: rgba(231, 233, 254, 0.3);
   border-radius: 20px;
-  padding: 30px 50px;
+  padding: 20px 30px;
 }
 
 .land-right {
@@ -1079,20 +1064,99 @@ span {
 
 .land-left-fix {
   display: flex;
-
   gap: 10px;
   margin: 0 auto;
   justify-content: center;
   margin-bottom: 15px;
 }
 
+.land-calculate button {
+  background-color: rgba(87, 107, 245, 0.74);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  padding: 20px 50px;
+  width: 100%;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.landform-contant {
+  margin-top: 13px;
+}
+
+.landform-contant input {
+  border-radius: 50px;
+  width: 50%;
+}
+
 .land-form-row {
   display: flex;
   align-items: center;
+  margin-top: 15px;
 }
 
-.land-right-valiable .form-row {
-  justify-content: end;
+.range {
+  /* -webkit-appearance: none; */
+  width: 380px;
+  height: 10px;
+  background: #576bf5;
+  border-radius: 50px;
+  outline: none;
+}
+
+
+
+.form-valiable {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  border: none;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 15px 50px;
+  background-color: #fff;
+}
+
+
+.long-p {
+  display: inline-block;
+  max-width: 60px;
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 13px;
+  margin: 5px;
+}
+
+
+input.landinput {
+  text-align: right;
+  margin: 0;
+
+}
+
+.landinput::placeholder {
+  color: #8C8C8C;
+  opacity: 0.6;
+}
+
+.land-right-valiable {
+  display: flex;
+}
+.land-list {
+  /* border: #000000 1px solid; */
+   width: 95%;
+  overflow-y: auto;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+.land-list table thead {
+  height: 50px;
 }
 
 .land-list th,
@@ -1106,7 +1170,7 @@ span {
 }
 
 .land-list th:nth-child(2) {
-  width: 40%;
+  width: 25%;
 }
 
 .land-list th:nth-child(3) {
@@ -1114,11 +1178,11 @@ span {
 }
 
 .land-list th:nth-child(4) {
-  width: 15%;
+  width: 20%;
 }
 
 .land-list th:nth-child(5) {
-  width: 15%;
+  width: 25%;
 }
 
 .land-list th:nth-child(6) {
@@ -1130,8 +1194,14 @@ span {
 }
 
 /* phase4のテーブル */
-#landtable {
-  max-height: 250px;
+
+.landtable-contant {
+  width: 90%;
+  margin: auto;
+}
+
+.land-table thead tr {
+  height: 30px;
 }
 
 
@@ -1141,7 +1211,11 @@ span {
 
 .card-inner {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+.card-inner-center {
+   display: flex;
+  justify-content: center;
 }
 
 .card-inner label {
