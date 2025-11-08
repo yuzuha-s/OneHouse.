@@ -34,6 +34,8 @@
                         @endif
                     </div>
                 </div>
+
+                 <div class="list-nav">nanana</div>
             </div>
 
             <form action="{{ route('phase4.store') }}" method="POST">

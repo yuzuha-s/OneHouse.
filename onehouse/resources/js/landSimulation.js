@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ).toLocaleString();
         builableTuboValue.textContent = tubo;
     });
-
+    // 計算する
     function calculate() {
         error.forEach((el) => {
             el.style.display = "none";
@@ -94,43 +94,48 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
     }
     // 登録データを編集や再表示する
-    function update() {
-        const updateBtn = document.querySelectorAll(".edit-row");
-        updateBtn.forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                e.preventDefault();
+    document.querySelector("tbody").addEventListener("click", (e) => {
+        if (e.target.closest(".edit-row")) {
+            e.preventDefault();
+            const btn = e.target.closest(".edit-row");
+            const tr = btn.closest("tr");
+            tr.style.backgroundColor = "rgba(97, 198, 223, 0.3)";
 
-                const tr = btn.closest("tr");
-                tr.style.backgroundColor = "rgba(97, 198, 223, 0.3)";
+            document.querySelector('textarea[name="address"]').value =
+                tr.dataset.address;
+            document.querySelector('input[name="landarea"]').value =
+                tr.dataset.landarea;
+            document.querySelector('input[name="floor"]').value =
+                tr.dataset.floor;
+            document.querySelector('input[name="far"]').value = tr.dataset.far;
+            document.querySelector('input[name="bcr"]').value = tr.dataset.bcr;
+            document.querySelector('input[name="pricePerTsubo"]').value =
+                tr.dataset.price;
+            document.querySelector("input[name=id]").value = tr.dataset.id;
 
-                document.querySelector('textarea[name="address"]').value =
-                    tr.dataset.address;
-                document.querySelector('input[name="landarea"]').value =
-                    tr.dataset.landarea;
-                document.querySelector('input[name="floor"]').value =
-                    tr.dataset.floor;
-                document.querySelector('input[name="far"]').value =
-                    tr.dataset.far;
-                document.querySelector('input[name="bcr"]').value =
-                    tr.dataset.bcr;
-                document.querySelector('input[name="pricePerTsubo"]').value =
-                    tr.dataset.price;
-                document.querySelector("input[name=id]").value = tr.dataset.id;
-
-                validate.innerHTML = ` <div class = "validate"> <svg
+            validate.innerHTML = ` <div class = "validate"> <svg
                                                     xmlns="http://www.w3.org/2000/svg" height="40px"
                                                     viewBox="0 -960 960 960" width="40px" fill="#576bf5">
                                                     <path
                                                         d="M284-286h68l250-249.33-68-69.34-250 250V-286Zm339.33-270.67 40-40.66q6.67-6.67 7-15 .34-8.34-7-15.67l-38-37.33q-7.33-7.34-15.33-7-8 .33-14.67 7l-40 39.33 68 69.33ZM186.67-120q-27.5 0-47.09-19.58Q120-159.17 120-186.67v-586.66q0-27.5 19.58-47.09Q159.17-840 186.67-840h192.66q7.67-35.33 35.84-57.67Q443.33-920 480-920t64.83 22.33Q573-875.33 580.67-840h192.66q27.5 0 47.09 19.58Q840-800.83 840-773.33v586.66q0 27.5-19.58 47.09Q800.83-120 773.33-120H186.67Zm0-66.67h586.66v-586.66H186.67v586.66Zm293.33-608q13.67 0 23.5-9.83t9.83-23.5q0-13.67-9.83-23.5t-23.5-9.83q-13.67 0-23.5 9.83t-9.83 23.5q0 13.67 9.83 23.5t23.5 9.83Zm-293.33 608v-586.66 586.66Z" />
                                                 </svg><p>編集を開始します</p></div>`;
-                validate.style.display = "block";
-            });
-        });
-    }
+            validate.style.display = "block";
+            setTimeout(() => {
+                validate.style.display = "none";
+            }, 3000);
+        }
+    });
 
     calculateBtn.addEventListener("click", (e) => {
         calculate();
     });
-
-    update();
 });
+
+// バリデーションメッセージ
+//建築可能面積を計算する
+// 編集や再表示をする
+
+//  function init() {
+//     setupInitialState();
+//     setupEventListeners();
+// }
