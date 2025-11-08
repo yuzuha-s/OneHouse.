@@ -25,53 +25,58 @@
           {{ errors.rate[0] }}
         </p>
 
-        <div v-if="showValidate" class="validate">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="40px"
-            viewBox="0 -960 960 960"
-            width="40px"
-            fill="#576bf5"
-          >
-            <path
-              d="M422-297.33 704.67-580l-49.34-48.67L422-395.33l-118-118-48.67 48.66L422-297.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z"
-            />
-          </svg>
-          <p>{{ saveMessage }}</p>
-          <p>{{ calculationMessage }}</p>
+        <div v-if="showValidate" class="validate-wrapper">
+          <div class="validate">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="40px"
+              viewBox="0 -960 960 960"
+              width="40px"
+              fill="#576bf5"
+            >
+              <path
+                d="M422-297.33 704.67-580l-49.34-48.67L422-395.33l-118-118-48.67 48.66L422-297.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z"
+              />
+            </svg>
+            <p>{{ saveMessage }}</p>
+            <p>{{ calculationMessage }}</p>
+          </div>
         </div>
       </div>
+
+      <div class="list-nav"></div>
     </div>
 
     <div class="loan-form wrapper">
       <div class="loan-left">
+      
         <div class="left-fix">
-          <div class="form-contant">
+          <div class="loanform-contant">
             <label for="">借入金額(万円)</label>
             <div class="form-row">
               <input
                 v-model.number="loan"
                 type="number"
-                :style="{ width: '6ch', textAlign: 'right' }"
+                :style="{ textAlign: 'right' }"
               />
               <span>万円</span>
             </div>
           </div>
 
-          <div class="form-contant">
+          <div class="loanform-contant">
             <label for="">年利(固定金利)</label>
             <div class="form-row">
               <input
                 type="number"
                 v-model.number="rate"
                 step="0.1"
-                :style="{ width: '6ch', textAlign: 'right' }"
+                :style="{ textAlign: 'right' }"
               />
               <span>%</span>
             </div>
           </div>
 
-          <div class="form-contant">
+          <div class="loanform-contant">
             <label for="">返済期間(年)</label>
             <div class="form-row">
               <input
@@ -79,7 +84,7 @@
                 type="number"
                 min="10"
                 max="40"
-                :style="{ width: '6ch', textAlign: 'right' }"
+                :style="{ textAlign: 'right' }"
               />
               <span>年</span>
             </div>
@@ -87,37 +92,37 @@
         </div>
 
         <div class="left-fix">
-          <div class="form-contant">
+          <div class="loanform-contant">
             <label for="">年齢(歳)</label>
             <div class="form-row">
               <input
                 v-model.number="age"
                 type="number"
-                :style="{ width: '6ch', textAlign: 'right' }"
+                :style="{ textAlign: 'right' }"
               />
               <span>歳</span>
             </div>
           </div>
 
-          <div class="form-contant">
+          <div class="loanform-contant">
             <label for="">毎月の支出(万円)</label>
             <div class="form-row">
               <input
                 v-model.number="expense"
                 type="number"
-                :style="{ width: '6ch', textAlign: 'right' }"
+                :style="{ textAlign: 'right' }"
               />
               <span>万円/月</span>
             </div>
           </div>
 
-          <div class="form-contant">
+          <div class="loanform-contant">
             <label for="">現在の収入(万円/年間)</label>
             <div class="form-row">
               <input
                 v-model.number="income"
                 type="number"
-                :style="{ width: '6ch', textAlign: 'right' }"
+                :style="{ textAlign: 'right' }"
               />
               <span>万円/年</span>
             </div>
@@ -125,29 +130,30 @@
         </div>
         <div class="calculate">
           <button @click="calculateLoan">計算する</button>
+            <div class="maker-update">最終更新日：</div>
         </div>
       </div>
 
       <div class="loan-right">
         <div class="loan-card">
-          <div class="form-row">
+          <div class="valiableform-row">
             <div class="form-valiable">{{ payoffAge }}</div>
             <span>歳で完済が完了します。</span>
           </div>
-          <div class="form-row">
+          <div class="valiableform-row">
             <span>月々の返済額は</span>
             <div class="form-valiable">{{ monthlyPayment }}</div>
             <span>万円です。</span>
           </div>
 
-          <div class="register">
+          <div class="loan-register">
             <button @click="saveLoanSimulate">保存する</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="chart-wrapper">
+    <div class="chart-wrapper wrapper">
       <apexchart
         type="line"
         :options="chartOptions"

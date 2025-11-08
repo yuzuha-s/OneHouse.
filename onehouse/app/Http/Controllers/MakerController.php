@@ -11,7 +11,7 @@ class MakerController extends Controller
 {
     public function index(Request $request)
     {
-        $makers = Maker::with('features.category')->simplePaginate(3);
+        $makers = Maker::with('features.category')->simplePaginate(2);
         return view('phase2', compact('makers'));
     }
     // 新規作成する
@@ -39,8 +39,6 @@ class MakerController extends Controller
         // starの最大値のみを取得
         $maxStar = max($validated['star']);
 
-        // $validated['profile_id'] = $profile->id ?? 1;
-
         $maker = Maker::create([
             'profile_id' => 1,
             'name' => $validated['name'],
@@ -53,7 +51,7 @@ class MakerController extends Controller
             $maker->features()->sync($request->features ?? []);
         }
 
-        return redirect()->route('phase2')->with('success', '登録が完了しました');
+        return redirect()->route('phase2')->with('success',  $validated['name'].'の登録が完了しました');
     }
 
     public function show(string $id)
@@ -98,7 +96,7 @@ class MakerController extends Controller
         if (!empty($validated['features'])) {
             $maker->features()->sync($request->features ?? []);
         }
-        return redirect()->route('phase2')->with('success', '登録を変更しました');
+        return redirect()->route('phase2')->with('success', $validated['name'].'を変更しました');
     }
 
     // メーカー情報を削除する

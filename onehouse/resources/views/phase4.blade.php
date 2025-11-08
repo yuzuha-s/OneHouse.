@@ -23,14 +23,19 @@
                 <div class="list-nav">
                     <div class="validate-wrapper">
                         @if (session('success'))
-                            <div class="validate"><svg xmlns="http://www.w3.org/2000/svg" height="40px"
-                                    viewBox="0 -960 960 960" width="40px" fill="#576bf5">
+                            <div class="validate">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
+                                    width="40px" fill="#576bf5">
                                     <path
                                         d="M422-297.33 704.67-580l-49.34-48.67L422-395.33l-118-118-48.67 48.66L422-297.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z" />
-                                </svg>{{ session('success') }}</div>
+                                </svg>
+                                <p>{{ session('success') }}</p>
+                            </div>
                         @endif
                     </div>
                 </div>
+
+                 <div class="list-nav">nanana</div>
             </div>
 
             <form action="{{ route('phase4.store') }}" method="POST">
@@ -41,9 +46,12 @@
                     <div class="land-left">
                         <div class="land-land-left-fix">
 
-                            <div class="form-contant">
+                            <div class="landform-contant">
                                 <label for="">住所</label>
-                                <textarea name="address" placeholder="郵便番号 住所">{{ old('address') }}</textarea>
+                                <div class="land-form-row">
+                                    <textarea name="address" placeholder="〒">{{ old('address') }}</textarea>
+                                </div>
+
                                 @error('address')
                                     <div class="error">登録には{{ $message }}</div>
                                 @enderror
@@ -51,7 +59,7 @@
                         </div>
 
                         <div class="land-left-fix">
-                            <div class="form-contant">
+                            <div class="landform-contant">
                                 <label for="">土地面積(㎡)</label>
                                 <div class="land-form-row"><input type="number" class="landinput" placeholder="90"
                                         step="0.1" name="landarea" value="{{ old('landarea') }}"><span>㎡</span>
@@ -61,7 +69,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-contant">
+                            <div class="landform-contant">
                                 <label for="">階数(1～3階)</label>
                                 <div class="land-form-row"><input type="number" class="landinput" placeholder="2"
                                         name="floor" value="{{ old('floor') }}"><span>階</span>
@@ -73,7 +81,7 @@
                         </div>
 
                         <div class="land-left-fix">
-                            <div class="form-contant">
+                            <div class="landform-contant">
                                 <label for="">容積率(%)</label>
                                 <div class="land-form-row"><input type="number" class="landinput" placeholder="200"
                                         name="far" value="{{ old('far') }}"><span>%</span></div>
@@ -81,7 +89,7 @@
                                     <div class="error">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-contant">
+                            <div class="landform-contant">
                                 <label for="">建ぺい率(%)</label>
                                 <div class="land-form-row"> <input type="number" class="landinput" placeholder="80"
                                         name="bcr" value="{{ old('bcr') }}"><span>%</span></div>
@@ -92,7 +100,7 @@
                         </div>
 
                         <div class="land-left-fix">
-                            <div class="form-contant">
+                            <div class="landform-contant">
                                 <label for="">坪単価(万円)</label>
                                 <div class="land-form-row"> <input type="number" class="landinput" placeholder="80"
                                         name="pricePerTsubo" value="{{ old('pricePerTsubo') }}"><span>万円/坪</span></div>
@@ -103,7 +111,7 @@
 
                             <div class="form-contact">
                                 <div class="land-form-row">
-                                    <div class="calculate"><button type="button"
+                                    <div class="land-calculate"><button type="button"
                                             id="calculate-btn">計算する</button><span></span></div>
                                 </div>
                             </div>
@@ -116,40 +124,43 @@
                     <div class="land-right">
                         <div class="land-card">
                             <div class="card-inner wrapper">
-                                <label>建築可能面積</label>
+                                <h3>建築可能面積</h3>
                                 <div class="land-right-valiable">
-                                    <div class="form-row">
-                                        <span>1階あたりの最大床面積</span>
-                                        <div class="form-valiable maxfloor_area">{{ $maxFloorArea ?? 0 }}</div>
-                                        <span>㎡</span>
-                                        <span>合計</span>
+                                    <div class="land-form-row"><span class="long-p">合計</span>
                                         <input type="hidden" name="builable_area" id="builable_area_hidden"
                                             value="{{ $builable_area ?? 0 }}">
                                         <div class="form-valiable builable_area">{{ $builable_area ?? 0 }}</div>
                                         <span>㎡</span>
-
                                     </div>
-                                    @error('builable_area')
-                                        <div class="error">{{ $message }}</div>
-                                    @enderror
+                                    <div class="land-form-row">
+                                        <span class="long-p">1階あたりの最大床面積</span>
+                                        <div class="form-valiable maxfloor_area">{{ $maxFloorArea ?? 0 }}</div>
+                                        <span>㎡</span>
+                                    </div>
                                 </div>
                             </div>
 
-
-                            <div class="wrapper">
-                                <input type="range" id="range" name="builable_area_Tubo" min="0">
-                                <span class="form-valiable builable_area_Tubo"
-                                    id="value">{{ $builable_area_Tubo ?? 0 }}
-                                </span>
-                                <span>坪</span>
+                            <div class="landform-contant">
+                                @error('builable_area')
+                                    <div class="error">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="card-inner-center wrapper">
+                                <input type="range" id="range" name="builable_area_Tubo" min="0"
+                                    class="range">
+                                <div class="land-form-row"><span class="form-valiable builable_area_Tubo"
+                                        id="value">{{ $builable_area_Tubo ?? 0 }}
+                                    </span>
+                                    <span>坪</span>
+                                </div>
 
                             </div>
 
 
                             <div class="card-inner wrapper">
-                                <label>建築費用</label>
+                                <h3>建築費用</h3>
                                 <div class="land-right-valiable">
-                                    <div class="form-row">
+                                    <div class="land-form-row">
                                         <div class="form-valiable building_cost">{{ $building_cost ?? 0 }}</div>
                                         <span>万円</span>
                                     </div>
@@ -164,20 +175,18 @@
             </form>
 
             <div class="land-list">
-
-
                 <div class="table-wrapper" id="landtable">
-                    <div class="table-contant">
-                        <table>
+                    <div class="landtable-contant">
+                        <table class="land-table">
                             <thead>
                                 <tr>
                                     {{-- <th></th> --}}
                                     <th>訪問日</th>
                                     <th>住所</th>
-                                    <th>土地面積(㎡)</th>
-                                    <th>建物最大面積(㎡)/(坪)</th>
+                                    <th>土地面積</th>
+                                    <th>建物最大面積</th>
 
-                                    <th>容積率/建ぺい率(％)</th>
+                                    <th>容積率/建ぺい率</th>
                                     <th></th>
                                 </tr>
 
