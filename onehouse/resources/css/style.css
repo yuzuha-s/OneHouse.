@@ -209,6 +209,9 @@ h3 {
   border: 2px solid #f44336;
   box-shadow: 0 0 5px rgba(244, 67, 54, 0.6);
 }
+.error-space {
+  height: 20px;
+}
 
 .toggle {
   display: inline-flex;
@@ -1067,7 +1070,7 @@ span {
   gap: 10px;
   margin: 0 auto;
   justify-content: center;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 
 .land-calculate button {

@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                 <div class="list-nav">nanana</div>
+                <div class="list-nav">nanana</div>
             </div>
 
             <form action="{{ route('phase4.store') }}" method="POST">
@@ -51,10 +51,11 @@
                                 <div class="land-form-row">
                                     <textarea name="address" placeholder="〒">{{ old('address') }}</textarea>
                                 </div>
+                                <div class="error-space"> @error('address')
+                                        <div class="error">登録には{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-                                @error('address')
-                                    <div class="error">登録には{{ $message }}</div>
-                                @enderror
                             </div>
                         </div>
 
@@ -64,9 +65,11 @@
                                 <div class="land-form-row"><input type="number" class="landinput" placeholder="90"
                                         step="0.1" name="landarea" value="{{ old('landarea') }}"><span>㎡</span>
                                 </div>
-                                @error('landarea')
-                                    <div class="error">{{ $message }}</div>
-                                @enderror
+                                <div class="error-space"> @error('landarea')
+                                        <div class="error">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                             </div>
 
                             <div class="landform-contant">
@@ -74,9 +77,11 @@
                                 <div class="land-form-row"><input type="number" class="landinput" placeholder="2"
                                         name="floor" value="{{ old('floor') }}"><span>階</span>
                                 </div>
-                                @error('floor')
-                                    <div class="error">{{ $message }}</div>
-                                @enderror
+                                <div class="error-space"> @error('floor')
+                                        <div class="error">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                             </div>
                         </div>
 
@@ -85,17 +90,20 @@
                                 <label for="">容積率(%)</label>
                                 <div class="land-form-row"><input type="number" class="landinput" placeholder="200"
                                         name="far" value="{{ old('far') }}"><span>%</span></div>
-                                @error('far')
-                                    <div class="error">{{ $message }}</div>
-                                @enderror
+                                <div class="error-space"> @error('far')
+                                        <div class="error">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                             </div>
                             <div class="landform-contant">
                                 <label for="">建ぺい率(%)</label>
                                 <div class="land-form-row"> <input type="number" class="landinput" placeholder="80"
                                         name="bcr" value="{{ old('bcr') }}"><span>%</span></div>
-                                @error('bcr')
-                                    <div class="error">{{ $message }}</div>
-                                @enderror
+                                <div class="error-space"> @error('bcr')
+                                        <div class="error">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -104,9 +112,11 @@
                                 <label for="">坪単価(万円)</label>
                                 <div class="land-form-row"> <input type="number" class="landinput" placeholder="80"
                                         name="pricePerTsubo" value="{{ old('pricePerTsubo') }}"><span>万円/坪</span></div>
-                                @error('pricePerTsubo')
-                                    <div class="error">{{ $message }}</div>
-                                @enderror
+                                <div class="error-space"> @error('pricePerTsubo')
+                                        <div class="error">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                             </div>
 
                             <div class="form-contact">
@@ -141,9 +151,11 @@
                             </div>
 
                             <div class="landform-contant">
-                                @error('builable_area')
-                                    <div class="error">{{ $message }}</div>
-                                @enderror
+                                <div class="error-space"> @error('builable_area')
+                                        <div class="error">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                             </div>
                             <div class="card-inner-center wrapper">
                                 <input type="range" id="range" name="builable_area_Tubo" min="0"
