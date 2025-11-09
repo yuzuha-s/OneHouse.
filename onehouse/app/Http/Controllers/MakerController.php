@@ -51,7 +51,7 @@ class MakerController extends Controller
             $maker->features()->sync($request->features ?? []);
         }
 
-        return redirect()->route('phase2')->with('success',  $validated['name'].'の登録が完了しました');
+        return redirect()->route('phase2')->with('success', $validated['name'] . 'の登録が完了しました');
     }
 
     public function show(string $id)
@@ -96,7 +96,7 @@ class MakerController extends Controller
         if (!empty($validated['features'])) {
             $maker->features()->sync($request->features ?? []);
         }
-        return redirect()->route('phase2')->with('success', $validated['name'].'を変更しました');
+        return redirect()->route('phase2')->with('success', $validated['name'] . 'を変更しました');
     }
 
     // メーカー情報を削除する

@@ -3,10 +3,10 @@ import './bootstrap';
 import { createApp } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 
-import Chart from "./Chart.vue";
+import LoanChart from "./LoanChart.vue";
 // import Calendar from "./Calendar.vue";
 
-const chartApp = createApp(Chart);
+const chartApp = createApp(LoanChart);
 chartApp.use(VueApexCharts);
 chartApp.mount("#chart-app");
 

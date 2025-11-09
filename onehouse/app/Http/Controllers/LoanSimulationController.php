@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class LoanSimulationController extends Controller
 {
-
     public function index()
     {
         $loanSimulations = LoanSimulation::with('profile')->get();

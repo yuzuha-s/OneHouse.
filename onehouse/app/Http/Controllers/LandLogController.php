@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Log;
 
 class LandLogController extends Controller
 {
-
     public function index()
     {
         $landLogs = LandLog::with('profile')->get();
@@ -23,7 +22,9 @@ class LandLogController extends Controller
     }
 
 
-    public function create(Request $request) {}
+    public function create(Request $request)
+    {
+    }
 
     // 保存する
     public function store(Request $request)
@@ -72,7 +73,9 @@ class LandLogController extends Controller
     }
 
 
-    public function edit(string $id) {}
+    public function edit(string $id)
+    {
+    }
 
 
     public function update(LandLogRequest $request, string $id)

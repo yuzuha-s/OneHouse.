@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class CheckListController extends Controller
 {
     public function indexPhase1()
-
     {
         $checkLists = Checklist::with('profile')->get();
         return view('phase1', compact('checkLists'));
@@ -20,7 +19,9 @@ class CheckListController extends Controller
     }
 
 
-    public function create() {}
+    public function create()
+    {
+    }
 
     //リストを登録する
     public function store(Request $request)
@@ -49,9 +50,13 @@ class CheckListController extends Controller
     }
 
 
-    public function show(string $id) {}
+    public function show(string $id)
+    {
+    }
 
-    public function edit(string $id) {}
+    public function edit(string $id)
+    {
+    }
 
     // チェックリストを更新する
     public function update(Request $request, string $id)

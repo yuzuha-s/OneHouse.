@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Maker extends Model
 {
     use HasFactory;
+
     protected $table = 'makers';
     protected $fillable = [
         'profile_id',
@@ -29,7 +30,8 @@ class Maker extends Model
             ->withTimestamps();
     }
     // イベントフック
-    public static function booted() {
+    public static function booted()
+    {
         static::deleted(function ($maker) {
             $maker->features()->detach();
         });

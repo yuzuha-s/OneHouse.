@@ -414,12 +414,5 @@ function showMessage(type, tr) {
     }
 }
 
-// 入力値0のバリデーションチェック
-function validateInput(input, tr) {
-    const value = input.value.trim();
-    if (value === "") {
-        showMessage("error", tr);
-    }
-}
 
 document.addEventListener("DOMContentLoaded", init);

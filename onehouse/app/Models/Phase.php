@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Phase extends Model
 {
     use HasFactory;
+
     protected $table = 'phases';
     protected $fillable = [
         'number',
@@ -17,5 +18,4 @@ class Phase extends Model
     {
         return $this->hasMany(Checklist::class, 'phase_id');
     }
-
 }
