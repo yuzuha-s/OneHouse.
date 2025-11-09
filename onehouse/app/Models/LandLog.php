@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LandLog extends Model
 {
     use HasFactory;
+
     protected $table = 'landlogs';
     protected $fillable = [
         'profile_id',
@@ -25,6 +26,4 @@ class LandLog extends Model
     {
         return $this->belongsTo(Profile::class);
     }
-
 }
-

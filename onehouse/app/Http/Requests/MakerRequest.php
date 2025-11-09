@@ -20,9 +20,8 @@ class MakerRequest extends FormRequest
         'star' => ['required', 'array'],
         'star.*' => ['integer', 'min:1', 'max:5'],
         'features' => ['nullable', 'array'],
-        'features.*' =>['integer','exists:features,id'],
+        'features.*' => ['integer','exists:features,id'],
         ];
-
     }
 
     public function messages(): array
@@ -33,7 +32,4 @@ class MakerRequest extends FormRequest
             'features.*.exists' => '選択された特徴が存在しません。',
         ];
     }
-
-
 }
-

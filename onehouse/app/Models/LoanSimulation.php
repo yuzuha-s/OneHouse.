@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LoanSimulation extends Model
 {
     use HasFactory;
+
     protected $table = 'loan_simulations';
     protected $fillable = [
         'profile_id',

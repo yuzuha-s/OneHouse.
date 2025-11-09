@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class LandLogRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -25,6 +24,4 @@ class LandLogRequest extends FormRequest
             'pricePerTsubo'  => ['required, integer, min:0'],
         ];
     }
-
-
 }

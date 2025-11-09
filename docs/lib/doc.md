@@ -66,11 +66,6 @@ export default defineConfig({
 
 ```
 
-## FullCalendar
-```
-npm install @fullcalendar/vue3 @fullcalendar/core @fullcalendar/daygrid 
-@fullcalendar/list @fullcalendar/time
-```
 
 ## 建築面積
 ```
@@ -98,6 +93,14 @@ vendor/bin/phpunit
 
 ```
 php artisan test
+```
+
+### ✔PHPCS (PHP CodeSniffer)コーディング規約のチェック
+```
+phpcs --standard=PSR12 app/
+
+#一括自動修正
+phpcbf --standard=PSR12 app/
 ```
 
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Feature extends Model
 {
     use HasFactory;
+
     protected $table = 'features';
 
     protected $fillable = [
@@ -23,6 +24,4 @@ class Feature extends Model
     {
         return $this->belongsToMany(Maker::class, 'maker_features', 'feature_id', 'maker_id');
     }
-
-
 }
