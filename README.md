@@ -33,7 +33,7 @@ docs/
 
 - バックエンド
   - PHP 8.3.4 / Laravel 12
- - フロントエンド
+- フロントエンド
   - HTML/CSS
   - JavaScript、Vue.js
 - データベース
@@ -52,7 +52,7 @@ docs/
 - 認証
   - Laravel Breeze
 
-- チェックリスト
+- チェックリスト  
   [チェックリスト登録項目](docs/lib/checklist.md)
 
 ## コア機能の must want
