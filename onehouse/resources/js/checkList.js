@@ -46,7 +46,7 @@ function checkButton(tr, isChecked) {
 function setupEventListeners() {
     const tbody = document.querySelector("tbody");
     const addBtn = document.querySelector(".add_button");
-    const toggle = document.querySelector(".toggle");
+    const toggles = document.querySelectorAll(".toggle");
 
     const handleAddRow = () => {
         const tr = document.createElement("tr");
@@ -117,14 +117,13 @@ function setupEventListeners() {
             editBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#ffff"><path d="M380.67-331.33 158.33-553.67l47.67-47L380.67-426l374-374 47 47.67-421 421ZM200-160v-66.67h560V-160H200Z"/></svg>`;
             input.disabled = false;
 
-            
             const list = input.value.trim();
             if (!list) {
                 input.classList.add("input-error");
                 showMessage("error", tr);
                 return;
             }
-             input.classList.remove("input-error");
+            input.classList.remove("input-error");
         }
     };
 
@@ -300,6 +299,25 @@ function setupEventListeners() {
                     phase1Row.style.display = "none";
                 }
             });
+
+            const existingToggleTr = document.querySelector(".toggleTr1");
+
+            if (!existingToggleTr) {
+                const toggleTr = document.createElement("tr");
+                toggleTr.classList.add("toggleTr1");
+                toggleTr.innerHTML = `<td>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
+                                    <span>フェーズ1非表示</span>
+                                </div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>`;
+                tbody.prepend(toggleTr);
+            } else {
+                existingToggleTr.remove();
+            }
         }
 
         if (e.target.closest("#toggle-phase2")) {
@@ -311,6 +329,24 @@ function setupEventListeners() {
                     phase2Row.style.display = "none";
                 }
             });
+             const existingToggleTr = document.querySelector(".toggleTr2");
+
+            if (!existingToggleTr) {
+                const toggleTr = document.createElement("tr");
+                toggleTr.classList.add("toggleTr2");
+                toggleTr.innerHTML = `<td>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
+                                    <span>フェーズ2非表示</span>
+                                </div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>`;
+                tbody.prepend(toggleTr);
+            } else {
+                existingToggleTr.remove();
+            }
         }
 
         if (e.target.closest("#toggle-phase3")) {
@@ -322,6 +358,24 @@ function setupEventListeners() {
                     phase3Row.style.display = "none";
                 }
             });
+             const existingToggleTr = document.querySelector(".toggleTr3");
+
+            if (!existingToggleTr) {
+                const toggleTr = document.createElement("tr");
+                toggleTr.classList.add("toggleTr3");
+                toggleTr.innerHTML = `<td>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
+                                    <span>フェーズ3非表示</span>
+                                </div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>`;
+                tbody.prepend(toggleTr);
+            } else {
+                existingToggleTr.remove();
+            }
         }
 
         if (e.target.closest("#toggle-phase4")) {
@@ -333,6 +387,24 @@ function setupEventListeners() {
                     phase4Row.style.display = "none";
                 }
             });
+             const existingToggleTr = document.querySelector(".toggleTr4");
+
+            if (!existingToggleTr) {
+                const toggleTr = document.createElement("tr");
+                toggleTr.classList.add("toggleTr4");
+                toggleTr.innerHTML = `<td>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
+                                    <span>フェーズ4非表示</span>
+                                </div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>`;
+                tbody.prepend(toggleTr);
+            } else {
+                existingToggleTr.remove();
+            }
         }
 
         if (e.target.closest("#toggle-phase5")) {
@@ -344,10 +416,30 @@ function setupEventListeners() {
                     phase5Row.style.display = "none";
                 }
             });
+            const existingToggleTr = document.querySelector(".toggleTr5");
+
+            if (!existingToggleTr) {
+                const toggleTr = document.createElement("tr");
+                toggleTr.classList.add("toggleTr5");
+                toggleTr.innerHTML = `<td>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
+                                    <span>フェーズ5非表示</span>
+                                </div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>`;
+                tbody.prepend(toggleTr);
+            } else {
+                existingToggleTr.remove();
+            }
         }
     };
-    toggle.addEventListener("click", (e) => {
-        handleToggleCheck(e);
+    toggles.forEach((toggle) => {
+        toggle.addEventListener("click", (e) => {
+            handleToggleCheck(e);
+        });
     });
 }
 
@@ -413,6 +505,5 @@ function showMessage(type, tr) {
         }, 3000);
     }
 }
-
 
 document.addEventListener("DOMContentLoaded", init);

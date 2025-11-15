@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="list-nav">nanana</div>
+                <div class="list-nav"><div class="back"></div></div>
             </div>
 
             <form action="{{ route('phase4.store') }}" method="POST">
@@ -203,7 +203,7 @@
                                 </tr>
 
                             </thead>
-                            <tbody>
+                            <tbody class="landsimulation">
                                 @foreach ($landLogs as $landLog)
                                     <tr class="select-row" data-id="{{ $landLog->id }}"
                                         data-address="{{ $landLog->address }}" data-landarea="{{ $landLog->landarea }}"
@@ -247,9 +247,6 @@
                     </div>
 
                 </div>
-
-
-
             </div>
         </div>
     </div>

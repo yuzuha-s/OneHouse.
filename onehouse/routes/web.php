@@ -27,7 +27,6 @@ Route::get('/phase1', function () {
 Route::get('/phase2', function () {
     return view('phase2');
 });
-
 // 住宅メーカー一覧表示
 Route::get('/phase2',[MakerController::class, 'index']);
 Route::get('/phase2',[MakerController::class, 'index'])->name('phase2');
@@ -59,11 +58,12 @@ Route::post('/phase4', [LandLogController::class, 'store'])->name('phase4.store'
 // 土地情報を削除する
 Route::delete('phase4/{id}', [LandLogController::class, 'destroy'])->name('phase4.destroy');
 
-
-
 Route::get('/phase5', function () {
     return view('phase5');
 });
 
+
+Route::get('/phase5',[CheckListController::class, 'indexPhase1']);
 Route::get('/phase5',[CheckListController::class, 'indexPhase5']);
+
 // navigate-----------------------------------------

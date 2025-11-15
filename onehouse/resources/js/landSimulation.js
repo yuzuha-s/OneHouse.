@@ -56,6 +56,11 @@ function setupEventListeners() {
         currentPricePerTsubo = pricePerTsubo;
 
         if (landArea <= 0 || far <= 0 || bcr <= 0 || pricePerTsubo <= 0) {
+            // const inputs = document.querySelectorAll(".landinput");
+            // inputs.forEach((input) => {
+            //     input.classList.add("input-error");
+            // });
+
             showInputMessage("inputerror");
             range.max = 0;
             range.value = 0;
@@ -77,17 +82,17 @@ function setupEventListeners() {
         builableTuboValue.textContent = Math.floor(builable_area_Tubo);
         buildingCostValue.textContent = Math.floor(building_cost);
 
-        // const tbody = document.querySelector("tbody");
-
         document.getElementById("builable_area_hidden").value =
             Math.floor(builable_area);
 
         range.max = Math.floor(builable_area_Tubo);
         range.value = range.max;
         tuboValue.textContent = range.value;
+        showInputMessage("calculateSuccess");
     };
     calculateBtn.addEventListener("click", () => {
         handleCalculate();
+
         const errors = document.querySelectorAll(".error");
         errors.forEach((error) => {
             error.style.display = "none";
@@ -100,6 +105,8 @@ function setupEventListeners() {
             const btn = e.target.closest(".edit-row");
             const tr = btn.closest("tr");
             tr.style.backgroundColor = "rgba(97, 198, 223, 0.3)";
+            tr.style.fontWeight = "bold";
+            btn.style.display = "none";
 
             document.querySelector('textarea[name="address"]').value =
                 tr.dataset.address;
@@ -114,6 +121,9 @@ function setupEventListeners() {
             document.querySelector("input[name=id]").value = tr.dataset.id;
             showUpdateMessage("update");
         }
+
+        const backBtn = document.querySelector(".back");
+        backBtn.innerHTML = `<button type = "button" class="backEdit"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M266-200v-66.67h301.33q67.67 0 116.84-44.33 49.16-44.33 49.16-110.33t-49.16-110.34Q635-576 567.33-576H286.67l110.66 110.67-46.66 46.66L160-609.33 350.67-800l46.66 46.67-110.66 110.66h280q95.66 0 164.5 63.67Q800-515.33 800-421.33q0 94-68.83 157.66Q662.33-200 566.67-200H266Z"/></svg></button>`
     };
 
     editBtn.forEach((btn) =>
