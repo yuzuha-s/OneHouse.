@@ -59,7 +59,7 @@
                             </svg></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="checklist">
 
                     @foreach ($checkLists as $checkList)
                         @if ($checkList->phase->number === 1)
