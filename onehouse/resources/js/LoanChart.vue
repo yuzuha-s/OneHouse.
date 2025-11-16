@@ -44,12 +44,13 @@
         </div>
       </div>
 
-      <div class="list-nav"></div>
+      <div class="list-nav">
+        <p>最終更新日：{{ lastUpdated }}</p>
+      </div>
     </div>
 
     <div class="loan-form wrapper">
       <div class="loan-left">
-      
         <div class="left-fix">
           <div class="loanform-contant">
             <label for="">借入金額(万円)</label>
@@ -130,7 +131,7 @@
         </div>
         <div class="calculate">
           <button @click="calculateLoan">計算する</button>
-            <div class="maker-update">最終更新日：</div>
+          <!-- <div class="maker-update">最終更新日：</div> -->
         </div>
       </div>
 
@@ -175,14 +176,14 @@ export default defineComponent({
   data() {
     return {
       series: [],
-
-      loan: 3000,
-      rate: 1.5,
-      loan_term: 35,
-      age: 30,
-      expense: 20,
-      income: 500,
+      loan: 0,
+      rate: 0,
+      loan_term: 0,
+      age: 0,
+      expense: 0,
+      income: 0,
       monthlyPayment: 0,
+      lastUpdated: null,
       errors: {},
       showValidate: false,
       calculationMessage: "",
@@ -233,8 +234,39 @@ export default defineComponent({
       payoffAge: 0,
     };
   },
+  mounted() {
+    this.fetchLoanSimulation();
+    // this.calculateLoan(false);
+  },
 
   methods: {
+    async fetchLoanSimulation() {
+      try {
+        // profile_id=1 のデータ取得
+        const res = await axios.get("/api/phase3/1");
+        if (res.data) {
+          this.loan = res.data.loan ?? 0;
+          this.loan_term = res.data.loan_term ?? 0;
+          this.age = res.data.age ?? 0;
+          this.rate = res.data.rate ?? 0;
+          this.income = res.data.income ?? 0;
+          this.expense = res.data.expense ?? 0;
+          this.lastUpdated = res.data.updated_at ?? null;
+          this.calculateLoan(false);
+        } else {
+          console.warn("APIレスポンスが空です");
+        }
+      } catch (error) {
+        console.error("データ取得失敗", error);
+        this.loan = 0;
+        this.loan_term = 0;
+        this.age = 0;
+        this.rate = 0;
+        this.income = 0;
+        this.expense = 0;
+        this.lastUpdated = null;
+      }
+    },
     calculateLoan(showMessage = true) {
       if (this.loan_term < 10 || 40 < this.loan_term) {
         this.errors.loan_term = ["返済期間は10年～40年で指定してください。"];
@@ -330,9 +362,11 @@ export default defineComponent({
         };
 
         // LaravelのAPIのPOST
-        await axios.put("/api/phase3/1", loanSimulation);
+        const res = await axios.put("/api/phase3/1", loanSimulation);
         this.saveMessage = "シミュレーションを保存しました";
         this.calculationMessage = "";
+
+        this.lastUpdated = new Date(res.data.data.updated_at).toLocaleString();
 
         // 保存完了バリデーション
         this.showValidate = true;
@@ -345,15 +379,13 @@ export default defineComponent({
         if (error.response && error.response.status === 422) {
           // LaravelのバリデーションエラーをVue側にセット
           this.errors = error.response.data.errors;
+          // alert("バリデーション値と一致しないよ");
         } else {
           console.error("通信エラー:", error);
           alert("サーバーへの通信に失敗しました。");
         }
       }
     },
-  },
-  mounted() {
-    this.calculateLoan(false);
   },
 });
 </script>

@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+// ローンシミュレーションの更新・データ履歴の表示
 Route::put('/phase3/{profile_id}', [LoanSimulationController::class, 'update']);
+Route::get('/phase3/{profile_id}', [LoanSimulationController::class, 'show']);
 
 // チェックリストの登録・更新・削除
 Route::post('/checklist',[CheckListController::class, 'store']);
