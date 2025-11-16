@@ -60,7 +60,7 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>万円</span>
+              <span class ="loan-span">万円</span>
             </div>
           </div>
 
@@ -73,7 +73,7 @@
                 step="0.1"
                 :style="{ textAlign: 'right' }"
               />
-              <span>%</span>
+              <span class ="loan-span">%</span>
             </div>
           </div>
 
@@ -87,7 +87,7 @@
                 max="40"
                 :style="{ textAlign: 'right' }"
               />
-              <span>年</span>
+              <span class ="loan-span">年</span>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>歳</span>
+              <span class ="loan-span">歳</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>万円/月</span>
+              <span class ="loan-span">万円/月</span>
             </div>
           </div>
 
@@ -125,7 +125,7 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>万円/年</span>
+              <span class ="loan-span">万円/年</span>
             </div>
           </div>
         </div>
@@ -138,12 +138,12 @@
       <div class="loan-right">
         <div class="loan-card">
           <div class="valiableform-row">
-            <div class="form-valiable">{{ payoffAge }}</div>
+            <div class="form-valiable" :class="{highlight: borderlight}">{{ payoffAge }}</div>
             <span>歳で完済が完了します。</span>
           </div>
           <div class="valiableform-row">
             <span>月々の返済額は</span>
-            <div class="form-valiable">{{ monthlyPayment }}</div>
+            <div class="form-valiable" :class="{highlight: borderlight}">{{ monthlyPayment }}</div>
             <span>万円です。</span>
           </div>
 
@@ -173,9 +173,15 @@ import axios from "axios";
 
 export default defineComponent({
   components: { apexchart: ApexChart },
+
   data() {
     return {
-      series: [],
+      series: [
+        { name: "収入", type: "area", data: [] },
+        { name: "支出", type: "line", data: [] },
+        { name: "元金", type: "column", data: [] },
+        { name: "利息", type: "column", data: [] },
+      ],
       loan: 0,
       rate: 0,
       loan_term: 0,
@@ -183,60 +189,41 @@ export default defineComponent({
       expense: 0,
       income: 0,
       monthlyPayment: 0,
+      payoffAge: 0,
       lastUpdated: null,
       errors: {},
+      borderlight: false,
       showValidate: false,
       calculationMessage: "",
       saveMessage: "",
-      chartSeries: [
-        { name: "収入", type: "area", data: [] },
-        { name: "支出", type: "line", data: [] },
-        { name: "元金", type: "column", data: [] },
-        { name: "利息", type: "column", data: [] },
-      ],
       chartOptions: {
         chart: {
           type: "line",
           stacked: true,
-          toolbar: {
-            show: false,
-          },
+          toolbar: { show: false },
+          easing: "easeinout",
+          speed: 100000,
         },
         colors: ["#B0F5DE", "#61C6DF", "#A0E7F5", "#FFF176"],
         stroke: { width: [4, 2, 3, 3] },
-
-        fill: {
-          opacity: [0.6, 0.8, 1, 1],
-          gradient: {
-            inverseColors: false,
-            opacityFrom: 0.85,
-            opacityTo: 0.55,
-            stops: [0, 100, 100, 100],
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
+        fill: { opacity: [0.6, 0.8, 1, 1] },
+        dataLabels: { enabled: false },
         yaxis: [
           {
             title: { text: "年間支払額（万円）" },
             min: 0,
-            show: true,
-            labels: {
-              formatter: (val) => Math.floor(val),
-            },
+            labels: { formatter: (val) => Math.floor(val) },
           },
         ],
         xaxis: { title: { text: "年齢(歳)" } },
         labels: [],
         legend: { position: "left" },
       },
-      payoffAge: 0,
     };
   },
+
   mounted() {
     this.fetchLoanSimulation();
-    // this.calculateLoan(false);
   },
 
   methods: {
@@ -298,7 +285,7 @@ export default defineComponent({
 
       const annualPayment = under / over;
       // 月々の支払金額
-      this.monthlyPayment = Math.round((annualPayment / 12) * 100) / 100;
+      this.monthlyPayment = Math.round((annualPayment / 12) * 10) / 10;
 
       let balance = loan;
       let interestPaymentData = [];
@@ -327,24 +314,35 @@ export default defineComponent({
       // 支払い終了年齢
       this.payoffAge = this.age + loanTerm;
 
-      this.series = [
-        { name: "収入", type: "area", data: incomeData },
-        { name: "支出", type: "line", data: expenseData },
-        { name: "元利", type: "column", data: principalPaymentData },
-        { name: "利息", type: "column", data: interestPaymentData },
-      ];
-
-      this.chartOptions.labels = labels;
-      this.chartOptions.chart.stacked = true;
+      this.series[0].data.splice(0, this.series[0].data.length, ...incomeData);
+      this.series[1].data.splice(0, this.series[1].data.length, ...expenseData);
+      this.series[2].data.splice(
+        0,
+        this.series[2].data.length,
+        ...principalPaymentData
+      );
+      this.series[3].data.splice(
+        0,
+        this.series[3].data.length,
+        ...interestPaymentData
+      );
+      this.chartOptions.labels.splice(
+        0,
+        this.chartOptions.labels.length,
+        ...labels
+      );
 
       // 計算完了バリデーション
       if (showMessage) {
         this.showValidate = true;
         this.calculationMessage = "計算が完了しました！";
         this.saveMessage = "";
+        this.borderlight = true;
         setTimeout(() => {
           this.showValidate = false;
         }, 3000);
+
+       
       }
     },
 
