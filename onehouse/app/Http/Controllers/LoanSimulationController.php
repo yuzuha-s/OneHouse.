@@ -43,12 +43,35 @@ class LoanSimulationController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // 登録データを表示する
     public function show(string $id)
     {
-        //
+        $loanSimulation = LoanSimulation::where('profile_id', 1)
+        ->latest('updated_at')
+        ->first();
+        if (!$loanSimulation) {
+            return response()->json([
+                'loan' => 0,
+                'loan_term' => 0,
+                'age' => 0,
+                'rate' => 0,
+                'income' => 0,
+                'expense' => 0,
+                'updated_at' => null,
+
+            ]);
+        }
+
+        return response()->json([
+            'loan' => $loanSimulation->loan,
+            'loan_term' => $loanSimulation->loan_term,
+            'age' => $loanSimulation->age,
+            'rate' => $loanSimulation->rate,
+            'income' => $loanSimulation->income,
+            'expense' => $loanSimulation->expense,
+            'updated_at' => $loanSimulation->updated_at?->format('Y/m/d H:i') ?? null,
+
+        ]);
     }
 
     /**

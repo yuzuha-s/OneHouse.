@@ -44,12 +44,13 @@
         </div>
       </div>
 
-      <div class="list-nav"></div>
+      <div class="list-nav">
+        <p>最終更新日：{{ lastUpdated }}</p>
+      </div>
     </div>
 
     <div class="loan-form wrapper">
       <div class="loan-left">
-      
         <div class="left-fix">
           <div class="loanform-contant">
             <label for="">借入金額(万円)</label>
@@ -59,7 +60,7 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>万円</span>
+              <span class ="loan-span">万円</span>
             </div>
           </div>
 
@@ -72,7 +73,7 @@
                 step="0.1"
                 :style="{ textAlign: 'right' }"
               />
-              <span>%</span>
+              <span class ="loan-span">%</span>
             </div>
           </div>
 
@@ -86,7 +87,7 @@
                 max="40"
                 :style="{ textAlign: 'right' }"
               />
-              <span>年</span>
+              <span class ="loan-span">年</span>
             </div>
           </div>
         </div>
@@ -100,7 +101,7 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>歳</span>
+              <span class ="loan-span">歳</span>
             </div>
           </div>
 
@@ -112,7 +113,7 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>万円/月</span>
+              <span class ="loan-span">万円/月</span>
             </div>
           </div>
 
@@ -124,25 +125,25 @@
                 type="number"
                 :style="{ textAlign: 'right' }"
               />
-              <span>万円/年</span>
+              <span class ="loan-span">万円/年</span>
             </div>
           </div>
         </div>
         <div class="calculate">
           <button @click="calculateLoan">計算する</button>
-            <div class="maker-update">最終更新日：</div>
+          <!-- <div class="maker-update">最終更新日：</div> -->
         </div>
       </div>
 
       <div class="loan-right">
         <div class="loan-card">
           <div class="valiableform-row">
-            <div class="form-valiable">{{ payoffAge }}</div>
+            <div class="form-valiable" :class="{highlight: borderlight}">{{ payoffAge }}</div>
             <span>歳で完済が完了します。</span>
           </div>
           <div class="valiableform-row">
             <span>月々の返済額は</span>
-            <div class="form-valiable">{{ monthlyPayment }}</div>
+            <div class="form-valiable" :class="{highlight: borderlight}">{{ monthlyPayment }}</div>
             <span>万円です。</span>
           </div>
 
@@ -172,69 +173,87 @@ import axios from "axios";
 
 export default defineComponent({
   components: { apexchart: ApexChart },
+
   data() {
     return {
-      series: [],
-
-      loan: 3000,
-      rate: 1.5,
-      loan_term: 35,
-      age: 30,
-      expense: 20,
-      income: 500,
-      monthlyPayment: 0,
-      errors: {},
-      showValidate: false,
-      calculationMessage: "",
-      saveMessage: "",
-      chartSeries: [
+      series: [
         { name: "収入", type: "area", data: [] },
         { name: "支出", type: "line", data: [] },
         { name: "元金", type: "column", data: [] },
         { name: "利息", type: "column", data: [] },
       ],
+      loan: 0,
+      rate: 0,
+      loan_term: 0,
+      age: 0,
+      expense: 0,
+      income: 0,
+      monthlyPayment: 0,
+      payoffAge: 0,
+      lastUpdated: null,
+      errors: {},
+      borderlight: false,
+      showValidate: false,
+      calculationMessage: "",
+      saveMessage: "",
       chartOptions: {
         chart: {
           type: "line",
           stacked: true,
-          toolbar: {
-            show: false,
-          },
+          toolbar: { show: false },
+          easing: "easeinout",
+          speed: 100000,
         },
         colors: ["#B0F5DE", "#61C6DF", "#A0E7F5", "#FFF176"],
         stroke: { width: [4, 2, 3, 3] },
-
-        fill: {
-          opacity: [0.6, 0.8, 1, 1],
-          gradient: {
-            inverseColors: false,
-            opacityFrom: 0.85,
-            opacityTo: 0.55,
-            stops: [0, 100, 100, 100],
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
+        fill: { opacity: [0.6, 0.8, 1, 1] },
+        dataLabels: { enabled: false },
         yaxis: [
           {
             title: { text: "年間支払額（万円）" },
             min: 0,
-            show: true,
-            labels: {
-              formatter: (val) => Math.floor(val),
-            },
+            labels: { formatter: (val) => Math.floor(val) },
           },
         ],
         xaxis: { title: { text: "年齢(歳)" } },
         labels: [],
         legend: { position: "left" },
       },
-      payoffAge: 0,
     };
   },
 
+  mounted() {
+    this.fetchLoanSimulation();
+  },
+
   methods: {
+    async fetchLoanSimulation() {
+      try {
+        // profile_id=1 のデータ取得
+        const res = await axios.get("/api/phase3/1");
+        if (res.data) {
+          this.loan = res.data.loan ?? 0;
+          this.loan_term = res.data.loan_term ?? 0;
+          this.age = res.data.age ?? 0;
+          this.rate = res.data.rate ?? 0;
+          this.income = res.data.income ?? 0;
+          this.expense = res.data.expense ?? 0;
+          this.lastUpdated = res.data.updated_at ?? null;
+          this.calculateLoan(false);
+        } else {
+          console.warn("APIレスポンスが空です");
+        }
+      } catch (error) {
+        console.error("データ取得失敗", error);
+        this.loan = 0;
+        this.loan_term = 0;
+        this.age = 0;
+        this.rate = 0;
+        this.income = 0;
+        this.expense = 0;
+        this.lastUpdated = null;
+      }
+    },
     calculateLoan(showMessage = true) {
       if (this.loan_term < 10 || 40 < this.loan_term) {
         this.errors.loan_term = ["返済期間は10年～40年で指定してください。"];
@@ -266,7 +285,7 @@ export default defineComponent({
 
       const annualPayment = under / over;
       // 月々の支払金額
-      this.monthlyPayment = Math.round((annualPayment / 12) * 100) / 100;
+      this.monthlyPayment = Math.round((annualPayment / 12) * 10) / 10;
 
       let balance = loan;
       let interestPaymentData = [];
@@ -295,24 +314,35 @@ export default defineComponent({
       // 支払い終了年齢
       this.payoffAge = this.age + loanTerm;
 
-      this.series = [
-        { name: "収入", type: "area", data: incomeData },
-        { name: "支出", type: "line", data: expenseData },
-        { name: "元利", type: "column", data: principalPaymentData },
-        { name: "利息", type: "column", data: interestPaymentData },
-      ];
-
-      this.chartOptions.labels = labels;
-      this.chartOptions.chart.stacked = true;
+      this.series[0].data.splice(0, this.series[0].data.length, ...incomeData);
+      this.series[1].data.splice(0, this.series[1].data.length, ...expenseData);
+      this.series[2].data.splice(
+        0,
+        this.series[2].data.length,
+        ...principalPaymentData
+      );
+      this.series[3].data.splice(
+        0,
+        this.series[3].data.length,
+        ...interestPaymentData
+      );
+      this.chartOptions.labels.splice(
+        0,
+        this.chartOptions.labels.length,
+        ...labels
+      );
 
       // 計算完了バリデーション
       if (showMessage) {
         this.showValidate = true;
         this.calculationMessage = "計算が完了しました！";
         this.saveMessage = "";
+        this.borderlight = true;
         setTimeout(() => {
           this.showValidate = false;
         }, 3000);
+
+       
       }
     },
 
@@ -330,9 +360,11 @@ export default defineComponent({
         };
 
         // LaravelのAPIのPOST
-        await axios.put("/api/phase3/1", loanSimulation);
+        const res = await axios.put("/api/phase3/1", loanSimulation);
         this.saveMessage = "シミュレーションを保存しました";
         this.calculationMessage = "";
+
+        this.lastUpdated = new Date(res.data.data.updated_at).toLocaleString();
 
         // 保存完了バリデーション
         this.showValidate = true;
@@ -345,15 +377,13 @@ export default defineComponent({
         if (error.response && error.response.status === 422) {
           // LaravelのバリデーションエラーをVue側にセット
           this.errors = error.response.data.errors;
+          // alert("バリデーション値と一致しないよ");
         } else {
           console.error("通信エラー:", error);
           alert("サーバーへの通信に失敗しました。");
         }
       }
     },
-  },
-  mounted() {
-    this.calculateLoan(false);
   },
 });
 </script>
