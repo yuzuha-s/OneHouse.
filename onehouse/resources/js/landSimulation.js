@@ -104,6 +104,8 @@ function setupEventListeners() {
         if (e.target.closest(".edit-row")) {
             const btn = e.target.closest(".edit-row");
             const tr = btn.closest("tr");
+            // if (editingRow && editingRow !== tr) return;
+
             tr.style.backgroundColor = "rgba(97, 198, 223, 0.3)";
             tr.style.fontWeight = "bold";
             btn.style.display = "none";
@@ -123,7 +125,7 @@ function setupEventListeners() {
         }
 
         const backBtn = document.querySelector(".back");
-        backBtn.innerHTML = `<button type = "button" class="backEdit"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M266-200v-66.67h301.33q67.67 0 116.84-44.33 49.16-44.33 49.16-110.33t-49.16-110.34Q635-576 567.33-576H286.67l110.66 110.67-46.66 46.66L160-609.33 350.67-800l46.66 46.67-110.66 110.66h280q95.66 0 164.5 63.67Q800-515.33 800-421.33q0 94-68.83 157.66Q662.33-200 566.67-200H266Z"/></svg></button>`
+        backBtn.innerHTML = `<button type = "button" class="backEdit"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M266-200v-66.67h301.33q67.67 0 116.84-44.33 49.16-44.33 49.16-110.33t-49.16-110.34Q635-576 567.33-576H286.67l110.66 110.67-46.66 46.66L160-609.33 350.67-800l46.66 46.67-110.66 110.66h280q95.66 0 164.5 63.67Q800-515.33 800-421.33q0 94-68.83 157.66Q662.33-200 566.67-200H266Z"/></svg></button>`;
     };
 
     editBtn.forEach((btn) =>
@@ -131,6 +133,42 @@ function setupEventListeners() {
             handleEdit(e);
         })
     );
+
+    // 戻るボタン
+    const handleBack = (e) => {
+        if (editingRow) {
+            editingRow.style.backgroundColor = "";
+            editingRow.style.fontWeight = "";
+
+            const editBtn = editingRow.querySelector(".edit-row");
+            if (editBtn) {
+                editBtn.style.display = "inline-block";
+            }
+            document.querySelector('textarea[name="address"]').value = "";
+            document.querySelector('input[name="landarea"]').value = "";
+            document.querySelector('input[name="floor"]').value = "";
+            document.querySelector('input[name="far"]').value = "";
+            document.querySelector('input[name="bcr"]').value = "";
+            document.querySelector('input[name="pricePerTsubo"]').value = "";
+            document.querySelector("input[name=id]").value = "";
+            editBtn.style.display = "inline-block";
+
+            const backBtn = document.querySelector(".back");
+            if (backBtn) {
+                backBtn.innerHTML = "";
+            }
+
+            editingRow = null;
+        }
+    };
+
+    // 戻るボタンのクリックイベント登録
+    document.addEventListener("click", (e) => {
+        if (e.target.closest(".backEdit")) {
+            handleBack();
+            showUpdateMessage("back");
+        }
+    });
 }
 // バリデーションメッセージの表示
 function showUpdateMessage(type) {
@@ -138,11 +176,25 @@ function showUpdateMessage(type) {
     validate.innerHTML = "";
     if (type === "update") {
         validate.innerHTML = `<div class = "validate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
-                                        fill="#576bf5">
-                                        <path d="M422-297.33 704.67-580l-49.34-48.67L422-395.33l-118-118-48.67 48.66L422-297.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z"/>
-                                    </svg>
-            <p>情報を更新中！</p></div>`;
+                                <svg xmlns="http://www.w3.org/2000/svg" height="40px"
+                                                    viewBox="0 -960 960 960" width="40px" fill="#576bf5">
+                                                    <path
+                                                        d="M284-286h68l250-249.33-68-69.34-250 250V-286Zm339.33-270.67 40-40.66q6.67-6.67 7-15 .34-8.34-7-15.67l-38-37.33q-7.33-7.34-15.33-7-8 .33-14.67 7l-40 39.33 68 69.33ZM186.67-120q-27.5 0-47.09-19.58Q120-159.17 120-186.67v-586.66q0-27.5 19.58-47.09Q159.17-840 186.67-840h192.66q7.67-35.33 35.84-57.67Q443.33-920 480-920t64.83 22.33Q573-875.33 580.67-840h192.66q27.5 0 47.09 19.58Q840-800.83 840-773.33v586.66q0 27.5-19.58 47.09Q800.83-120 773.33-120H186.67Zm0-66.67h586.66v-586.66H186.67v586.66Zm293.33-608q13.67 0 23.5-9.83t9.83-23.5q0-13.67-9.83-23.5t-23.5-9.83q-13.67 0-23.5 9.83t-9.83 23.5q0 13.67 9.83 23.5t23.5 9.83Zm-293.33 608v-586.66 586.66Z" />
+                                                </svg>
+
+                            <p>情報を更新中！</p></div>`;
+        validate.style.display = "block";
+        setTimeout(() => {
+            validate.style.display = "none";
+        }, 5000);
+    } else if (type === "back") {
+        validate.innerHTML = `<div class = "validate">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                fill="#576bf5">
+                <path d="M422-297.33 704.67-580l-49.34-48.67L422-395.33l-118-118-48.67 48.66L422-297.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z"/>
+            </svg>
+
+                            <p>変更を終了しました</p></div>`;
         validate.style.display = "block";
         setTimeout(() => {
             validate.style.display = "none";

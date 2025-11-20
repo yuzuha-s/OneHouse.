@@ -1295,6 +1295,15 @@ input.landinput {
   border-radius: 15px;
 }
 
+.back button {
+  background-color: #F8F8FF;
+}
+
+.back button:hover {
+  background-color: #576bf5;
+}
+
+
 .register-list,
 .update-list {
   background-color: #61C6DF;
