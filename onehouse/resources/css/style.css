@@ -238,9 +238,14 @@ h3 {
 .toggleTr3,
 .toggleTr4,
 .toggleTr5 {
-  background-color: #61C6DF;
-  color: #fff;
+  background-color: #E7E9FE;
+  color: #8C8C8C;
   text-align: end;
+}
+.phase-toggle{
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 50px;
 }
 
 /* main contant ------------------------------------ */

@@ -306,10 +306,13 @@ function setupEventListeners() {
                 const toggleTr = document.createElement("tr");
                 toggleTr.classList.add("toggleTr1");
                 toggleTr.innerHTML = `<td>
-                                <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
-                                    <span>フェーズ1非表示</span>
-                                </div></td>
+                                <div style="display: flex; align-items: center; ">
+                                <span class="phase-toggle">Phase1</span><svg xmlns="http://www.w3.org/2000/svg"
+                                    height="40px" viewBox="0 -960 960 960" width="40px" fill="#8C8C8C">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
+                                </div>
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -329,15 +332,17 @@ function setupEventListeners() {
                     phase2Row.style.display = "none";
                 }
             });
-             const existingToggleTr = document.querySelector(".toggleTr2");
+            const existingToggleTr = document.querySelector(".toggleTr2");
 
             if (!existingToggleTr) {
                 const toggleTr = document.createElement("tr");
                 toggleTr.classList.add("toggleTr2");
                 toggleTr.innerHTML = `<td>
                                 <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
-                                    <span>フェーズ2非表示</span>
+                                    <span class="phase-toggle">Phase2</span><svg xmlns="http://www.w3.org/2000/svg"
+                                    height="40px" viewBox="0 -960 960 960" width="40px" fill="#8C8C8C">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
                                 </div></td>
                                 <td></td>
                                 <td></td>
@@ -358,15 +363,17 @@ function setupEventListeners() {
                     phase3Row.style.display = "none";
                 }
             });
-             const existingToggleTr = document.querySelector(".toggleTr3");
+            const existingToggleTr = document.querySelector(".toggleTr3");
 
             if (!existingToggleTr) {
                 const toggleTr = document.createElement("tr");
                 toggleTr.classList.add("toggleTr3");
                 toggleTr.innerHTML = `<td>
                                 <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
-                                    <span>フェーズ3非表示</span>
+                                <span class="phase-toggle">Phase3</span><svg xmlns="http://www.w3.org/2000/svg"
+                                    height="40px" viewBox="0 -960 960 960" width="40px" fill="#8C8C8C">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
                                 </div></td>
                                 <td></td>
                                 <td></td>
@@ -387,15 +394,17 @@ function setupEventListeners() {
                     phase4Row.style.display = "none";
                 }
             });
-             const existingToggleTr = document.querySelector(".toggleTr4");
+            const existingToggleTr = document.querySelector(".toggleTr4");
 
             if (!existingToggleTr) {
                 const toggleTr = document.createElement("tr");
                 toggleTr.classList.add("toggleTr4");
                 toggleTr.innerHTML = `<td>
                                 <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
-                                    <span>フェーズ4非表示</span>
+                                <span class="phase-toggle">Phase4</span><svg xmlns="http://www.w3.org/2000/svg"
+                                    height="40px" viewBox="0 -960 960 960" width="40px" fill="#8C8C8C">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
                                 </div></td>
                                 <td></td>
                                 <td></td>
@@ -423,8 +432,10 @@ function setupEventListeners() {
                 toggleTr.classList.add("toggleTr5");
                 toggleTr.innerHTML = `<td>
                                 <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M400-280v-400l200 200-200 200Z"/></svg>
-                                    <span>フェーズ5非表示</span>
+                                    <span class="phase-toggle">Phase5</span><svg xmlns="http://www.w3.org/2000/svg"
+                                    height="40px" viewBox="0 -960 960 960" width="40px" fill="#8C8C8C">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
                                 </div></td>
                                 <td></td>
                                 <td></td>
