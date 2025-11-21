@@ -131,7 +131,7 @@
         </div>
         <div class="calculate">
           <button @click="calculateLoan">計算する</button>
-          <!-- <div class="maker-update">最終更新日：</div> -->
+
         </div>
       </div>
 
@@ -215,7 +215,7 @@ export default defineComponent({
             labels: { formatter: (val) => Math.floor(val) },
           },
         ],
-        xaxis: { title: { text: "年齢(歳)" } },
+        xaxis: { title: { text: "返済期間(年)" } },
         labels: [],
         legend: { position: "left" },
       },
@@ -342,7 +342,6 @@ export default defineComponent({
           this.showValidate = false;
         }, 3000);
 
-       
       }
     },
 

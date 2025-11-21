@@ -329,6 +329,7 @@ h3 {
 
 /* 各フェーズの目次 ------------------------------------ */
 .list {
+  position: relative;
   width: 95%;
   height: 74vh;
   overflow-y: auto;
@@ -570,10 +571,19 @@ tr.checked {
   margin: 20px auto;
   gap: 100px;
   width: 90%;
+  align-items: flex-start;
+}
+
+.updated_at {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+
 }
 
 .update {
   font-size: 12px;
+  margin-top: 10px;
 }
 
 .cards {
@@ -581,7 +591,16 @@ tr.checked {
   border-radius: 20px;
   display: flex;
   width: 700px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.05),
+    4px -4px 8px rgba(0, 0, 0, 0.05),
+    -4px 4px 8px rgba(0, 0, 0, 0.05),
+    20px 20px 1px -5px rgba(176, 196, 255, 0.5);
+}
+
+.cards:hover {
+  transform: translateY(-10px);
+  transition: 1s ease;
+
 }
 
 .card-main {
@@ -592,7 +611,7 @@ tr.checked {
 
 .card-right {
   width: 15%;
-  background: linear-gradient(to bottom, rgba(88, 107, 255, 0.7), rgba(88, 107, 255, 0.6));
+  background: linear-gradient(to bottom, rgba(88, 107, 255, 0.6), rgba(88, 107, 255, 0.8));
   border-radius: 0px 15px 15px 0px;
   display: flex;
   flex-direction: column;
@@ -693,7 +712,8 @@ tr.checked {
 }
 
 .textarea-input {
-  background-color: #E0E0E0;
+  background-color: #E7E9FE;
+  opacity: 0.6;
   border-radius: 13px;
   padding: 8px 10px;
   width: 85%;
@@ -1275,6 +1295,37 @@ input.landinput {
 
 .pagination {
   margin: auto;
+  margin-top: 50px;
+  width: 90%;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pagination-gap {
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+}
+
+.pagination-nav {
+  background-color: #576bf5;
+  padding: 10px 50px;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.pagination-nav:hover {
+  transform: translateY(-2px) scale(1.06);
+  transition: 0.5s ease;
+}
+
+.pagination-next {
+  background-color: #E7E9FE;
+  padding: 10px 50px;
+  color: #8C8C8C;
+  border-radius: 20px;
 }
 
 .paginate-wrapper {

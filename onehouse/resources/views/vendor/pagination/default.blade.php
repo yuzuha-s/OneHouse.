@@ -2,7 +2,7 @@
 
     @if ($paginator->hasPages())
 
-        <nav class="flex justify-center">
+        <nav class="flex">
             <ul  class="flex space-x-4">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
@@ -38,7 +38,7 @@
                                 <li><a href="{{ $url }}">{{ $page }}</a></li>
                             @endif
                         @endforeach
-                    @endif --}} 
+                    @endif --}}
                 @endforeach
 
                 {{-- Next Page Link --}}
