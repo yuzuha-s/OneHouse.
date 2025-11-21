@@ -46,15 +46,13 @@
         </div>
 
         <div class="marker-list wrapper">
-
-
             @foreach ($makers as $maker)
                 <div class="cards splide__slide">
                     <div class="card-main">
                         <div class="marker-listnav">
                             <div class="marker-listnav-contant wrapper">
                                 <h4>{{ $maker->name }}</h4>
-                                <p>担当:{{ $maker->sales }}</p>
+                                <p>担当：{{ $maker->sales }}</p>
                             </div>
 
                         </div>
@@ -117,11 +115,9 @@
                                     <form action="{{ route('destroy', ['id' => $maker->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('本当に削除しますか？')"
-                                             class="maker-delete">
+                                        <button type="submit" onclick="return confirm('本当に削除しますか？')" class="maker-delete">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
-                                                width="40px" fill="#8C8C8C"
-                                                >
+                                                width="40px" fill="#8C8C8C">
                                                 <path
                                                     d="M282.98-140q-25.71 0-44.14-18.43t-18.43-44.14v-532.05H180v-50.25h174.05v-30.51h251.9v30.51H780v50.25h-40.41v532.05q0 25.79-18.39 44.18T677.02-140H282.98Zm406.35-594.62H270.67v532.05q0 5.39 3.59 8.85t8.72 3.46h394.04q4.62 0 8.47-3.84 3.84-3.85 3.84-8.47v-532.05ZM379.54-273.23h50.25v-379.08h-50.25v379.08Zm150.67 0h50.25v-379.08h-50.25v379.08ZM270.67-734.62v544.36V-734.62Z" />
                                             </svg>
@@ -138,11 +134,8 @@
 
         </div>
 
-        {{-- スライド式またはおしゃれな切り替わりにする --}}
-        <div class="pagination">
+        <div class="pagination wrapper">
             {{ $makers->links() }}
         </div>
-
     </div>
-    @vite('resources/js/maker.js')
 @endsection
