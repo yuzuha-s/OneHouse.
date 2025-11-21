@@ -107,30 +107,39 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
+        // Phase1～5ページへ移動
         const mainNav = document.querySelectorAll(".main-nav li");
+        const navigate = document.querySelectorAll(".navigate li");
+
+        function clearAllActive() {
+            mainNav.forEach((el) => {
+                const icon = el.querySelector(".icon");
+                if (icon) icon.classList.remove("active");
+            });
+
+            navigate.forEach((el) => el.classList.remove("active"));
+        }
 
         mainNav.forEach((li) => {
             li.addEventListener("click", function (e) {
-                e.preventDefault(); // 必要なら a のデフォルト動作を止める
-                mainNav.forEach((el) => el.querySelector(".icon").classList.remove("active"));
-                this.querySelector(".icon").classList.add("active");
+                e.preventDefault();
+
+                clearAllActive(); // すべての active を消す
+
+                const clickedIcon = this.querySelector(".icon");
+                if (clickedIcon) clickedIcon.classList.add("active");
             });
         });
-
-        const navigate = document.querySelectorAll(".navigate li");
 
         navigate.forEach((li) => {
             li.addEventListener("click", function (e) {
                 e.preventDefault();
-                // すべての li から active を削除
-                navigate.forEach((el) => el.classList.remove("active"));
-                // クリックされた li に active を追加
+
+                clearAllActive(); // すべての active を消す
+
                 this.classList.add("active");
             });
         });
-
-
-
     </script>
 
 </body>
