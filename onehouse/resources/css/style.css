@@ -278,13 +278,59 @@ h3 {
   width: 250px;
 }
 
+.maker-back {
+  margin: 0 auto;
+}
+
+.maker-back nav {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 50px auto;
+  transition: width 0.6s ease;
+}
+
+.maker-back nav:hover {
+  transform: translateY(-10px);
+  transition: 0.3s ease;
+}
+
+.maker-back nav:active {
+  transform: translateY(2px);
+}
+
+
+
+.maker-back nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.maker-back nav ul li {
+  height: 100%;
+}
+
+.maker-back nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.3rem;
+  position: relative;
+}
+
 .navigate,
 .main-nav {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   width: 90px;
-  transition: width 0.3s;
   overflow: hidden;
   margin: 50px auto;
   transition: width 0.6s ease;
@@ -396,26 +442,36 @@ h3 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
+.main-nav li:hover .icon {
+  background-color: #FFA83F;
+  opacity: 0.3;
+}
+
 .icon.active {
   background-color: #FFA83F;
+  opacity: 1;
 }
+
+
 
 .navigate li.active {
   background-color: #576bf5;
 }
+
 .navigate li.active a svg {
   fill: #fff;
 }
+
 .navigate li.active a {
   color: #fff;
 }
 
 
 /* 各フェーズの目次 ------------------------------------ */
-.list {
+/* .list {
   position: relative;
-  width: 95%;
-  height: 74vh;
+  width: 100%;
+  height: 91vh;
   overflow-y: auto;
   text-align: center;
   align-items: center;
@@ -423,7 +479,7 @@ h3 {
   background-color: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-}
+} */
 
 .list-header {
   display: flex;
@@ -451,10 +507,9 @@ h3 {
   width: 100%;
   display: flex;
   margin: 0 auto;
-  max-height: 700px;
+  max-height: 900px;
   border-radius: 20px;
   overflow-y: auto;
-
 }
 
 .table-contant {
