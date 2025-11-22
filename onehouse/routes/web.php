@@ -63,7 +63,6 @@ Route::get('/phase5', function () {
 });
 
 
-Route::get('/phase5',[CheckListController::class, 'indexPhase1']);
-Route::get('/phase5',[CheckListController::class, 'indexPhase5']);
+// Route::get('/phase5',[CheckListController::class, 'indexPhase1']);
+// Route::get('/phase5',[CheckListController::class, 'indexPhase5']);
 
-// navigate-----------------------------------------

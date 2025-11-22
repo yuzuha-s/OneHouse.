@@ -289,7 +289,7 @@ h3 {
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin: 50px auto;
+  margin: 30px auto;
   transition: width 0.6s ease;
 }
 
@@ -301,8 +301,6 @@ h3 {
 .maker-back nav:active {
   transform: translateY(2px);
 }
-
-
 
 .maker-back nav ul {
   padding: 0;
@@ -332,7 +330,7 @@ h3 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   width: 90px;
   overflow: hidden;
-  margin: 50px auto;
+  margin: 30px auto;
   transition: width 0.6s ease;
 }
 
@@ -341,7 +339,8 @@ h3 {
   flex-direction: column;
   justify-content: center;
   gap: 15px;
-  padding: 1.3rem;
+  padding: 1.3rem 10px;
+  margin: auto;
 }
 
 .main-nav ul {
@@ -446,15 +445,19 @@ h3 {
   background-color: #FFA83F;
   opacity: 0.3;
 }
+.icon2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
 
 .icon.active {
   background-color: #FFA83F;
   opacity: 1;
 }
 
-
-
-.navigate li.active {
+.navigate li.active{
   background-color: #576bf5;
 }
 
