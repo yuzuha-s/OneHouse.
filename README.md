@@ -22,15 +22,12 @@ docs/
 |            |  テスト・UI 微調整 ・☆ 編集  | メーカー訪問記録機能              | /phase2              |
 |            |      テスト・UI 微調整       | 住宅ローンシミレーショ ApexCharts | /phase3              |
 |            | UI・更新時の戻るボタンを追加 | 建物面積計算                      | /phase4              |
-|            |         新規 UI 作成         | ナビゲーションバー                | ナビゲーションバー   |
 |            |         新規 UI 作成         | ログイン・ログアウト・新規登録    | ログイン・ログアウト |
 
 ## 静的解析
 
-- 11/9 ✔PHPCS (PHP CodeSniffer)
-- 11/9 ✔PHPstan
-- 11/9 ✔ESLint
-
+- 11/9 ✔PHPCS (PHP CodeSniffer) ・　✔PHPstan　・　✔ESLint
+　　
 ## 環境構築
 
 - バックエンド
@@ -52,7 +49,6 @@ docs/
 - チャート
   - ApexCharts
 - 認証
-
   - Laravel Breeze
 
 - チェックリスト  

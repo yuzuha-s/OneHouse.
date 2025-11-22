@@ -242,7 +242,8 @@ h3 {
   color: #8C8C8C;
   text-align: end;
 }
-.phase-toggle{
+
+.phase-toggle {
   font-weight: bold;
   font-size: 20px;
   margin-left: 50px;
@@ -264,79 +265,216 @@ h3 {
 }
 
 /* ナビゲーションバー ------------------------------------ */
-.navigate {
-  background-color: #fff;
-  display: inline-block;
-  width: auto;
-  height: auto;
+.nav {
+  height: 100vh;
+  width: 100px;
+  align-items: flex-start;
+  position: relative;
+  margin: auto;
+  transition: width 0.6s ease;
+}
+
+.nav:hover {
+  width: 250px;
+}
+
+.maker-back {
+  margin: 0 auto;
+}
+
+.maker-back nav {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  margin: 50px auto auto auto;
+  overflow: hidden;
+  margin: 30px auto;
+  transition: width 0.6s ease;
+}
+
+.maker-back nav:hover {
+  transform: translateY(-10px);
+  transition: 0.3s ease;
+}
+
+.maker-back nav:active {
+  transform: translateY(2px);
+}
+
+.maker-back nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.maker-back nav ul li {
+  height: 100%;
+}
+
+.maker-back nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.3rem;
+  position: relative;
+}
+
+.navigate,
+.main-nav {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  width: 90px;
+  overflow: hidden;
+  margin: 30px auto;
+  transition: width 0.6s ease;
 }
 
 .navigate nav ul {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin: 0;
-  padding: 1.3rem;
-
-}
-
-.navigate li {
-  display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-.main-nav {
-  width: 87%;
-  margin: 30px auto;
+  gap: 15px;
+  padding: 1.3rem 10px;
+  margin: auto;
 }
 
 .main-nav ul {
   display: flex;
-  justify-content: space-between;
-  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  padding: 1.3rem 6px;
 }
 
+.navigate li,
 .main-nav li {
-  background-color: #FFA83F;
+  display: block;
+  align-items: center;
+  width: 90%;
+  justify-content: center;
+  position: relative;
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.navigate li a,
+.main-nav li a {
+  color: #8C8C8C;
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: center;
+}
+
+.main-nav li a {
+  justify-content: flex-start;
+}
+
+.navigate li a svg {
+  flex-shrink: 0;
+  display: block;
+  line-height: 60px;
+  text-align: center;
+}
+
+.navigate li a .title,
+.main-nav li a .title {
+  height: 60px;
+  line-height: 60px;
+  opacity: 0;
+  margin-left: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.nav:hover li a .title {
   opacity: 1;
-  padding: 40px 40px;
+}
+
+.nav:hover {
+  width: 270px;
+}
+
+.nav:hover .navigate {
+  width: 200px;
+  transition: width 0.6s ease;
+  margin: 50px auto 0 auto;
+}
+
+.nav:hover .main-nav {
+  width: 200px;
+  transition: width 0.6s ease;
+  margin: 50px auto 0 auto;
+
+}
+
+.navigate li:hover {
+  background-color: #576bf5;
+}
+
+.navigate li:active {
+  transform: translateY(2px);
+}
+
+.main-nav li:active {
+  transform: translateY(2px);
+}
+
+
+.navigate li:hover a svg {
+  fill: #fff;
+}
+
+.navigate li:hover a {
+  color: #fff;
+}
+
+.main-nav .icon {
+  background-color: #E7E9FE;
+  opacity: 1;
+  padding: 10px;
   border-radius: 100px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
-.main-nav li a {
+.main-nav li:hover .icon {
+  background-color: #FFA83F;
+  opacity: 0.3;
+}
+.icon2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s;
 }
 
-.main-nav ul::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 50%;
-  border-top: 3px dashed black;
-  z-index: -1;
-}
-
-.main-nav .phase1:hover,
-.main-nav .phase2:hover,
-.main-nav .phase3:hover,
-.main-nav .phase4:hover,
-.main-nav .phase5:hover {
+.icon.active {
   background-color: #FFA83F;
+  opacity: 1;
 }
+
+.navigate li.active{
+  background-color: #576bf5;
+}
+
+.navigate li.active a svg {
+  fill: #fff;
+}
+
+.navigate li.active a {
+  color: #fff;
+}
+
 
 /* 各フェーズの目次 ------------------------------------ */
-.list {
+/* .list {
   position: relative;
-  width: 95%;
-  height: 74vh;
+  width: 100%;
+  height: 91vh;
   overflow-y: auto;
   text-align: center;
   align-items: center;
@@ -344,7 +482,7 @@ h3 {
   background-color: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-}
+} */
 
 .list-header {
   display: flex;
@@ -372,10 +510,9 @@ h3 {
   width: 100%;
   display: flex;
   margin: 0 auto;
-  max-height: 700px;
+  max-height: 900px;
   border-radius: 20px;
   overflow-y: auto;
-
 }
 
 .table-contant {
