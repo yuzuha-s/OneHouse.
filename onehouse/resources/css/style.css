@@ -145,13 +145,17 @@ button:active {
   text-align: center;
 }
 
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+}
+
 h3 {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
-
-
 
 @keyframes fadeSlideIn {
   0% {
@@ -445,6 +449,7 @@ h3 {
   background-color: #FFA83F;
   opacity: 0.3;
 }
+
 .icon2 {
   display: flex;
   justify-content: center;
@@ -457,7 +462,7 @@ h3 {
   opacity: 1;
 }
 
-.navigate li.active{
+.navigate li.active {
   background-color: #576bf5;
 }
 
@@ -469,6 +474,47 @@ h3 {
   color: #fff;
 }
 
+/* setting ------------------------------------ */
+.reset-form {
+  width: 40%;
+}
+
+.resetform-contant {
+  display: flex;
+  width: 98%;
+  flex-direction: column;
+  gap: 10px;
+  margin: 50px auto;
+}
+
+.resetform-contant input {
+  padding: 30px 15px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius:20px;
+  border: none;
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.resetform-contant label {
+  color: #8C8C8C;
+  text-align: start;
+  padding-left: 10px;
+}
+
+.resetform-contant input:focus {
+  outline: none;
+  border: 1px solid #E7E9FE;
+  box-shadow: 0 0 5px rgba(87, 107, 245, 0.5);
+}
+
+.reset-form button {
+  width: 100%;
+  margin-top: 150px;
+  height: 90px;
+}
 
 /* 各フェーズの目次 ------------------------------------ */
 /* .list {
@@ -495,7 +541,18 @@ h3 {
   padding-bottom: 10px;
 }
 
-.list-header .list-nav {
+.auth-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  width: 60%;
+  margin: auto;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+.list-header .list-nav
+.auth-header .list-nav {
   display: flex;
   align-items: center;
 }
@@ -922,7 +979,6 @@ tr.checked {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #f8f8f8;
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
@@ -1041,6 +1097,9 @@ tr.checked {
   align-items: center;
   margin: 0 auto;
 }
+
+
+
 
 .loanform-contant input:focus,
 .loanform-contant textarea:focus,

@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('phase1');
 });
 
+// auth------------------------------------------
+Route::get('/password_reset', function () {
+    return view('auth/password_reset');
+});
+
 // phase1~5------------------------------------------
 Route::get('/phase1', function () {
     return view('phase1');
