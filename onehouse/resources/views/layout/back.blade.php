@@ -9,7 +9,7 @@
     <title>@yield('ttitle', 'OneHouse')</title>
 </head>
 
-<body>
+<body class="fade">
     <header></header>
 
     <div class="section">
@@ -35,7 +35,7 @@
             </div>
         </main>
     </div>
-
+@vite('resources/js/fadein.js')
 </body>
 
 </html>

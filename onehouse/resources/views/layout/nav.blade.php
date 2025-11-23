@@ -9,7 +9,7 @@
     <title>@yield('ttitle', 'OneHouse')</title>
 </head>
 
-<body>
+<body class="fade">
     <header></header>
 
     <div class="section">
@@ -119,43 +119,11 @@
             </div>
         </main>
     </div>
-    {{-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-        // Phase1～5ページへ移動
-        const mainNav = document.querySelectorAll(".main-nav li");
-        const navigate = document.querySelectorAll(".navigate li");
 
-        function clearAllActive() {
-            mainNav.forEach((el) => {
-                const icon = el.querySelector(".icon");
-                if (icon) icon.classList.remove("active");
-            });
 
-            navigate.forEach((el) => el.classList.remove("active"));
-        }
 
-        mainNav.forEach((li) => {
-            li.addEventListener("click", function(e) {
-                // e.preventDefault();
+    @vite('resources/js/fadein.js')
 
-                clearAllActive(); // すべての active を消す
-
-                const clickedIcon = this.querySelector(".icon");
-                if (clickedIcon) clickedIcon.classList.add("active");
-            });
-        });
-
-        navigate.forEach((li) => {
-            li.addEventListener("click", function(e) {
-                // e.preventDefault();
-
-                clearAllActive(); // すべての active を消す
-
-                this.classList.add("active");
-            });
-        });
-    </script> --}}
 
 </body>
 

@@ -211,4 +211,5 @@
     </form>
 
     @vite('resources/js/makerlist.js')
+     @vite('resources/js/fadein.js')
 @endsection

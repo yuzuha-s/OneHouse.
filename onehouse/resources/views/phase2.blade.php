@@ -138,4 +138,5 @@
             {{ $makers->links() }}
         </div>
     </div>
+   
 @endsection
