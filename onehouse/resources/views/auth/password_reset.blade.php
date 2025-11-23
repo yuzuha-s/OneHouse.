@@ -35,21 +35,21 @@
             <div class="reset-form wrapper">
                 <div class="resetform-contant">
                     <label for="">User Name</label>
-                    <input type="text">
+                    <input type="text" class="forminput">
                 </div>
             </div>
 
             <div class="reset-form wrapper">
                 <div class="resetform-contant">
                     <label for="">email</label>
-                    <input type="text">
+                    <input type="text" class="forminput">
                 </div>
             </div>
 
             <div class="reset-form wrapper">
                 <div class="resetform-contant">
                     <label for="">Password</label>
-                    <input type="text">
+                    <input type="text" class="forminput">
                 </div>
             </div>
 

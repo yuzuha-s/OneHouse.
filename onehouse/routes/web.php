@@ -20,10 +20,23 @@ Route::get('/password_reset', function () {
     return view('auth/password_reset');
 });
 
+Route::get('/login', function () {
+    return view('auth/login');
+});
+
+Route::get('/password_help', function () {
+    return view('auth/password_help');
+});
+
+Route::get('/setup', function () {
+    return view('auth/setup');
+});
+
 // phase1~5------------------------------------------
 Route::get('/phase1', function () {
     return view('phase1');
 });
+
 
 // Route::get('/phase1',[CheckListController::class, 'indexPhase1']);
 

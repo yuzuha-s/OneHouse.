@@ -14,6 +14,7 @@ body {
   background-attachment: fixed;
 }
 
+
 ul {
   list-style: none;
   padding: 0;
@@ -253,6 +254,152 @@ h3 {
   margin-left: 50px;
 }
 
+/* 登録ページ共通------------------------------------ */
+.auth-section {
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.detail {
+  width: 45%;
+  gap: 100px;
+}
+
+.auth-header {
+  width: 80%;
+  gap: 100px;
+  margin-top: 100px;
+
+}
+
+.auth-contant {
+  width: 55%;
+  align-items: center;
+  height: 85%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  margin: auto;
+}
+
+.auth-form {
+  margin-top: 100px;
+
+}
+
+
+.appname {
+  display: flex;
+}
+
+.app-title {
+  font-size: 73px;
+  font-weight: lighter;
+}
+
+
+.auth-nav {
+  width: 80%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 1.3rem 6px;
+}
+
+.auth-nav li {
+  display: block;
+  align-items: center;
+  width: 90%;
+  justify-content: center;
+  position: relative;
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.auth-nav li a {
+  color: #000;
+  font-weight: 300;
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.subname {
+  font-weight: 300;
+  margin-top: 10px;
+  font-size: 18px;
+
+}
+
+.auth-nav svg {
+  flex-shrink: 0;
+  display: block;
+  line-height: 60px;
+  text-align: center;
+}
+
+.auth-nav .icon {
+  background-color: #65AEFD;
+  padding: 20px;
+  border-radius: 100px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-nav li a .title {
+  height: 60px;
+  line-height: 60px;
+  margin-left: 40px;
+  transition: opacity 1s ease;
+
+}
+
+.auth-nav li:hover {
+  transition: width 1s ease;
+}
+
+.button-form {
+  display: flex;
+  width: 90%;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.button-form .setup-button {
+  flex: 1;
+  text-align: center;
+}
+
+.btn-hidden {
+  visibility: hidden;
+}
+
+.forminput,
+.phase {
+  transition: 300ms ease-in-out;
+}
+.phase:hover {
+  transform: scale(1.05);
+}
+
+.forminput:focus {
+  background-color: white;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #969696,
+    -13px -13px 100px #ffffff;
+
+}
+
 /* main contant ------------------------------------ */
 .contant {
   align-items: center;
@@ -268,7 +415,10 @@ h3 {
   display: flex;
 }
 
+
+
 /* ナビゲーションバー ------------------------------------ */
+
 .nav {
   height: 100vh;
   width: 100px;
@@ -326,6 +476,8 @@ h3 {
   padding: 1.3rem;
   position: relative;
 }
+
+
 
 .navigate,
 .main-nav {
@@ -490,7 +642,7 @@ h3 {
 .resetform-contant input {
   padding: 30px 15px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  border-radius:20px;
+  border-radius: 20px;
   border: none;
   width: 100%;
   align-items: center;
@@ -512,9 +664,45 @@ h3 {
 
 .reset-form button {
   width: 100%;
-  margin-top: 150px;
+  margin-top: 200px;
   height: 90px;
 }
+
+.setup-form {
+  width: 80%;
+}
+
+.setup-form button {
+  width: 100%;
+
+}
+
+.setup-button {
+  background-color: #E7E9FE;
+  border-radius: 40px;
+  padding: 15px 40px;
+  border: none;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 0 #ccc;
+}
+
+.setup-button:hover {
+  transform: translateY(-2px) scale(1.06);
+  background-color: #61C6DF;
+  color: #FFF;
+}
+
+.setup-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #aaa;
+}
+
+
+
 
 /* 各フェーズの目次 ------------------------------------ */
 /* .list {
@@ -541,18 +729,8 @@ h3 {
   padding-bottom: 10px;
 }
 
-.auth-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 100px;
-  width: 60%;
-  margin: auto;
-  padding-top: 50px;
-  padding-bottom: 10px;
-}
 
-.list-header .list-nav
-.auth-header .list-nav {
+.list-header .list-nav .auth-header .list-nav {
   display: flex;
   align-items: center;
 }
@@ -954,6 +1132,11 @@ tr.checked {
   transform: translateY(-2px) scale(1.06);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+}
+
+.register button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #aaa;
 }
 
 .star-rating {
