@@ -44,7 +44,7 @@
                 <div class="land-form wrapper">
 
                     <div class="land-left">
-                        <div class="land-land-left-fix">
+                        <div class="land-left-fix">
 
                             <div class="landform-contant">
                                 <label for="">住所</label>

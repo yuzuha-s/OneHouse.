@@ -61,7 +61,7 @@
                 </thead>
                 <tbody class="checklist">
 
-                    @foreach ($checkLists as $checkList)
+                    @foreach ($checkLists ?? [] as $checkList)
                         @if ($checkList->phase->number === 1)
                             <tr class="phase1-row" data-id="{{ $checkList->id }}">
                                 <td> <label class="switch">

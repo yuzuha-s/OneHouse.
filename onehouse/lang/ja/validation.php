@@ -87,7 +87,7 @@ return [
     'mimes' => ':attributeは:valuesタイプのファイルでなければなりません。',
     'mimetypes' => ':attributeは:valuesタイプのファイルでなければなりません。',
     'min' => [
-        'numeric' => ':attributeは:min㎡以上で登録できます。',
+        'numeric' => ':attributeは:min㎡以上で登録できます',
         'file' => ':attributeは:maxキロバイトより小さくてはいけません。',
         'string' => ':attributeは:max文字より小さくてはいけません。',
         'array' => ':attributeには少なくとも:min個のアイテムが必要です。',
@@ -99,13 +99,13 @@ return [
     'password' => 'パスワードが間違っています。',
     'present' => ':attributeが存在する必要があります。',
     'regex' => ':attributeは無効な形式です。',
-    'required' => ':attributeは必須です。',
-    'required_if' => ':otherが:valueの場合、:attributeは必須です。',
-    'required_unless' => ':otherが:valueではない場合、:attributeは必須です。',
-    'required_with' => ':valuesのうち一つでも存在する場合、:attributeは必須です。',
-    'required_with_all' => ':valuesのうち全て存在する場合、:attributeは必須です。',
-    'required_without' => ':valuesのうちどれか一つでも存在していない場合、:attributeは必須です。',
-    'required_without_all' => ':valuesのうち全て存在していない場合、:attributeは必須です。',
+    'required' => ':attributeは必須です',
+    'required_if' => ':otherが:valueの場合、:attributeは必須です',
+    'required_unless' => ':otherが:valueではない場合、:attributeは必須です',
+    'required_with' => ':valuesのうち一つでも存在する場合、:attributeは必須です',
+    'required_with_all' => ':valuesのうち全て存在する場合、:attributeは必須です',
+    'required_without' => ':valuesのうちどれか一つでも存在していない場合、:attributeは必須です',
+    'required_without_all' => ':valuesのうち全て存在していない場合、:attributeは必須です',
     'prohibited' => ':attributeは禁止されています。',
     'prohibited_if' => ':otherが:valueの場合、:attributeは禁止されています。',
     'prohibited_unless' => ':otherが:valuesにない限り、:attributeは禁止されています。',
@@ -171,6 +171,6 @@ return [
         'pricePerTsubo' => '坪単価',
         'builable_area' => '建築可能面積',
         'list' => 'タスク',
-        
+
     ],
 ];
