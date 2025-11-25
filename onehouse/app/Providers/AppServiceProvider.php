@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Checklist;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,7 +20,9 @@ class AppServiceProvider extends ServiceProvider
     // チェックリストをすべてのビューで表示する
     public function boot(): void
     {
-        $checkLists = Checklist::all();
-        View::share('checkLists', $checkLists);
+        if (Schema::hasTable('checklists')) {
+            $checkLists = Checklist::all();
+            View::share('checkLists', $checkLists);
+        }
     }
 }

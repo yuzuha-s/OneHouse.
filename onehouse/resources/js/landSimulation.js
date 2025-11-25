@@ -1,3 +1,5 @@
+import { calculate } from "./calculate.js";
+
 function init() {
     setupInitialState();
     setupEventListeners();
@@ -15,6 +17,7 @@ function setupEventListeners() {
     const builableTuboValue = document.querySelector(".builable_area_Tubo");
     const maxFloorAreaValue = document.querySelector(".maxfloor_area");
     let currentPricePerTsubo = 0;
+    let editingRow = null;
 
     // range と連動
     range.addEventListener("input", (e) => {
@@ -29,18 +32,6 @@ function setupEventListeners() {
 
     // land-calculateボタン押下時の建築可能面積の結果表示
     const handleCalculate = () => {
-        const tuboInput = document.querySelector(
-            'input[name="builable_area_Tubo"]'
-        );
-        const tubo = parseFloat(tuboInput.value) || 0;
-
-        tuboValue.textContent = tubo;
-        builableAreaValue.textContent = (tubo * 3.3).toFixed(1);
-        buildingCostValue.textContent = Math.floor(
-            tubo * currentPricePerTsubo
-        ).toLocaleString();
-        builableTuboValue.textContent = tubo;
-
         const landArea =
             parseFloat(
                 document.querySelector('input[name="landarea"]').value
@@ -66,28 +57,29 @@ function setupEventListeners() {
             range.value = 0;
             tuboValue.textContent = 0;
             builableAreaValue.textContent = 0;
+            buildingCostValue.textContent = 0;
             return;
         }
 
-        // 建築可能面積 ㎡
-        const maxFloorArea = landArea * (bcr / 100);
-        const builable_area = maxFloorArea * (far / 100);
-        // 建築可能面積 坪
-        const builable_area_Tubo = builable_area / 3.3;
-        // 建築費用
-        const building_cost = builable_area_Tubo * pricePerTsubo;
-        // 計算結果表示
-        builableAreaValue.textContent = Math.floor(builable_area);
-        maxFloorAreaValue.textContent = Math.floor(maxFloorArea);
-        builableTuboValue.textContent = Math.floor(builable_area_Tubo);
-        buildingCostValue.textContent = Math.floor(building_cost);
+        const result = calculate({ landArea, far, bcr, pricePerTsubo });
+        if (result.error) {
+            showInputMessage("inputerror");
+            return;
+        }
 
-        document.getElementById("builable_area_hidden").value =
-            Math.floor(builable_area);
+        maxFloorAreaValue.textContent = Math.floor(result.maxFloorArea);
+        builableAreaValue.textContent = Math.floor(result.buildableArea);
+        builableTuboValue.textContent = Math.floor(result.buildableAreaTsubo);
+        buildingCostValue.textContent = Math.floor(result.buildingCost);
 
-        range.max = Math.floor(builable_area_Tubo);
+        document.getElementById("builable_area_hidden").value = Math.floor(
+            result.buildableArea
+        );
+
+        range.max = Math.floor(result.buildableAreaTsubo);
         range.value = range.max;
         tuboValue.textContent = range.value;
+
         showInputMessage("calculateSuccess");
     };
     calculateBtn.addEventListener("click", () => {

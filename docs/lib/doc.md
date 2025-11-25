@@ -81,8 +81,6 @@ export default defineConfig({
 
 
 ## 静的ツール
-### 
-
 
 ### ✔PHPUnittests/ディレクトリ内のテストを実行
 - コードを実行して解析
@@ -115,3 +113,9 @@ vendor/bin/phpstan analyse app
 ```
 npx eslint resources/js
 ```
+
+### テスト
+.env.testingのDB_DATABASE=onehouse_testで作成
+
+テストダータベースの作成
+php artisan migrate --env=testing
