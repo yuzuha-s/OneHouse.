@@ -24,7 +24,7 @@ class MakerController extends Controller
     // 保存する
     public function store(Request $request)
     {
-        // Log::info('Maker store called', $request->all());
+
         // dd($request->all());
         $validated = $request->validate([
 
@@ -70,6 +70,7 @@ class MakerController extends Controller
     //  変更ページを更新する
     public function update(Request $request, string $id)
     {
+        // dd($request->all());
         $validated = $request->validate([
 
             'name' => 'required|string|max:255',

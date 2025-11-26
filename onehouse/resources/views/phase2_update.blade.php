@@ -55,7 +55,7 @@
                             @for ($i = 1; $i <= 5; $i++)
                                 <label for="" class="star-check">
                                     <input type="checkbox" name="star[]" value="{{ $i }}"
-                                        @if (in_array($i, old('star', (array) ($maker->star ?? [])))) checked @endif>
+                                        @if ($i <= old('star_value', $maker->star ?? 0)) checked @endif>
                                     <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960"
                                         width="50px" fill="#FFFFFF" stroke="#8C8C8C" stroke-width="50">
                                         <path
@@ -211,5 +211,4 @@
     </form>
 
     @vite('resources/js/makerlist.js')
-     @vite('resources/js/fadein.js')
 @endsection
