@@ -1,5 +1,18 @@
 export function calculate({ landArea, far, bcr, pricePerTsubo }) {
-    if (landArea <= 0 || far <= 0 || bcr <= 0 || pricePerTsubo <= 0) {
+    if (
+        typeof landArea !== "number" ||
+        typeof far !== "number" ||
+        typeof bcr !== "number" ||
+        typeof pricePerTsubo !== "number" ||
+        landArea <= 0 ||
+        far <= 0 ||
+        bcr <= 0 ||
+        pricePerTsubo <= 0 ||
+        isNaN(landArea) ||
+        isNaN(far) ||
+        isNaN(bcr) ||
+        isNaN(pricePerTsubo)
+    ) {
         return { error: true };
     }
 
