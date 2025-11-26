@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 星をクリックしたとき
     stars.forEach((checkbox, index) => {
-        checkbox.addEventListener("change", () => {
+        checkbox.addEventListener("click", () => {
             colorStarsUp(index);
 
             // 他のチェックボックスの状態を更新しておく

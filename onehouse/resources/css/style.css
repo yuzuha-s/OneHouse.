@@ -165,6 +165,10 @@ h3 {
   font-weight: bold;
   margin: 0;
 }
+.note {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
 
 @keyframes fadeSlideIn {
   0% {
