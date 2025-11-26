@@ -22,12 +22,12 @@ function setupEventListeners() {
     // range と連動
     range.addEventListener("input", (e) => {
         const tubo = parseFloat(e.target.value) || 0;
-        tuboValue.textContent = tubo;
+        tuboValue.textContent = tubo.toFixed(0);
         builableAreaValue.textContent = (tubo * 3.3).toFixed(1);
         buildingCostValue.textContent = Math.floor(
             tubo * currentPricePerTsubo
         ).toLocaleString();
-        builableTuboValue.textContent = tubo;
+        builableTuboValue.textContent = tubo.toFixed(0);
     });
 
     // land-calculateボタン押下時の建築可能面積の結果表示
@@ -47,11 +47,6 @@ function setupEventListeners() {
         currentPricePerTsubo = pricePerTsubo;
 
         if (landArea <= 0 || far <= 0 || bcr <= 0 || pricePerTsubo <= 0) {
-            // const inputs = document.querySelectorAll(".landinput");
-            // inputs.forEach((input) => {
-            //     input.classList.add("input-error");
-            // });
-
             showInputMessage("inputerror");
             range.max = 0;
             range.value = 0;
@@ -70,13 +65,16 @@ function setupEventListeners() {
         maxFloorAreaValue.textContent = Math.floor(result.maxFloorArea);
         builableAreaValue.textContent = Math.floor(result.buildableArea);
         builableTuboValue.textContent = Math.floor(result.buildableAreaTsubo);
-        buildingCostValue.textContent = Math.floor(result.buildingCost);
+        buildingCostValue.textContent = Math.floor(
+            result.buildingCost
+        ).toLocaleString();
 
         document.getElementById("builable_area_hidden").value = Math.floor(
             result.buildableArea
         );
 
-        range.max = Math.floor(result.buildableAreaTsubo);
+        range.max = result.buildableAreaTsubo;
+        range.step = 1;
         range.value = range.max;
         tuboValue.textContent = range.value;
 
@@ -96,8 +94,12 @@ function setupEventListeners() {
         if (e.target.closest(".edit-row")) {
             const btn = e.target.closest(".edit-row");
             const tr = btn.closest("tr");
-            // if (editingRow && editingRow !== tr) return;
 
+            if (editingRow && editingRow !== tr) {
+                alert("複数選択はできません");
+                return;
+            }
+            editingRow = tr;
             tr.style.backgroundColor = "rgba(97, 198, 223, 0.3)";
             tr.style.fontWeight = "bold";
             btn.style.display = "none";
@@ -114,10 +116,10 @@ function setupEventListeners() {
                 tr.dataset.price;
             document.querySelector("input[name=id]").value = tr.dataset.id;
             showUpdateMessage("update");
-        }
 
-        const backBtn = document.querySelector(".back");
-        backBtn.innerHTML = `<button type = "button" class="backEdit"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M266-200v-66.67h301.33q67.67 0 116.84-44.33 49.16-44.33 49.16-110.33t-49.16-110.34Q635-576 567.33-576H286.67l110.66 110.67-46.66 46.66L160-609.33 350.67-800l46.66 46.67-110.66 110.66h280q95.66 0 164.5 63.67Q800-515.33 800-421.33q0 94-68.83 157.66Q662.33-200 566.67-200H266Z"/></svg></button>`;
+            const backBtn = document.querySelector(".back");
+            backBtn.innerHTML = `<button type = "button" class="backEdit"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#C5C5C5"><path d="M266-200v-66.67h301.33q67.67 0 116.84-44.33 49.16-44.33 49.16-110.33t-49.16-110.34Q635-576 567.33-576H286.67l110.66 110.67-46.66 46.66L160-609.33 350.67-800l46.66 46.67-110.66 110.66h280q95.66 0 164.5 63.67Q800-515.33 800-421.33q0 94-68.83 157.66Q662.33-200 566.67-200H266Z"/></svg></button>`;
+        }
     };
 
     editBtn.forEach((btn) =>
