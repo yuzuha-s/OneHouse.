@@ -165,6 +165,7 @@ h3 {
   font-weight: bold;
   margin: 0;
 }
+
 .note {
   font-size: 12px;
   letter-spacing: 1px;
@@ -1554,8 +1555,8 @@ span {
   /* -webkit-appearance: none; */
   width: 380px;
   height: 10px;
-  background: #576bf5;
-  border-radius: 50px;
+  accent-color: #576bf5;
+  border-radius: 5px;
   outline: none;
 }
 
