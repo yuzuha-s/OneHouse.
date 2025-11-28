@@ -57,6 +57,15 @@ jobs:
           tools: phpstan, phpcs
           extensions: mbstring, bcmath, pdo_mysql, swoole, redis
 
+      - name: Create .env
+        run: |
+          cp .env.example .env
+          sed -i 's/DB_HOST=.*/DB_HOST=mysql/' .env
+          sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
+          sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
+          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
+          php artisan key:generate
+
       - name: Install dependencies
         run: composer install
 
