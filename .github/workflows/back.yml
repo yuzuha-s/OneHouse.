@@ -24,6 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: composer install
+        working-directory: onehouse
 
       - name: Run tests
         run: php artisan test
