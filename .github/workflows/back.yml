@@ -60,6 +60,13 @@ jobs:
       - name: Install dependencies
         run: composer install
 
+      - name: Wait for MySQL
+        run: |
+          until mysqladmin ping -h mysql -uroot -ppassword; do
+            echo "Waiting for MySQL..."
+            sleep 5
+          done
+
       - name: Create .env
         run: |
           cp .env.example .env
