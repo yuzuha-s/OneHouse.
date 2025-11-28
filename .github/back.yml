@@ -11,16 +11,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v3
 
-      - name: Setup Laravel
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.3"
-          swoole: swoole-1.9.3,mbstring, bcmath, pdo_mysql
+          extensions: mbstring, bcmath, pdo_mysql, swoole
 
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run tests
-        run: php artisan test --env=testing
+        run: php artisan test
