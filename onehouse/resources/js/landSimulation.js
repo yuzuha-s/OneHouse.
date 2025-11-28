@@ -129,7 +129,7 @@ function setupEventListeners() {
     );
 
     // 戻るボタン
-    const handleBack = (e) => {
+    const handleBack = () => {
         if (editingRow) {
             editingRow.style.backgroundColor = "";
             editingRow.style.fontWeight = "";
