@@ -57,6 +57,9 @@ jobs:
           tools: phpstan, phpcs
           extensions: mbstring, bcmath, pdo_mysql, swoole, redis
 
+      - name: Install dependencies
+        run: composer install
+
       - name: Create .env
         run: |
           cp .env.example .env
@@ -65,9 +68,6 @@ jobs:
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
           php artisan key:generate
-
-      - name: Install dependencies
-        run: composer install
 
       - name: Run migrations
         run: php artisan migrate --force
