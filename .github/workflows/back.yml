@@ -1,5 +1,8 @@
 name: Run Onehouse
 
+env:
+  DB_HOST: mysql
+
 on:
   push:
     branches:
@@ -68,6 +71,26 @@ jobs:
 
       - name: Install dependencies
         run: composer install --no-scripts
+
+      - name: Diagnose before migrations
+        run: |
+          echo "=== onehouse/.env ==="
+          if [ -f .env ]; then cat .env; else echo ".env not found"; fi
+          echo ""
+          echo "=== Process env DB_* ==="
+          env | grep '^DB_' || true
+          echo ""
+          echo "=== getent hosts mysql ==="
+          getent hosts mysql || echo "no mysql host entry"
+          echo ""
+          echo "=== /etc/hosts ==="
+          cat /etc/hosts || true
+          echo ""
+          echo "=== ping mysql ==="
+          ping -c1 mysql || echo "ping failed"
+          echo ""
+          echo "=== mysql query check ==="
+          mysql -h mysql -uroot -ppassword -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
 
       - name: Run migrations
         run: php artisan migrate --force
