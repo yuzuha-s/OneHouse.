@@ -24,7 +24,7 @@ jobs:
           MYSQL_DATABASE: onehouse
         ports:
           - 3306/tcp
-        options: --health-cmd="mysqladmin ping -h localhost -ppassword" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="mysqladmin ping -ppassword" --health-interval=10s --health-timeout=5s --health-retries=3
 
       redis:
         image: redis
@@ -63,7 +63,7 @@ jobs:
       - name: Create .env
         run: |
           cp .env.example .env
-          sed -i 's/DB_HOST=.*/DB_HOST=mysql/' .env
+          sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' .env
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
