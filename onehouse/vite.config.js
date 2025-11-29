@@ -9,6 +9,12 @@ export default defineConfig({
                 "resources/css/app.css",
                 "resources/css/style.css",
                 "resources/js/app.js",
+                "resources/js/bootstrap.js",
+                "resources/js/calculate.js",
+                "resources/js/checkList.js",
+                "resources/js/fadein.js",
+                "resources/js/makerlist.js",
+
                 "resources/js/landSimulation.js",
             ],
             refresh: true,
