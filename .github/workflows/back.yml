@@ -94,11 +94,15 @@ jobs:
 
       - name: Wait for MySQL
         run: |
-          for i in {1..60}; do
+          for i in {1..30}; do
             mysqladmin ping -h mysql -uroot -ppassword --silent && break
             echo "Waiting for MySQL..."
             sleep 2
           done
+
+      - name: Diagnose MySQL
+        run: |
+          mysql -h mysql -uroot -ppassword -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
 
       - name: Run migrations
         run: php artisan migrate --force
