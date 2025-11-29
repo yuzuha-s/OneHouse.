@@ -18,7 +18,7 @@ jobs:
       DB_PORT: 3306
       DB_DATABASE: onehouse
       DB_USERNAME: root
-      DB_PASSWORD: password
+      DB_PASSWORD: ""
 
       BROADCAST_DRIVER: log
       CACHE_DRIVER: array
@@ -48,12 +48,11 @@ jobs:
 
       - name: Configure MySQL root
         run: |
-          sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"
-          sudo mysql -uroot -ppassword -e "CREATE DATABASE onehouse;"
+          sudo mysql -e "CREATE DATABASE IF NOT EXISTS onehouse;"
 
       - name: Check MySQL connection
         run: |
-          mysql -uroot -ppassword -e "SELECT 1;" && echo "MySQL OK" || echo "MySQL connection failed"
+          mysql -uroot -e "SELECT 1;" && echo "MySQL OK" || echo "MySQL connection failed"
 
       - name: Create .env
         run: |
@@ -61,7 +60,7 @@ jobs:
           sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' .env
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
+          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=/' .env
           sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
 
       - name: Install dependencies
@@ -85,19 +84,19 @@ jobs:
           ping -c1 mysql || echo "ping failed"
           echo ""
           echo "=== mysql query check ==="
-          mysql -h 127.0.0.1 -uroot -ppassword -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
+          mysql -h 127.0.0.1 -uroot -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
 
       - name: Wait for MySQL
         run: |
           for i in {1..30}; do
-            mysqladmin ping -h 127.0.0.1 -uroot -ppassword --silent && break
+            mysqladmin ping -h 127.0.0.1 -uroot --silent && break
             echo "Waiting for MySQL..."
             sleep 2
           done
 
       - name: Diagnose MySQL
         run: |
-          mysql -h 127.0.0.1 -uroot -ppassword -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
+          mysql -h 127.0.0.1 -uroot -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
 
       - name: Run migrations
         run: php artisan migrate --force
