@@ -16,12 +16,12 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: onehouse
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -uroot -p${{ secrets.DB_PASSWORD }}"
+          --health-cmd="mysqladmin ping -uroot -ppassword"
           --health-interval=5s
           --health-timeout=3s
           --health-retries=10
@@ -32,7 +32,7 @@ jobs:
       DB_PORT: 3306
       DB_DATABASE: onehouse
       DB_USERNAME: root
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_PASSWORD: password
 
       BROADCAST_DRIVER: log
       CACHE_DRIVER: array
@@ -60,13 +60,13 @@ jobs:
           sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' .env
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=${{ secrets.DB_PASSWORD }}/' .env
+          sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=password/" .env
           sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
 
       - name: Wait for MySQL
         run: |
           for i in {1..30}; do
-            mysqladmin ping -h 127.0.0.1 -uroot -p"$DB_PASSWORD" --silent && break
+            mysqladmin ping -h 127.0.0.1 -uroot -ppassword --silent && break
             echo "Waiting for MySQL..."
             sleep 2
           done
