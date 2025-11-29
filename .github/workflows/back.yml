@@ -46,6 +46,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          path: OneHouse
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -70,6 +72,23 @@ jobs:
             echo "Waiting for MySQL..."
             sleep 2
           done
+
+      - name: Install dependencies
+        run: composer install --no-scripts --prefer-dist --no-interaction
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: onehouse
+
+      - name: Build frontend assets
+        run: npm run build
+        working-directory: onehouse
+
 
       - name: Run migrations
         run: php artisan migrate --force
