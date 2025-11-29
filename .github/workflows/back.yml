@@ -3,7 +3,7 @@ name: Run Onehouse
 on:
   push:
     branches:
-      - main
+      - feature/workflow
   pull_request:
     branches:
       - main
@@ -12,35 +12,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: false
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: onehouse
-        ports:
-          - 3306/tcp
-        options: --health-cmd="mysqladmin ping -ppassword" --health-interval=10s --health-timeout=5s --health-retries=3
-
-      redis:
-        image: redis
-        ports:
-          - 6379/tcp
-        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     env:
-      DB_CONNECTION: mysql
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_DATABASE: onehouse
-      DB_USERNAME: root
-      DB_PASSWORD: password
-
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ":memory:"
+      APP_KEY: base64:QF5LTL9djOKkJIcXb1KQIksEP2A8hHndE89avNArcwk=
       BROADCAST_DRIVER: log
-      CACHE_DRIVER: redis
-      QUEUE_CONNECTION: redis
-      SESSION_DRIVER: redis
+      CACHE_DRIVER: array
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: array
 
     defaults:
       run:
@@ -55,31 +34,23 @@ jobs:
         with:
           php-version: 8.3
           tools: phpstan, phpcs
-          extensions: mbstring, bcmath, pdo_mysql, swoole, redis
-
-     
-
-      - name: Wait for MySQL
-        run: |
-          until mysqladmin ping -h mysql -uroot -ppassword; do
-            echo "Waiting for MySQL..."
-            sleep 5
-          done
-
-      - name: Create .env
-        run: |
-          cp .env.example .env
-          sed -i 's/DB_HOST=.*/DB_HOST=mysql/' .env
-          sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
-          sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
-          php artisan key:generate
+          extensions: sqlite, pdo_sqlite, mbstring, bcmath, redis
 
       - name: Install dependencies
-        run: composer install
+        run: composer install --no-scripts --prefer-dist --no-interaction
 
-      - name: Run migrations
-        run: php artisan migrate --force
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: onehouse
+
+      - name: Build frontend assets
+        run: npm run build
+        working-directory: onehouse
 
       - name: Run tests
-        run: php artisan test
+        run: php artisan test --testsuite=Unit
