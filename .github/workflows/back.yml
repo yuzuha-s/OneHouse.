@@ -38,15 +38,15 @@ jobs:
         with:
           php-version: 8.3
           tools: phpstan, phpcs
-          extensions: mbstring, bcmath, pdo_mysql, swoole, array
+          extensions: mbstring, bcmath, pdo_mysql, swoole
 
       - name: Install MySQL
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
           sudo service mysql start
-          mysql -e "CREATE DATABASE onehouse;"
-          mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"
+          mysql -uroot -ppassword -e "CREATE DATABASE onehouse;"
+          mysql -uroot -ppassword -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"
 
       - name: Create .env
         run: |
