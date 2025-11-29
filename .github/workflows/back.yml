@@ -1,12 +1,56 @@
-- name: Install Node.js
-  uses: actions/setup-node@v3
-  with:
-    node-version: 20
+name: Run Onehouse
 
-- name: Install frontend dependencies
-  run: npm ci
-  working-directory: onehouse
+on:
+  push:
+    branches:
+      - feature/workflow
+  pull_request:
+    branches:
+      - main
 
-- name: Build frontend assets
-  run: npm run build
-  working-directory: onehouse
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ":memory:"
+      APP_KEY: base64:QF5LTL9djOKkJIcXb1KQIksEP2A8hHndE89avNArcwk=
+      BROADCAST_DRIVER: log
+      CACHE_DRIVER: array
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: array
+
+    defaults:
+      run:
+        working-directory: onehouse
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: phpstan, phpcs
+          extensions: sqlite, pdo_sqlite, mbstring, bcmath, redis
+
+      - name: Install dependencies
+        run: composer install --no-scripts --prefer-dist --no-interaction
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: onehouse
+
+      - name: Build frontend assets
+        run: npm run build
+        working-directory: onehouse
+
+      - name: Run tests
+        run: php artisan test
