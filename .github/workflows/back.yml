@@ -3,7 +3,6 @@ name: Run Onehouse
 on:
   push:
     branches:
-      - main
       - feature/workflow
   pull_request:
     branches:
@@ -57,30 +56,6 @@ jobs:
           php-version: 8.3
           tools: phpstan, phpcs
           extensions: mbstring, bcmath, pdo_mysql, swoole, redis
-
-      - name: Diagnose MySQL service
-        run: |
-          echo "=== Checking getent hosts mysql ==="
-          getent hosts mysql || echo "no mysql host entry"
-          echo ""
-          echo "=== Checking /etc/hosts ==="
-          cat /etc/hosts || true
-          echo ""
-          echo "=== Attempting ping to mysql ==="
-          ping -c1 mysql || echo "ping failed"
-          echo ""
-          echo "=== Checking port 3306 ==="
-          ss -tnlp | grep 3306 || echo "port 3306 not listening"
-          echo ""
-          echo "=== Attempting mysqladmin ping -h mysql ==="
-          mysqladmin ping -h mysql -uroot -ppassword || true
-
-      - name: Wait for MySQL
-        run: |
-          until mysqladmin ping -h mysql -uroot -ppassword; do
-            echo "Waiting for MySQL..."
-            sleep 5
-          done
 
       - name: Create .env
         run: |
