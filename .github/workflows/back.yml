@@ -1,7 +1,7 @@
 name: Run Onehouse
 
 env:
-  DB_HOST: 127.0.0.1
+  DB_HOST: mysql
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
           MYSQL_DATABASE: onehouse
         ports:
           - 3306/tcp
-        options: --health-cmd="mysqladmin ping -ppassword" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="mysqladmin ping -h mysql -ppassword" --health-interval=10s --health-timeout=5s --health-retries=3
 
       redis:
         image: redis
@@ -34,7 +34,7 @@ jobs:
 
     env:
       DB_CONNECTION: mysql
-      DB_HOST: 127.0.0.1
+      DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: onehouse
       DB_USERNAME: root
@@ -63,7 +63,7 @@ jobs:
       - name: Create .env
         run: |
           cp .env.example .env
-          sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' .env
+          sed -i 's/DB_HOST=.*/DB_HOST=mysql/' .env
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
@@ -91,6 +91,14 @@ jobs:
           echo ""
           echo "=== mysql query check ==="
           mysql -h mysql -uroot -ppassword -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
+
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h mysql -uroot -ppassword --silent && break
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
 
       - name: Run migrations
         run: php artisan migrate --force
