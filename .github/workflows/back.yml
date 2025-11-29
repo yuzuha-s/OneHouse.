@@ -12,6 +12,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          MYSQL_DATABASE: onehouse
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -uroot -p${{ secrets.DB_PASSWORD }}"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=10
+
     env:
       DB_CONNECTION: mysql
       DB_HOST: 127.0.0.1
@@ -40,25 +54,6 @@ jobs:
           tools: phpstan, phpcs
           extensions: mbstring, bcmath, pdo_mysql, swoole
 
-      - name: Install MySQL
-        run: |
-          sudo apt-get update
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
-          sudo service mysql start
-
-      - name: Configure MySQL root
-        run: |
-          sudo mysql <<EOSQL
-          ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${{ secrets.DB_PASSWORD }}';
-          FLUSH PRIVILEGES;
-          CREATE DATABASE IF NOT EXISTS onehouse;
-          EOSQL
-
-      - name: Check MySQL connection
-        run: |
-          mysql -uroot -p"$DB_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS onehouse;"
-
-
       - name: Create .env
         run: |
           cp .env.example .env
@@ -68,40 +63,13 @@ jobs:
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=${{ secrets.DB_PASSWORD }}/' .env
           sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
 
-      - name: Install dependencies
-        run: composer install --no-scripts
-
-      - name: Diagnose before migrations
-        run: |
-          echo "=== onehouse/.env ==="
-          if [ -f .env ]; then cat .env; else echo ".env not found"; fi
-          echo ""
-          echo "=== Process env DB_* ==="
-          env | grep '^DB_' || true
-          echo ""
-          echo "=== getent hosts mysql ==="
-          getent hosts mysql || echo "no mysql host entry"
-          echo ""
-          echo "=== /etc/hosts ==="
-          cat /etc/hosts || true
-          echo ""
-          echo "=== ping mysql ==="
-          ping -c1 mysql || echo "ping failed"
-          echo ""
-          echo "=== mysql query check ==="
-          mysql -h 127.0.0.1 -uroot -p"${{ secrets.DB_PASSWORD }}" -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
-
       - name: Wait for MySQL
         run: |
           for i in {1..30}; do
-            mysqladmin ping -h 127.0.0.1 -uroot --silent && break
+            mysqladmin ping -h 127.0.0.1 -uroot -p"$DB_PASSWORD" --silent && break
             echo "Waiting for MySQL..."
             sleep 2
           done
-
-      - name: Diagnose MySQL
-        run: |
-          mysql -h 127.0.0.1 -uroot -p"${{ secrets.DB_PASSWORD }}" -e "SELECT 1;" && echo "mysql ok" || echo "mysql query failed"
 
       - name: Run migrations
         run: php artisan migrate --force
