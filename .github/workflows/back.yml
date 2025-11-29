@@ -46,8 +46,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          path: OneHouse.
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
