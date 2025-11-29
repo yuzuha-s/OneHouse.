@@ -63,8 +63,6 @@ jobs:
           sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=password/" .env
           sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
 
-      - name: Generate app key
-        run: php artisan key:generate
 
       - name: Wait for MySQL
         run: |
@@ -89,6 +87,9 @@ jobs:
       - name: Build frontend assets
         run: npm run build
         working-directory: onehouse
+
+      - name: Generate app key
+        run: php artisan key:generate
 
       - name: Run migrations
         run: php artisan migrate --force
