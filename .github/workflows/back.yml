@@ -48,7 +48,9 @@ jobs:
 
       - name: Configure MySQL root
         run: |
-          sudo mysql -e "CREATE DATABASE IF NOT EXISTS onehouse;"
+          sudo mysql <<EOSQL
+          CREATE DATABASE IF NOT EXISTS onehouse;
+          EOSQL
 
       - name: Check MySQL connection
         run: |
