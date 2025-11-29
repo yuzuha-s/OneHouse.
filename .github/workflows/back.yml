@@ -64,10 +64,12 @@ jobs:
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
-          php artisan key:generate
 
       - name: Install dependencies
         run: composer install
+
+      - name: Generate APP_KEY
+        run: php artisan key:generate
 
       - name: Run migrations
         run: php artisan migrate --force
