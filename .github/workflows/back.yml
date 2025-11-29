@@ -64,26 +64,10 @@ jobs:
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=onehouse/' .env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
+          sed -i 's/APP_KEY=/APP_KEY=base64:QF5LTL9djOKkJIcXb1KQIksEP2A8hHndE89avNArcwk=/' .env
 
       - name: Install dependencies
         run: composer install --no-scripts
-
-      - name: Wait for MySQL
-        run: |
-          for i in {1..30}; do
-            if mysqladmin ping -h mysql -uroot -ppassword >/dev/null 2>&1; then
-              echo "MySQL is ready"
-              break
-            fi
-            echo "Waiting for MySQL... ($i/30)"
-            sleep 2
-          done
-
-      - name: Generate APP_KEY
-        run: php artisan key:generate
-
-      - name: Run Composer Scripts
-        run: composer run-script post-autoload-dump
 
       - name: Run migrations
         run: php artisan migrate --force
