@@ -1,7 +1,7 @@
 name: Run Onehouse
 
 env:
-  DB_HOST: mysql
+  DB_HOST: 127.0.0.1
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
 
     env:
       DB_CONNECTION: mysql
-      DB_HOST: mysql
+      DB_HOST: 127.0.0.1
       DB_PORT: 3306
       DB_DATABASE: onehouse
       DB_USERNAME: root
