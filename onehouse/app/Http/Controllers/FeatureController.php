@@ -17,7 +17,6 @@ class FeatureController extends Controller
     {
         //
     }
-    // 保存する
     public function store(Request $request)
     {
         $validated =  $request->validate([
@@ -30,33 +29,23 @@ class FeatureController extends Controller
         return redirect()->route('phase2')->with('success', '登録が完了しました');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

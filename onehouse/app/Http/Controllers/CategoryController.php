@@ -1,5 +1,6 @@
 <?php
 
+#TODO:何のCategoryか分かるように変数名を変更する
 namespace App\Http\Controllers;
 
 use App\Models\Category;

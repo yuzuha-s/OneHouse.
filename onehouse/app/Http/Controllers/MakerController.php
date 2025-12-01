@@ -21,7 +21,7 @@ class MakerController extends Controller
         return view('phase2_edit', compact('features'));
     }
 
-    // 保存する
+    // メーカー情報を新規登録する
     public function store(Request $request)
     {
 

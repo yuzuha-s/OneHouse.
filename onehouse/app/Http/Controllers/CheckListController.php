@@ -82,7 +82,6 @@ class CheckListController extends Controller
             ]);
         }
 
-
         return response()->json([
             'success' => true,
             'checklist' => $checklist->fresh(),

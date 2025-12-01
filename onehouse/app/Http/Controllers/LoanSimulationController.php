@@ -14,9 +14,7 @@ class LoanSimulationController extends Controller
         return view('default', compact('loanSimulations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //
@@ -47,8 +45,8 @@ class LoanSimulationController extends Controller
     public function show(string $id)
     {
         $loanSimulation = LoanSimulation::where('profile_id', 1)
-        ->latest('updated_at')
-        ->first();
+            ->latest('updated_at')
+            ->first();
         if (!$loanSimulation) {
             return response()->json([
                 'loan' => 0,
@@ -74,9 +72,7 @@ class LoanSimulationController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         //
@@ -97,9 +93,7 @@ class LoanSimulationController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         //

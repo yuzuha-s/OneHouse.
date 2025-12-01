@@ -1,4 +1,5 @@
 <?php
+#TODO:LandLogの命名を変更する
 
 namespace App\Http\Controllers;
 
@@ -24,11 +25,13 @@ class LandLogController extends Controller
 
     public function create(Request $request)
     {
+        //
     }
 
-    // 保存する
+    // 登録データをそのまま表示する
     public function store(Request $request)
     {
+        // 保存する
         Log::info('LandLogs store called', $request->all());
         //  dd($request->all());
 
@@ -64,18 +67,14 @@ class LandLogController extends Controller
         return redirect()->route('phase4')->with('success', '登録が完了しました');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
 
-    public function edit(string $id)
-    {
-    }
+    public function edit(string $id) {}
 
 
     public function update(LandLogRequest $request, string $id)
